@@ -1,0 +1,103 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the created sub-account"
+    },
+    "businessName": {
+      "type": "string",
+      "description": "The business name of the sub-account"
+    },
+    "address": {
+      "type": "string",
+      "description": "Business address"
+    },
+    "city": {
+      "type": "string",
+      "description": "Business city"
+    },
+    "state": {
+      "type": "string",
+      "description": "Business state/province"
+    },
+    "country": {
+      "type": "string",
+      "description": "Business country code"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Business postal/ZIP code"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Business timezone"
+    },
+    "website": {
+      "type": "string",
+      "description": "Business website URL"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Contact first name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Contact last name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "allowDuplicateContact": {
+          "type": "boolean",
+          "description": "Whether duplicate contacts are allowed"
+        },
+        "allowDuplicateOpportunity": {
+          "type": "boolean",
+          "description": "Whether duplicate opportunities are allowed"
+        },
+        "allowFacebookNameMerge": {
+          "type": "boolean",
+          "description": "Whether Facebook name merging is enabled"
+        },
+        "disableContactTimezone": {
+          "type": "boolean",
+          "description": "Whether contact timezone is disabled"
+        }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Snapshot ID applied to the sub-account"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["own", "imported", "vertical"],
+          "description": "Type of snapshot applied"
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the sub-account was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the sub-account was last updated"
+    }
+  },
+  "required": ["id", "businessName", "address", "city", "state", "country", "postalCode", "timezone"]
+} 

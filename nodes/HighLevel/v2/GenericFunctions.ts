@@ -375,6 +375,40 @@ export async function getUsers(this: ILoadOptionsFunctions): Promise<INodeProper
 	return options;
 }
 
+export async function getSocialAccounts(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	const { locationId } =
+		((await this.getCredentials('highLevelOAuth2Api'))?.oauthTokenData as IDataObject) ?? {};
+	
+	try {
+		const responseData = await highLevelApiRequest.call(
+			this,
+			'GET',
+			`/locations/${locationId}/social-planner/accounts`,
+			undefined,
+			{},
+		);
+
+		const socialAccounts = responseData.socialAccounts as [{ 
+			id: string; 
+			accountName: string; 
+			platform: string;
+			status: string;
+		}];
+		
+		const options: INodePropertyOptions[] = socialAccounts
+			.filter((account) => account.status === 'connected')
+			.map((account) => {
+				const name = `${account.accountName} (${account.platform})`;
+				const value = account.id;
+				return { name, value };
+			});
+		return options;
+	} catch (error) {
+		// Return empty array if social accounts endpoint is not available or fails
+		return [];
+	}
+}
+
 export async function addCustomFieldsPreSendAction(
 	this: IExecuteSingleFunctions,
 	requestOptions: IHttpRequestOptions,
@@ -413,4 +447,37 @@ export async function addCustomFieldsPreSendAction(
 	}
 
 	return requestOptions;
+}
+
+export async function getSubAccounts(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	const { locationId } =
+		((await this.getCredentials('highLevelOAuth2Api'))?.oauthTokenData as IDataObject) ?? {};
+	
+	try {
+		const responseData = await highLevelApiRequest.call(
+			this,
+			'GET',
+			'/locations',
+			undefined,
+			{},
+		);
+
+		const subAccounts = responseData.locations as [{ 
+			id: string; 
+			businessName: string; 
+			address: string;
+			city: string;
+			state: string;
+		}];
+		
+		const options: INodePropertyOptions[] = subAccounts.map((account) => {
+			const name = `${account.businessName} (${account.city}, ${account.state})`;
+			const value = account.id;
+			return { name, value };
+		});
+		return options;
+	} catch (error) {
+		// Return empty array if sub-accounts endpoint is not available or fails
+		return [];
+	}
 }

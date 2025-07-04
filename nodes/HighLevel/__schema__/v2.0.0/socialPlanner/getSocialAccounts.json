@@ -1,0 +1,104 @@
+{
+    "type": "object",
+    "properties": {
+        "socialAccounts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the social account"
+                    },
+                    "platform": {
+                        "type": "string",
+                        "enum": ["facebook", "instagram", "linkedin", "tiktok", "google_my_business", "pinterest"],
+                        "description": "Social media platform"
+                    },
+                    "accountName": {
+                        "type": "string",
+                        "description": "Name of the social media account"
+                    },
+                    "accountId": {
+                        "type": "string",
+                        "description": "Platform-specific account ID"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username or handle for the account"
+                    },
+                    "profileImageUrl": {
+                        "type": "string",
+                        "description": "URL to the profile image"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["connected", "disconnected", "expired", "error"],
+                        "description": "Connection status of the account"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of granted permissions"
+                    },
+                    "tokenExpiry": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the access token expires"
+                    },
+                    "connectedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the account was connected"
+                    },
+                    "lastSyncAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last time the account was synced"
+                    },
+                    "isBusinessAccount": {
+                        "type": "boolean",
+                        "description": "Whether this is a business account"
+                    },
+                    "followerCount": {
+                        "type": "number",
+                        "description": "Number of followers (if available)"
+                    }
+                },
+                "required": ["id", "platform", "accountName", "status"]
+            }
+        },
+        "totalConnected": {
+            "type": "number",
+            "description": "Total number of connected accounts"
+        },
+        "platformSummary": {
+            "type": "object",
+            "properties": {
+                "facebook": {
+                    "type": "number"
+                },
+                "instagram": {
+                    "type": "number"
+                },
+                "linkedin": {
+                    "type": "number"
+                },
+                "tiktok": {
+                    "type": "number"
+                },
+                "google_my_business": {
+                    "type": "number"
+                },
+                "pinterest": {
+                    "type": "number"
+                }
+            },
+            "description": "Count of accounts per platform"
+        }
+    },
+    "required": ["socialAccounts", "totalConnected"],
+    "version": 1
+} 

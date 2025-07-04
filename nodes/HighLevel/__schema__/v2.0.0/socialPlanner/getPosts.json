@@ -1,0 +1,131 @@
+{
+    "type": "object",
+    "properties": {
+        "posts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the post"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "The location ID where the post belongs"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The content of the social media post"
+                    },
+                    "socialAccounts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of social media platforms for the post"
+                    },
+                    "scheduledDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The scheduled date for the post (if scheduled)"
+                    },
+                    "publishedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the post was published"
+                    },
+                    "mediaUrls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of media URLs attached to the post"
+                    },
+                    "hashtags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of hashtags used in the post"
+                    },
+                    "postType": {
+                        "type": "string",
+                        "enum": ["post", "story", "reel"],
+                        "description": "Type of social media post"
+                    },
+                    "locationTag": {
+                        "type": "string",
+                        "description": "Location tag for the post"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["draft", "scheduled", "published", "failed"],
+                        "description": "Current status of the post"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the post was created"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the post was last updated"
+                    },
+                    "analytics": {
+                        "type": "object",
+                        "properties": {
+                            "impressions": {
+                                "type": "number"
+                            },
+                            "likes": {
+                                "type": "number"
+                            },
+                            "shares": {
+                                "type": "number"
+                            },
+                            "comments": {
+                                "type": "number"
+                            },
+                            "clicks": {
+                                "type": "number"
+                            },
+                            "reach": {
+                                "type": "number"
+                            },
+                            "engagement": {
+                                "type": "number"
+                            }
+                        },
+                        "description": "Analytics data for the post"
+                    }
+                },
+                "required": ["id", "locationId", "content", "socialAccounts", "status"]
+            }
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number",
+                    "description": "Total number of posts"
+                },
+                "limit": {
+                    "type": "number",
+                    "description": "Number of posts returned per page"
+                },
+                "offset": {
+                    "type": "number",
+                    "description": "Number of posts skipped"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more posts available"
+                }
+            }
+        }
+    },
+    "required": ["posts"],
+    "version": 1
+} 

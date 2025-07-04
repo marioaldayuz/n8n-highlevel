@@ -1,0 +1,73 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the scheduled post"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the post was scheduled"
+        },
+        "content": {
+            "type": "string",
+            "description": "The content of the social media post"
+        },
+        "socialAccounts": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of social media platforms the post is scheduled for"
+        },
+        "scheduledDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time when the post is scheduled to be published"
+        },
+        "timezone": {
+            "type": "string",
+            "description": "Timezone for the scheduled post"
+        },
+        "mediaUrls": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of media URLs attached to the post"
+        },
+        "hashtags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of hashtags used in the post"
+        },
+        "postType": {
+            "type": "string",
+            "enum": ["post", "story", "reel"],
+            "description": "Type of social media post"
+        },
+        "locationTag": {
+            "type": "string",
+            "description": "Location tag for the post"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["scheduled", "failed"],
+            "description": "Current status of the scheduled post"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the post was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the post was last updated"
+        }
+    },
+    "required": ["id", "locationId", "content", "socialAccounts", "scheduledDate", "status"],
+    "version": 1
+} 

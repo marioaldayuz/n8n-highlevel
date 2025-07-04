@@ -13,11 +13,15 @@ import { NodeConnectionTypes } from 'n8n-workflow';
 import { calendarFields, calendarOperations } from './description/CalendarDescription';
 import { contactFields, contactNotes, contactOperations } from './description/ContactDescription';
 import { opportunityFields, opportunityOperations } from './description/OpportunityDescription';
+import { socialPlannerFields, socialPlannerOperations } from './description/SocialPlannerDescription';
+import { subAccountFields, subAccountOperations } from './description/SubAccountDescription';
 import { taskFields, taskOperations } from './description/TaskDescription';
 import {
 	getContacts,
 	getPipelines,
 	getPipelineStages,
+	getSocialAccounts,
+	getSubAccounts,
 	getUsers,
 	highLevelApiPagination,
 } from './GenericFunctions';
@@ -44,6 +48,14 @@ const resources: INodeProperties[] = [
 			{
 				name: 'Calendar',
 				value: 'calendar',
+			},
+			{
+				name: 'Social Planner',
+				value: 'socialPlanner',
+			},
+			{
+				name: 'Sub-Account',
+				value: 'subAccount',
 			},
 		],
 		default: 'contact',
@@ -93,6 +105,10 @@ const versionDescription: INodeTypeDescription = {
 		...taskFields,
 		...calendarOperations,
 		...calendarFields,
+		...socialPlannerOperations,
+		...socialPlannerFields,
+		...subAccountOperations,
+		...subAccountFields,
 	],
 };
 
@@ -111,6 +127,8 @@ export class HighLevelV2 implements INodeType {
 			getPipelines,
 			getContacts,
 			getPipelineStages,
+			getSocialAccounts,
+			getSubAccounts,
 			getUsers,
 		},
 		listSearch: {

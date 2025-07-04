@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the created user"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "User's first name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "User's last name"
+    },
+    "email": {
+      "type": "string",
+      "description": "User's email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "User's phone number"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["account", "agency"],
+      "description": "Type of user access"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["admin", "user"],
+      "description": "User role level"
+    },
+    "locationIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of location IDs the user has access to"
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "campaignsEnabled": {
+          "type": "boolean",
+          "description": "Whether campaigns are enabled"
+        },
+        "campaignsReadOnly": {
+          "type": "boolean",
+          "description": "Whether campaigns are read-only"
+        },
+        "contactsEnabled": {
+          "type": "boolean",
+          "description": "Whether contacts are enabled"
+        },
+        "workflowsEnabled": {
+          "type": "boolean",
+          "description": "Whether workflows are enabled"
+        },
+        "triggersEnabled": {
+          "type": "boolean",
+          "description": "Whether triggers are enabled"
+        },
+        "funnelsEnabled": {
+          "type": "boolean",
+          "description": "Whether funnels are enabled"
+        },
+        "websitesEnabled": {
+          "type": "boolean",
+          "description": "Whether websites are enabled"
+        },
+        "opportunitiesEnabled": {
+          "type": "boolean",
+          "description": "Whether opportunities are enabled"
+        },
+        "dashboardStatsEnabled": {
+          "type": "boolean",
+          "description": "Whether dashboard stats are enabled"
+        },
+        "bulkRequestsEnabled": {
+          "type": "boolean",
+          "description": "Whether bulk requests are enabled"
+        },
+        "appointmentsEnabled": {
+          "type": "boolean",
+          "description": "Whether appointments are enabled"
+        },
+        "reviewsEnabled": {
+          "type": "boolean",
+          "description": "Whether reviews are enabled"
+        },
+        "onlineListingsEnabled": {
+          "type": "boolean",
+          "description": "Whether online listings are enabled"
+        },
+        "phoneCallEnabled": {
+          "type": "boolean",
+          "description": "Whether phone calls are enabled"
+        },
+        "conversationsEnabled": {
+          "type": "boolean",
+          "description": "Whether conversations are enabled"
+        },
+        "assignedDataOnly": {
+          "type": "boolean",
+          "description": "Whether user can only see assigned data"
+        },
+        "settingsEnabled": {
+          "type": "boolean",
+          "description": "Whether settings are enabled"
+        },
+        "tagsEnabled": {
+          "type": "boolean",
+          "description": "Whether tags are enabled"
+        },
+        "leadValueEnabled": {
+          "type": "boolean",
+          "description": "Whether lead value is enabled"
+        },
+        "marketingEnabled": {
+          "type": "boolean",
+          "description": "Whether marketing is enabled"
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the user was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the user was last updated"
+    }
+  },
+  "required": ["id", "firstName", "lastName", "email", "type", "role", "locationIds"]
+} 
