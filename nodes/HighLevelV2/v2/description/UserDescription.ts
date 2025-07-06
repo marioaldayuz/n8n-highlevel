@@ -112,6 +112,7 @@ export const userFields: INodeProperties[] = [
 		displayName: 'Email',
 		name: 'email',
 		type: 'string',
+		placeholder: 'name@email.com',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -428,6 +429,7 @@ export const userFields: INodeProperties[] = [
 				displayName: 'Email',
 				name: 'email',
 				type: 'string',
+				placeholder: 'name@email.com',
 				default: '',
 				description: 'Updated email address',
 			},
@@ -1037,7 +1039,7 @@ export const userFields: INodeProperties[] = [
 					},
 				],
 				default: 'asc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -1045,9 +1047,9 @@ export const userFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{

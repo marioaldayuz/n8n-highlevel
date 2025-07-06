@@ -109,15 +109,15 @@ const resources: INodeProperties[] = [
 ];
 
 const versionDescription: INodeTypeDescription = {
-	displayName: 'HighLevel',
-	name: 'highLevel',
+	displayName: 'HighLevel v2',
+	name: 'highLevelv2',
 	icon: 'file:highLevel.svg',
 	group: ['transform'],
 	version: 2,
 	description: 'Consume HighLevel API v2',
 	subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 	defaults: {
-		name: 'HighLevel',
+		name: 'HighLevel v2',
 	},
 	usableAsTool: true,
 	inputs: [NodeConnectionType.Main],

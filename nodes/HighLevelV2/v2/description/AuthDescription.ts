@@ -43,6 +43,7 @@ export const authFields: INodeProperties[] = [
 		displayName: 'Agency Token',
 		name: 'agencyToken',
 		type: 'string',
+		typeOptions: { password: true },
 		required: true,
 		default: '',
 		displayOptions: {

@@ -14,7 +14,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Create Sub-Account',
 				value: 'createSubAccount',
-				action: 'Create a new sub-account (location)',
+				action: 'Create a new sub account location',
 				routing: {
 					request: {
 						method: 'POST',
@@ -25,7 +25,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Get Sub-Account',
 				value: 'getSubAccount',
-				action: 'Get a sub-account by ID',
+				action: 'Get a sub account by id',
 				routing: {
 					request: {
 						method: 'GET',
@@ -36,7 +36,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Get All Sub-Accounts',
 				value: 'getAllSubAccounts',
-				action: 'Get all sub-accounts',
+				action: 'Get all sub accounts',
 				routing: {
 					request: {
 						method: 'GET',
@@ -47,7 +47,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Update Sub-Account',
 				value: 'updateSubAccount',
-				action: 'Update a sub-account',
+				action: 'Update a sub account',
 				routing: {
 					request: {
 						method: 'PUT',
@@ -58,7 +58,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Delete Sub-Account',
 				value: 'deleteSubAccount',
-				action: 'Delete a sub-account',
+				action: 'Delete a sub account',
 				routing: {
 					request: {
 						method: 'DELETE',
@@ -69,7 +69,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Create User',
 				value: 'createUser',
-				action: 'Create a user in sub-account',
+				action: 'Create a user in sub account',
 				routing: {
 					request: {
 						method: 'POST',
@@ -80,7 +80,7 @@ export const subAccountOperations: INodeProperties[] = [
 			{
 				name: 'Get Users',
 				value: 'getUsers',
-				action: 'Get users in sub-account',
+				action: 'Get users in sub account',
 				routing: {
 					request: {
 						method: 'GET',
@@ -368,6 +368,7 @@ export const subAccountFields: INodeProperties[] = [
 		displayName: 'Email',
 		name: 'email',
 		type: 'string',
+		placeholder: 'name@email.com',
 		required: true,
 		displayOptions: {
 			show: {
@@ -486,7 +487,7 @@ export const subAccountFields: INodeProperties[] = [
 				name: 'contactFirstName',
 				type: 'string',
 				default: '',
-				description: 'Contact first name',
+
 				routing: {
 					send: {
 						type: 'body',
@@ -499,7 +500,7 @@ export const subAccountFields: INodeProperties[] = [
 				name: 'contactLastName',
 				type: 'string',
 				default: '',
-				description: 'Contact last name',
+
 				routing: {
 					send: {
 						type: 'body',
@@ -582,8 +583,11 @@ export const subAccountFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Number of records to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',
@@ -739,7 +743,7 @@ export const subAccountFields: INodeProperties[] = [
 					{ name: 'Asia/Tokyo', value: 'Asia/Tokyo' },
 					{ name: 'Australia/Sydney', value: 'Australia/Sydney' },
 				],
-				default: '',
+				default: 'US/Eastern',
 				description: 'Updated timezone',
 				routing: {
 					send: {
@@ -778,6 +782,7 @@ export const subAccountFields: INodeProperties[] = [
 				displayName: 'Email',
 				name: 'email',
 				type: 'string',
+				placeholder: 'name@email.com',
 				default: '',
 				description: 'Updated email address',
 				routing: {
@@ -808,7 +813,7 @@ export const subAccountFields: INodeProperties[] = [
 					{ name: 'Admin', value: 'admin' },
 					{ name: 'User', value: 'user' },
 				],
-				default: '',
+				default: 'admin',
 				description: 'Updated user role',
 				routing: {
 					send: {
@@ -879,10 +884,10 @@ export const subAccountFields: INodeProperties[] = [
 					{ name: 'LLC', value: 'llc' },
 					{ name: 'Partnership', value: 'partnership' },
 					{ name: 'Sole Proprietorship', value: 'sole_proprietorship' },
-					{ name: 'Non-profit', value: 'non_profit' },
-					{ name: 'Co-operative', value: 'cooperative' },
+					{ name: 'Non-Profit', value: 'non_profit' },
+					{ name: 'Co-Operative', value: 'cooperative' },
 				],
-				default: '',
+				default: 'corporation',
 				description: 'Type of business',
 				routing: {
 					send: {
@@ -896,7 +901,7 @@ export const subAccountFields: INodeProperties[] = [
 				name: 'businessIndustry',
 				type: 'string',
 				default: '',
-				description: 'Business industry',
+
 				routing: {
 					send: {
 						type: 'body',

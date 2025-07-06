@@ -107,7 +107,7 @@ export const customFieldOperations: INodeProperties[] = [
 						],
 					},
 				},
-				action: 'Get all custom fields',
+				action: 'Get many custom fields',
 			},
 			{
 				name: 'Create Folder',

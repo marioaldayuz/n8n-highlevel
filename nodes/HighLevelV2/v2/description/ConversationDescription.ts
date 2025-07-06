@@ -40,6 +40,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get conversation a conversation',
 			},
 			{
 				name: 'Create Conversation',
@@ -63,6 +64,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Create conversation a conversation',
 			},
 			{
 				name: 'Update Conversation',
@@ -86,6 +88,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Update conversation a conversation',
 			},
 			{
 				name: 'Delete Conversation',
@@ -99,6 +102,7 @@ export const conversationOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Delete conversation a conversation',
 			},
 			{
 				name: 'Search Conversations',
@@ -122,6 +126,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Search conversations a conversation',
 			},
 
 			// Message Operations
@@ -147,6 +152,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get message a conversation',
 			},
 			{
 				name: 'Send Message',
@@ -170,6 +176,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Send message a conversation',
 			},
 			{
 				name: 'Get Messages by Conversation',
@@ -193,6 +200,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get messages by conversation a conversation',
 			},
 			{
 				name: 'Add Inbound Message',
@@ -216,6 +224,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Add inbound message a conversation',
 			},
 			{
 				name: 'Add External Outbound Call',
@@ -239,6 +248,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Add external outbound call a conversation',
 			},
 			{
 				name: 'Update Message Status',
@@ -262,6 +272,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Update message status a conversation',
 			},
 			{
 				name: 'Cancel Scheduled Message',
@@ -275,6 +286,7 @@ export const conversationOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Cancel scheduled message a conversation',
 			},
 
 			// Email Operations
@@ -300,6 +312,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get email a conversation',
 			},
 			{
 				name: 'Cancel Scheduled Email',
@@ -313,6 +326,7 @@ export const conversationOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Cancel scheduled email a conversation',
 			},
 
 			// File Operations
@@ -338,6 +352,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Upload file attachment a conversation',
 			},
 
 			// Recording/Transcription Operations
@@ -363,6 +378,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get recording a conversation',
 			},
 			{
 				name: 'Get Transcription',
@@ -386,6 +402,7 @@ export const conversationOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get transcription a conversation',
 			},
 			{
 				name: 'Download Transcription',
@@ -399,6 +416,7 @@ export const conversationOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Download transcription a conversation',
 			},
 		],
 		default: 'getConversation',
@@ -689,14 +707,17 @@ export const conversationFields: INodeProperties[] = [
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
+		typeOptions: {
+			minValue: 1,
+		},
 		displayOptions: {
 			show: {
 				resource: ['conversation'],
 				operation: ['searchConversations', 'getMessagesByConversation'],
 			},
 		},
-		default: 20,
-		description: 'Maximum number of results to return',
+		default: 50,
+		description: 'Max number of results to return',
 	},
 	{
 		displayName: 'Offset',
@@ -955,7 +976,7 @@ export const conversationFields: INodeProperties[] = [
 		description: 'Status of the call',
 	},
 	{
-		displayName: 'Duration (seconds)',
+		displayName: 'Duration (Seconds)',
 		name: 'duration',
 		type: 'number',
 		displayOptions: {

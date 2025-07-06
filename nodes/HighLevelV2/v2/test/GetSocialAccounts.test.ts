@@ -45,8 +45,8 @@ describe('getSocialAccounts', () => {
 		const response = await getSocialAccounts.call(mockContext);
 
 		expect(response).toEqual([
-			{ name: 'My Facebook Page (facebook)', value: '1' },
-			{ name: 'My Instagram Business (instagram)', value: '2' },
+			{ name: 'My Facebook Page (Facebook)', value: '1' },
+			{ name: 'My Instagram Business (Instagram)', value: '2' },
 		]);
 		
 		expect(mockHighLevelApiRequest).toHaveBeenCalledWith(
@@ -85,7 +85,7 @@ describe('getSocialAccounts', () => {
 		const response = await getSocialAccounts.call(mockContext);
 
 		expect(response).toEqual([
-			{ name: 'Connected Account (facebook)', value: '1' },
+			{ name: 'Connected Account (Facebook)', value: '1' },
 		]);
 	});
 

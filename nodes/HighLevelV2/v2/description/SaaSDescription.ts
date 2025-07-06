@@ -39,6 +39,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get locations by stripe id a saas',
 			},
 			{
 				name: 'Update SaaS Subscription',
@@ -62,6 +63,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Update saa s subscription a saas',
 			},
 			{
 				name: 'Disable SaaS for Locations',
@@ -75,6 +77,7 @@ export const saasOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Disable saa s for locations a saas',
 			},
 			{
 				name: 'Enable SaaS for Sub-Account',
@@ -88,6 +91,7 @@ export const saasOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Enable saa s for sub account a saas',
 			},
 			{
 				name: 'Pause Location',
@@ -101,6 +105,7 @@ export const saasOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Pause location a saas',
 			},
 			{
 				name: 'Update Rebilling',
@@ -114,6 +119,7 @@ export const saasOperations: INodeProperties[] = [
 						preSend: [addLocationIdPreSendAction],
 					},
 				},
+				action: 'Update rebilling a saas',
 			},
 			{
 				name: 'Get Agency Plans',
@@ -137,6 +143,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get agency plans a saas',
 			},
 			{
 				name: 'Get Location Subscription Details',
@@ -160,6 +167,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get location subscription details a saas',
 			},
 			{
 				name: 'Bulk Enable SaaS',
@@ -173,6 +181,7 @@ export const saasOperations: INodeProperties[] = [
 						preSend: [addCompanyIdPreSendAction],
 					},
 				},
+				action: 'Bulk enable saa s a saas',
 			},
 			{
 				name: 'Get SaaS Locations',
@@ -196,6 +205,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get saa s locations a saas',
 			},
 			{
 				name: 'Get SaaS Plan',
@@ -219,6 +229,7 @@ export const saasOperations: INodeProperties[] = [
 						],
 					},
 				},
+				action: 'Get saa s plan a saas',
 			},
 		],
 		default: 'getLocationsByStripeId',
@@ -681,6 +692,9 @@ export const saasFields: INodeProperties[] = [
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
+		typeOptions: {
+			minValue: 1,
+		},
 		displayOptions: {
 			show: {
 				resource: ['saas'],
@@ -688,7 +702,7 @@ export const saasFields: INodeProperties[] = [
 			},
 		},
 		default: 50,
-		description: 'Maximum number of locations to return',
+		description: 'Max number of results to return',
 	},
 	{
 		displayName: 'Offset',

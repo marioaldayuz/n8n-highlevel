@@ -21,7 +21,7 @@ export const surveyOperations: INodeProperties[] = [
 			{
 				name: 'Get Survey Submissions',
 				value: 'getSurveySubmissions',
-				description: 'Get survey submissions',
+
 				action: 'Get survey submissions',
 			},
 		],
@@ -258,7 +258,7 @@ export const surveyFields: INodeProperties[] = [
 					},
 				],
 				default: 'desc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -266,9 +266,9 @@ export const surveyFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{
@@ -597,7 +597,7 @@ export const surveyFields: INodeProperties[] = [
 					},
 				],
 				default: 'desc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -605,9 +605,9 @@ export const surveyFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{

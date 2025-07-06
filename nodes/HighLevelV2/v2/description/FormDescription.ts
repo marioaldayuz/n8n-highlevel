@@ -21,7 +21,7 @@ export const formOperations: INodeProperties[] = [
 			{
 				name: 'Get Form Submissions',
 				value: 'getFormSubmissions',
-				description: 'Get form submissions',
+
 				action: 'Get form submissions',
 			},
 			{
@@ -187,7 +187,7 @@ export const formFields: INodeProperties[] = [
 					},
 				],
 				default: 'desc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -195,9 +195,9 @@ export const formFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{
@@ -362,7 +362,7 @@ export const formFields: INodeProperties[] = [
 					},
 				],
 				default: 'desc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -370,9 +370,9 @@ export const formFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{

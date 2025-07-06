@@ -101,7 +101,7 @@ export const emailFields: INodeProperties[] = [
 				type: 'options',
 				options: [
 					{
-						name: 'One-time',
+						name: 'One-Time',
 						value: 'one-time',
 					},
 					{
@@ -154,9 +154,9 @@ export const emailFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{
@@ -254,7 +254,7 @@ export const emailFields: INodeProperties[] = [
 				value: 'welcome',
 			},
 			{
-				name: 'Follow-up',
+				name: 'Follow-Up',
 				value: 'followup',
 			},
 		],
@@ -330,11 +330,32 @@ export const emailFields: INodeProperties[] = [
 				name: 'variable',
 				values: [
 					{
+						displayName: 'Default Value',
+						name: 'defaultValue',
+						type: 'string',
+						default: '',
+						description: 'Default value for the variable',
+					},
+					{
+						displayName: 'Description',
+						name: 'description',
+						type: 'string',
+						default: '',
+						description: 'Variable description',
+					},
+					{
 						displayName: 'Name',
 						name: 'name',
 						type: 'string',
 						default: '',
-						description: 'Variable name (e.g., {{firstName}})',
+						description: 'Variable name (e.g.,	{{firstName}})',
+					},
+					{
+						displayName: 'Required',
+						name: 'required',
+						type: 'boolean',
+						default: false,
+						description: 'Whether the variable is required',
 					},
 					{
 						displayName: 'Type',
@@ -369,28 +390,7 @@ export const emailFields: INodeProperties[] = [
 						default: 'text',
 						description: 'Variable type',
 					},
-					{
-						displayName: 'Default Value',
-						name: 'defaultValue',
-						type: 'string',
-						default: '',
-						description: 'Default value for the variable',
-					},
-					{
-						displayName: 'Required',
-						name: 'required',
-						type: 'boolean',
-						default: false,
-						description: 'Whether the variable is required',
-					},
-					{
-						displayName: 'Description',
-						name: 'description',
-						type: 'string',
-						default: '',
-						description: 'Variable description',
-					},
-				],
+			],
 			},
 		],
 	},
@@ -559,7 +559,7 @@ export const emailFields: INodeProperties[] = [
 						value: 'welcome',
 					},
 					{
-						name: 'Follow-up',
+						name: 'Follow-Up',
 						value: 'followup',
 					},
 				],
@@ -631,7 +631,7 @@ export const emailFields: INodeProperties[] = [
 					},
 				],
 				default: 'desc',
-				description: 'Sort order',
+
 			},
 			{
 				displayName: 'Limit',
@@ -639,9 +639,9 @@ export const emailFields: INodeProperties[] = [
 				type: 'number',
 				typeOptions: {
 					minValue: 1,
-					maxValue: 100,
+
 				},
-				default: 20,
+				default: 50,
 				description: 'Max number of results to return',
 			},
 			{
@@ -725,7 +725,7 @@ export const emailFields: INodeProperties[] = [
 						value: 'welcome',
 					},
 					{
-						name: 'Follow-up',
+						name: 'Follow-Up',
 						value: 'followup',
 					},
 				],
@@ -852,11 +852,32 @@ export const emailFields: INodeProperties[] = [
 				name: 'variable',
 				values: [
 					{
+						displayName: 'Default Value',
+						name: 'defaultValue',
+						type: 'string',
+						default: '',
+						description: 'Default value for the variable',
+					},
+					{
+						displayName: 'Description',
+						name: 'description',
+						type: 'string',
+						default: '',
+						description: 'Variable description',
+					},
+					{
 						displayName: 'Name',
 						name: 'name',
 						type: 'string',
 						default: '',
-						description: 'Variable name (e.g., {{firstName}})',
+						description: 'Variable name (e.g.,	{{firstName}})',
+					},
+					{
+						displayName: 'Required',
+						name: 'required',
+						type: 'boolean',
+						default: false,
+						description: 'Whether the variable is required',
 					},
 					{
 						displayName: 'Type',
@@ -891,28 +912,7 @@ export const emailFields: INodeProperties[] = [
 						default: 'text',
 						description: 'Variable type',
 					},
-					{
-						displayName: 'Default Value',
-						name: 'defaultValue',
-						type: 'string',
-						default: '',
-						description: 'Default value for the variable',
-					},
-					{
-						displayName: 'Required',
-						name: 'required',
-						type: 'boolean',
-						default: false,
-						description: 'Whether the variable is required',
-					},
-					{
-						displayName: 'Description',
-						name: 'description',
-						type: 'string',
-						default: '',
-						description: 'Variable description',
-					},
-				],
+			],
 			},
 		],
 	},
