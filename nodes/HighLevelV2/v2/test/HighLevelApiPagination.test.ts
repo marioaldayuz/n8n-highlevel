@@ -16,6 +16,7 @@ describe('highLevelApiPagination', () => {
 		(mockContext.getNodeParameter as jest.Mock).mockImplementation((parameter) => {
 			if (parameter === 'resource') return 'contact';
 			if (parameter === 'returnAll') return true;
+			return undefined;
 		});
 
 		(mockContext.makeRoutingRequest as jest.Mock)
@@ -55,6 +56,7 @@ describe('highLevelApiPagination', () => {
 		(mockContext.getNodeParameter as jest.Mock).mockImplementation((parameter) => {
 			if (parameter === 'resource') return 'contact';
 			if (parameter === 'returnAll') return false;
+			return undefined;
 		});
 
 		(mockContext.makeRoutingRequest as jest.Mock).mockResolvedValueOnce([
@@ -80,6 +82,7 @@ describe('highLevelApiPagination', () => {
 		(mockContext.getNodeParameter as jest.Mock).mockImplementation((parameter) => {
 			if (parameter === 'resource') return 'contact';
 			if (parameter === 'returnAll') return true;
+			return undefined;
 		});
 
 		(mockContext.makeRoutingRequest as jest.Mock).mockResolvedValueOnce([

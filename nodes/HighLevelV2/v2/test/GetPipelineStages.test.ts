@@ -46,6 +46,7 @@ describe('getPipelineStages', () => {
 		mockGetNodeParameter.mockImplementation((param) => {
 			if (param === 'operation') return 'update';
 			if (param === 'updateFields.pipelineId') return 'pipeline-2';
+			return undefined;
 		});
 
 		mockHighLevelApiRequest.mockResolvedValue({

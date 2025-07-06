@@ -1,0 +1,97 @@
+{
+  "name": "n8n-nodes-highlevel",
+  "version": "1.0.0",
+  "description": "n8n community node for HighLevel v2 API integration - comprehensive CRM, marketing automation, and business management platform",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "highlevel",
+    "crm",
+    "marketing-automation",
+    "business-management",
+    "gohighlevel",
+    "leadconnector"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/n8n-io/n8n-nodes-highlevel",
+  "author": {
+    "name": "n8n Community",
+    "email": "community@n8n.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n8n-io/n8n-nodes-highlevel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/n8n-io/n8n-nodes-highlevel/issues"
+  },
+  "engines": {
+    "node": ">=20.15",
+    "npm": ">=10.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/nodes/HighLevelV2/HighLevel.node.js"
+    ]
+  },
+  "dependencies": {
+    "luxon": "^3.4.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/nodes"
+    ],
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "collectCoverageFrom": [
+      "nodes/**/*.ts",
+      "!nodes/**/*.test.ts",
+      "!nodes/**/*.d.ts"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  }
+}

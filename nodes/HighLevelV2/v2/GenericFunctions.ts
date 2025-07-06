@@ -31,9 +31,9 @@ export function isPhoneValid(phone: string): boolean {
 	return VALID_PHONE_REGEX.test(String(phone));
 }
 
-export function dateToIsoSupressMillis(dateTime: string) {
+export function dateToIsoSupressMillis(dateTime: string): string | undefined {
 	const options: ToISOTimeOptions = { suppressMilliseconds: true };
-	return DateTime.fromISO(dateTime).toISO(options);
+	return DateTime.fromISO(dateTime).toISO(options) ?? undefined;
 }
 
 export async function taskPostReceiceAction(
@@ -256,7 +256,7 @@ export async function taskUpdatePreSendAction(
 		const responseData = await highLevelApiRequest.call(this, 'GET', resource);
 		body.title = body.title || responseData.title;
 		// the api response dueDate has to be formatted or it will error on update
-		body.dueDate = body.dueDate || dateToIsoSupressMillis(responseData.dueDate as string);
+		body.dueDate = body.dueDate || (responseData.dueDate ? dateToIsoSupressMillis(responseData.dueDate as string) ?? undefined : undefined);
 		requestOptions.body = body;
 	}
 	return requestOptions;
@@ -479,9 +479,6 @@ export async function addCustomFieldsPreSendAction(
 }
 
 export async function getSubAccounts(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	const { locationId } =
-		((await this.getCredentials('highLevelOAuth2Api'))?.oauthTokenData as IDataObject) ?? {};
-	
 	try {
 		const responseData = await highLevelApiRequest.call(
 			this,

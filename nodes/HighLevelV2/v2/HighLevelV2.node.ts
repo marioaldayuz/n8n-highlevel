@@ -8,7 +8,7 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionType } from 'n8n-workflow';
 
 import { blogFields, blogOperations } from './description/BlogDescription';
 import { calendarFields, calendarOperations } from './description/CalendarDescription';
@@ -120,8 +120,8 @@ const versionDescription: INodeTypeDescription = {
 		name: 'HighLevel',
 	},
 	usableAsTool: true,
-	inputs: [NodeConnectionTypes.Main],
-	outputs: [NodeConnectionTypes.Main],
+	inputs: [NodeConnectionType.Main],
+	outputs: [NodeConnectionType.Main],
 	credentials: [
 		{
 			name: 'highLevelOAuth2Api',
@@ -138,59 +138,6 @@ const versionDescription: INodeTypeDescription = {
 	},
 	requestOperations: {
 		pagination: highLevelApiPagination,
-	},
-	routing: {
-		request: {
-			method: '={{$parameter["operation"] === "getLocationAccessToken" ? "POST" : "GET"}}',
-			url: '={{$parameter["resource"] === "auth" && $parameter["operation"] === "getLocationAccessToken" ? "/oauth/locationToken" : "/" + $parameter["resource"]}}',
-		},
-		operations: {
-			auth: {
-				getLocationAccessToken: {
-					requestMethod: 'POST',
-					basePath: '/oauth/locationToken',
-					requestBodyFormat: 'json',
-				},
-			},
-			customField: {
-				create: {
-					requestMethod: 'POST',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields',
-					requestBodyFormat: 'json',
-				},
-				update: {
-					requestMethod: 'PUT',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/{{$parameter.customFieldId}}',
-					requestBodyFormat: 'json',
-				},
-				delete: {
-					requestMethod: 'DELETE',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/{{$parameter.customFieldId}}',
-				},
-				getAll: {
-					requestMethod: 'GET',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields',
-				},
-				createFolder: {
-					requestMethod: 'POST',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/folders',
-					requestBodyFormat: 'json',
-				},
-				getFolder: {
-					requestMethod: 'GET',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/folders/{{$parameter.folderId}}',
-				},
-				updateFolder: {
-					requestMethod: 'PUT',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/folders/{{$parameter.folderId}}',
-					requestBodyFormat: 'json',
-				},
-				deleteFolder: {
-					requestMethod: 'DELETE',
-					basePath: '=/locations/{{$parameter.locationId}}/customFields/folders/{{$parameter.folderId}}',
-				},
-			},
-		},
 	},
 	properties: [
 		...resources,
