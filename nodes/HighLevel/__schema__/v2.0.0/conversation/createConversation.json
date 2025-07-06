@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "conversation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the created conversation"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the conversation was created"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the conversation"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of conversation"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["open", "closed", "archived"],
+                    "description": "Initial status of the conversation"
+                },
+                "assignedTo": {
+                    "type": "string",
+                    "description": "User ID assigned to handle the conversation"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the conversation"
+                },
+                "customFields": {
+                    "type": "object",
+                    "description": "Custom fields associated with the conversation"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Conversation creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Created conversation details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the conversation was created successfully"
+        }
+    },
+    "version": 1
+} 

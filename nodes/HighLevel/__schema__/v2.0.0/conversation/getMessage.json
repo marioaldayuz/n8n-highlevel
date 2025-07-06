@@ -1,0 +1,122 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the message"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this message belongs to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the message was sent"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the message"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of message"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["inbound", "outbound"],
+                    "description": "Direction of the message"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["sent", "delivered", "read", "failed", "pending", "cancelled"],
+                    "description": "Current status of the message"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Message content/body"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Message subject (for emails)"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Sender information"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "Recipient information"
+                },
+                "attachments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Attachment ID"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Attachment filename"
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "Attachment URL"
+                            },
+                            "size": {
+                                "type": "integer",
+                                "description": "Attachment size in bytes"
+                            },
+                            "mimeType": {
+                                "type": "string",
+                                "description": "MIME type of the attachment"
+                            }
+                        }
+                    },
+                    "description": "Message attachments"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Additional message metadata"
+                },
+                "scheduledDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Scheduled send date (for scheduled messages)"
+                },
+                "sentAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the message was sent"
+                },
+                "deliveredAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the message was delivered"
+                },
+                "readAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the message was read"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Message creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Complete message details"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "locations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Location ID"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Location name"
+                    },
+                    "stripeCustomerId": {
+                        "type": "string",
+                        "description": "Stripe customer ID associated with the location"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "Company ID associated with the location"
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "Subscription ID for the location"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "SaaS plan ID"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "paused", "cancelled"],
+                        "description": "Current status of the location"
+                    },
+                    "saasEnabled": {
+                        "type": "boolean",
+                        "description": "Whether SaaS is enabled for this location"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Location creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Location last updated timestamp"
+                    }
+                }
+            },
+            "description": "Array of locations matching the search criteria"
+        },
+        "count": {
+            "type": "integer",
+            "description": "Total number of locations found"
+        }
+    },
+    "version": 1
+} 

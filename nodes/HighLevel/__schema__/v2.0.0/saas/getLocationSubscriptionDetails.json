@@ -1,0 +1,184 @@
+{
+    "type": "object",
+    "properties": {
+        "subscription": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Subscription ID"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID"
+                },
+                "locationName": {
+                    "type": "string",
+                    "description": "Location name"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "SaaS plan ID"
+                },
+                "planName": {
+                    "type": "string",
+                    "description": "SaaS plan name"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active", "paused", "cancelled", "past_due", "unpaid", "trialing"],
+                    "description": "Current subscription status"
+                },
+                "billing": {
+                    "type": "object",
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "description": "Subscription amount"
+                        },
+                        "currency": {
+                            "type": "string",
+                            "description": "Currency code"
+                        },
+                        "interval": {
+                            "type": "string",
+                            "enum": ["month", "year", "week", "day"],
+                            "description": "Billing interval"
+                        },
+                        "intervalCount": {
+                            "type": "integer",
+                            "description": "Number of intervals between billings"
+                        },
+                        "currentPeriodStart": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Current billing period start"
+                        },
+                        "currentPeriodEnd": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Current billing period end"
+                        },
+                        "nextBilling": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Next billing date"
+                        }
+                    },
+                    "description": "Billing information"
+                },
+                "trial": {
+                    "type": "object",
+                    "properties": {
+                        "isTrialing": {
+                            "type": "boolean",
+                            "description": "Whether currently in trial"
+                        },
+                        "trialStart": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Trial start date"
+                        },
+                        "trialEnd": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Trial end date"
+                        },
+                        "daysRemaining": {
+                            "type": "integer",
+                            "description": "Trial days remaining"
+                        }
+                    },
+                    "description": "Trial information"
+                },
+                "usage": {
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "object",
+                            "properties": {
+                                "current": {
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "contacts": {
+                            "type": "object",
+                            "properties": {
+                                "current": {
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "apiCalls": {
+                            "type": "object",
+                            "properties": {
+                                "current": {
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "storage": {
+                            "type": "object",
+                            "properties": {
+                                "current": {
+                                    "type": "number"
+                                },
+                                "limit": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Current usage vs limits"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for this subscription"
+                },
+                "rebilling": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether rebilling is enabled"
+                        },
+                        "balance": {
+                            "type": "number",
+                            "description": "Current credit balance"
+                        },
+                        "autoRecharge": {
+                            "type": "boolean",
+                            "description": "Auto recharge enabled"
+                        }
+                    },
+                    "description": "Rebilling information"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Subscription creation date"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last updated date"
+                }
+            },
+            "description": "Complete subscription details"
+        }
+    },
+    "version": 1
+} 

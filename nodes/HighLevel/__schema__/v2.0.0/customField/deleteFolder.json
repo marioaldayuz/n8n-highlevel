@@ -1,0 +1,8 @@
+{
+  "deleteFolder": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/folders/{id}",
+      "method": "DELETE"
+    }
+  }
+} 

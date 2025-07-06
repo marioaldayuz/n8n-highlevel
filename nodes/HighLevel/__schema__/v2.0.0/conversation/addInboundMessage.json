@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the added inbound message"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this message was added to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the message was received"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID the message was received from"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of inbound message"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["inbound"],
+                    "description": "Direction of the message"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["received", "processed"],
+                    "description": "Status of the inbound message"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Inbound message content"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Message subject (for emails)"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Sender information"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "Recipient information"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Additional message metadata"
+                },
+                "receivedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the message was received"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Message creation timestamp"
+                }
+            },
+            "description": "Added inbound message details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the inbound message was added successfully"
+        },
+        "conversationUpdated": {
+            "type": "boolean",
+            "description": "Whether the conversation was updated with this message"
+        }
+    },
+    "version": 1
+} 

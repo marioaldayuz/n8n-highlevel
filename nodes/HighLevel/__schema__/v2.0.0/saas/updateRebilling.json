@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether rebilling settings were successfully updated"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "rebillingSettings": {
+            "type": "object",
+            "properties": {
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether rebilling is enabled"
+                },
+                "markupPercentage": {
+                    "type": "number",
+                    "description": "Markup percentage applied to usage charges"
+                },
+                "minimumCharge": {
+                    "type": "number",
+                    "description": "Minimum charge amount"
+                },
+                "billingCycle": {
+                    "type": "string",
+                    "enum": ["monthly", "weekly", "daily"],
+                    "description": "Billing cycle for rebilling"
+                },
+                "autoRecharge": {
+                    "type": "boolean",
+                    "description": "Whether automatic recharge is enabled"
+                },
+                "rechargeThreshold": {
+                    "type": "number",
+                    "description": "Threshold amount for automatic recharge"
+                },
+                "rechargeAmount": {
+                    "type": "number",
+                    "description": "Amount to recharge when threshold is reached"
+                },
+                "services": {
+                    "type": "object",
+                    "properties": {
+                        "sms": {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "rate": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "voice": {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "rate": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "email": {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "rate": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Service-specific rebilling settings"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the settings were last updated"
+                }
+            },
+            "description": "Updated rebilling configuration"
+        }
+    },
+    "version": 1
+} 

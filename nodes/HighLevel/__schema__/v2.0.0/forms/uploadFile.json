@@ -1,0 +1,218 @@
+{
+    "type": "object",
+    "properties": {
+        "uploadedFile": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the uploaded file"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "Original file name"
+                },
+                "fileUrl": {
+                    "type": "string",
+                    "description": "URL to access the uploaded file"
+                },
+                "fileType": {
+                    "type": "string",
+                    "description": "File MIME type"
+                },
+                "fileSize": {
+                    "type": "integer",
+                    "description": "File size in bytes"
+                },
+                "fileExtension": {
+                    "type": "string",
+                    "description": "File extension"
+                },
+                "customFieldId": {
+                    "type": "string",
+                    "description": "Custom field ID where the file was uploaded"
+                },
+                "customFieldName": {
+                    "type": "string",
+                    "description": "Custom field name"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the file"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the file was uploaded"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Whether the file is publicly accessible"
+                },
+                "metadata": {
+                    "type": "object",
+                    "properties": {
+                        "width": {
+                            "type": "integer",
+                            "description": "Image width in pixels (for image files)"
+                        },
+                        "height": {
+                            "type": "integer",
+                            "description": "Image height in pixels (for image files)"
+                        },
+                        "duration": {
+                            "type": "number",
+                            "description": "Video/audio duration in seconds"
+                        },
+                        "pages": {
+                            "type": "integer",
+                            "description": "Number of pages (for document files)"
+                        },
+                        "checksum": {
+                            "type": "string",
+                            "description": "File checksum for integrity verification"
+                        }
+                    },
+                    "description": "File metadata"
+                },
+                "thumbnailUrl": {
+                    "type": "string",
+                    "description": "URL to file thumbnail (for image/video files)"
+                },
+                "downloadUrl": {
+                    "type": "string",
+                    "description": "Direct download URL"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "URL expiration timestamp (if temporary)"
+                },
+                "uploadedBy": {
+                    "type": "string",
+                    "description": "User ID who uploaded the file"
+                },
+                "uploadedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "File upload timestamp"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Record creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Uploaded file details"
+        },
+        "customField": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Custom field ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Custom field name"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Custom field type"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Updated field value with file URL"
+                },
+                "previousValue": {
+                    "type": "string",
+                    "description": "Previous field value"
+                }
+            },
+            "description": "Custom field that was updated"
+        },
+        "contact": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Contact ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Contact name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Contact email"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "Contact phone"
+                }
+            },
+            "description": "Contact associated with the upload"
+        },
+        "validation": {
+            "type": "object",
+            "properties": {
+                "isValid": {
+                    "type": "boolean",
+                    "description": "Whether the file passed validation"
+                },
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Validation errors if any"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Validation warnings if any"
+                }
+            },
+            "description": "File validation results"
+        },
+        "processing": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": ["pending", "processing", "completed", "failed"],
+                    "description": "File processing status"
+                },
+                "progress": {
+                    "type": "number",
+                    "description": "Processing progress percentage"
+                },
+                "estimatedTime": {
+                    "type": "number",
+                    "description": "Estimated processing time in seconds"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Processing completion timestamp"
+                }
+            },
+            "description": "File processing information"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the upload was successful"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,116 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the bulk operation was successful"
+        },
+        "message": {
+            "type": "string",
+            "description": "Overall operation message"
+        },
+        "results": {
+            "type": "object",
+            "properties": {
+                "totalRequested": {
+                    "type": "integer",
+                    "description": "Total number of locations requested for SaaS enablement"
+                },
+                "successful": {
+                    "type": "integer",
+                    "description": "Number of locations successfully enabled"
+                },
+                "failed": {
+                    "type": "integer",
+                    "description": "Number of locations that failed to enable"
+                },
+                "skipped": {
+                    "type": "integer",
+                    "description": "Number of locations skipped (already enabled)"
+                }
+            },
+            "description": "Summary of bulk operation results"
+        },
+        "enabledLocations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Location name"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "Assigned SaaS plan ID"
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "Created subscription ID"
+                    },
+                    "enabledAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When SaaS was enabled"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Current status"
+                    }
+                }
+            },
+            "description": "List of successfully enabled locations"
+        },
+        "failedLocations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID that failed"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Location name"
+                    },
+                    "error": {
+                        "type": "string",
+                        "description": "Error message"
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason for failure"
+                    }
+                }
+            },
+            "description": "List of locations that failed to enable SaaS"
+        },
+        "skippedLocations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID that was skipped"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Location name"
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason for skipping"
+                    }
+                }
+            },
+            "description": "List of locations that were skipped"
+        }
+    },
+    "version": 1
+} 

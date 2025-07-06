@@ -1,0 +1,108 @@
+{
+    "type": "object",
+    "properties": {
+        "recording": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the recording"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Message ID this recording belongs to"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the recording was made"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the recording"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["call", "voicemail", "video"],
+                    "description": "Type of recording"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to access the recording"
+                },
+                "downloadUrl": {
+                    "type": "string",
+                    "description": "Direct download URL for the recording"
+                },
+                "streamUrl": {
+                    "type": "string",
+                    "description": "Streaming URL for the recording"
+                },
+                "duration": {
+                    "type": "number",
+                    "description": "Recording duration in seconds"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Recording file size in bytes"
+                },
+                "format": {
+                    "type": "string",
+                    "enum": ["mp3", "wav", "mp4", "webm"],
+                    "description": "Recording file format"
+                },
+                "quality": {
+                    "type": "string",
+                    "enum": ["low", "medium", "high"],
+                    "description": "Recording quality"
+                },
+                "transcriptionAvailable": {
+                    "type": "boolean",
+                    "description": "Whether transcription is available for this recording"
+                },
+                "transcriptionId": {
+                    "type": "string",
+                    "description": "ID of the associated transcription (if available)"
+                },
+                "metadata": {
+                    "type": "object",
+                    "properties": {
+                        "sampleRate": {
+                            "type": "integer",
+                            "description": "Audio sample rate"
+                        },
+                        "bitRate": {
+                            "type": "integer",
+                            "description": "Audio bit rate"
+                        },
+                        "channels": {
+                            "type": "integer",
+                            "description": "Number of audio channels"
+                        }
+                    },
+                    "description": "Recording technical metadata"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the recording access expires"
+                },
+                "recordedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the recording was made"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Recording creation timestamp"
+                }
+            },
+            "description": "Complete recording details"
+        }
+    },
+    "version": 1
+} 

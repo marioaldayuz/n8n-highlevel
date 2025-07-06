@@ -1,0 +1,379 @@
+{
+    "type": "object",
+    "properties": {
+        "surveys": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the survey"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Survey name"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Survey title displayed to users"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Survey description"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID where the survey belongs"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "Survey URL"
+                    },
+                    "isActive": {
+                        "type": "boolean",
+                        "description": "Whether the survey is active"
+                    },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "Whether the survey is publicly accessible"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "draft", "archived", "closed"],
+                        "description": "Survey status"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": ["feedback", "nps", "csat", "rating", "poll", "questionnaire", "market-research"],
+                        "description": "Type of survey"
+                    },
+                    "questions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Question ID"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "description": "Question title"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Question description"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["text", "textarea", "multiple-choice", "single-choice", "rating", "scale", "ranking", "matrix", "date", "email", "number", "boolean"],
+                                    "description": "Question type"
+                                },
+                                "required": {
+                                    "type": "boolean",
+                                    "description": "Whether the question is required"
+                                },
+                                "options": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "description": "Option ID"
+                                            },
+                                            "label": {
+                                                "type": "string",
+                                                "description": "Option label"
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "description": "Option value"
+                                            },
+                                            "order": {
+                                                "type": "integer",
+                                                "description": "Option display order"
+                                            }
+                                        }
+                                    },
+                                    "description": "Question options for choice-based questions"
+                                },
+                                "validation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "minLength": {
+                                            "type": "integer",
+                                            "description": "Minimum length for text questions"
+                                        },
+                                        "maxLength": {
+                                            "type": "integer",
+                                            "description": "Maximum length for text questions"
+                                        },
+                                        "min": {
+                                            "type": "number",
+                                            "description": "Minimum value for number/rating questions"
+                                        },
+                                        "max": {
+                                            "type": "number",
+                                            "description": "Maximum value for number/rating questions"
+                                        },
+                                        "minChoices": {
+                                            "type": "integer",
+                                            "description": "Minimum choices for multiple-choice questions"
+                                        },
+                                        "maxChoices": {
+                                            "type": "integer",
+                                            "description": "Maximum choices for multiple-choice questions"
+                                        }
+                                    },
+                                    "description": "Question validation rules"
+                                },
+                                "logic": {
+                                    "type": "object",
+                                    "properties": {
+                                        "skipLogic": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "condition": {
+                                                        "type": "string",
+                                                        "description": "Skip condition"
+                                                    },
+                                                    "targetQuestionId": {
+                                                        "type": "string",
+                                                        "description": "Question to skip to"
+                                                    }
+                                                }
+                                            },
+                                            "description": "Skip logic rules"
+                                        },
+                                        "displayLogic": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "condition": {
+                                                        "type": "string",
+                                                        "description": "Display condition"
+                                                    },
+                                                    "show": {
+                                                        "type": "boolean",
+                                                        "description": "Whether to show or hide"
+                                                    }
+                                                }
+                                            },
+                                            "description": "Display logic rules"
+                                        }
+                                    },
+                                    "description": "Question logic rules"
+                                },
+                                "order": {
+                                    "type": "integer",
+                                    "description": "Question display order"
+                                },
+                                "section": {
+                                    "type": "string",
+                                    "description": "Section the question belongs to"
+                                }
+                            }
+                        },
+                        "description": "Survey questions"
+                    },
+                    "settings": {
+                        "type": "object",
+                        "properties": {
+                            "allowMultipleResponses": {
+                                "type": "boolean",
+                                "description": "Whether multiple responses are allowed"
+                            },
+                            "requireLogin": {
+                                "type": "boolean",
+                                "description": "Whether login is required to take the survey"
+                            },
+                            "showProgressBar": {
+                                "type": "boolean",
+                                "description": "Whether to show progress bar"
+                            },
+                            "randomizeQuestions": {
+                                "type": "boolean",
+                                "description": "Whether to randomize question order"
+                            },
+                            "submitButtonText": {
+                                "type": "string",
+                                "description": "Submit button text"
+                            },
+                            "completionMessage": {
+                                "type": "string",
+                                "description": "Message shown after completion"
+                            },
+                            "redirectUrl": {
+                                "type": "string",
+                                "description": "URL to redirect after completion"
+                            },
+                            "timeLimit": {
+                                "type": "integer",
+                                "description": "Time limit in minutes"
+                            },
+                            "notifications": {
+                                "type": "object",
+                                "properties": {
+                                    "emailEnabled": {
+                                        "type": "boolean",
+                                        "description": "Whether email notifications are enabled"
+                                    },
+                                    "emailTo": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Email addresses to notify"
+                                    },
+                                    "emailSubject": {
+                                        "type": "string",
+                                        "description": "Email notification subject"
+                                    },
+                                    "emailTemplate": {
+                                        "type": "string",
+                                        "description": "Email notification template"
+                                    }
+                                },
+                                "description": "Notification settings"
+                            }
+                        },
+                        "description": "Survey settings"
+                    },
+                    "styling": {
+                        "type": "object",
+                        "properties": {
+                            "theme": {
+                                "type": "string",
+                                "enum": ["default", "modern", "minimal", "professional", "creative"],
+                                "description": "Survey theme"
+                            },
+                            "primaryColor": {
+                                "type": "string",
+                                "description": "Primary color for the survey"
+                            },
+                            "backgroundColor": {
+                                "type": "string",
+                                "description": "Background color for the survey"
+                            },
+                            "fontFamily": {
+                                "type": "string",
+                                "description": "Font family for the survey"
+                            },
+                            "customCss": {
+                                "type": "string",
+                                "description": "Custom CSS for the survey"
+                            }
+                        },
+                        "description": "Survey styling options"
+                    },
+                    "analytics": {
+                        "type": "object",
+                        "properties": {
+                            "totalViews": {
+                                "type": "integer",
+                                "description": "Total number of survey views"
+                            },
+                            "totalResponses": {
+                                "type": "integer",
+                                "description": "Total number of survey responses"
+                            },
+                            "completionRate": {
+                                "type": "number",
+                                "description": "Survey completion rate percentage"
+                            },
+                            "averageCompletionTime": {
+                                "type": "number",
+                                "description": "Average time to complete survey in seconds"
+                            },
+                            "dropoffRate": {
+                                "type": "number",
+                                "description": "Survey dropoff rate percentage"
+                            },
+                            "npsScore": {
+                                "type": "number",
+                                "description": "Net Promoter Score (if applicable)"
+                            },
+                            "csatScore": {
+                                "type": "number",
+                                "description": "Customer Satisfaction Score (if applicable)"
+                            }
+                        },
+                        "description": "Survey analytics"
+                    },
+                    "schedule": {
+                        "type": "object",
+                        "properties": {
+                            "startDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Survey start date"
+                            },
+                            "endDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Survey end date"
+                            },
+                            "timezone": {
+                                "type": "string",
+                                "description": "Timezone for scheduling"
+                            }
+                        },
+                        "description": "Survey scheduling"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "User ID who created the survey"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Survey creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    },
+                    "lastResponseAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last response timestamp"
+                    }
+                }
+            },
+            "description": "Array of surveys"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of surveys"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of surveys in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        }
+    },
+    "version": 1
+} 

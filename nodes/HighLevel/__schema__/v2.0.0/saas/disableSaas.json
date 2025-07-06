@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether SaaS was successfully disabled"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "affectedLocations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "type": "string",
+                        "description": "ID of the location"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the location"
+                    },
+                    "saasEnabled": {
+                        "type": "boolean",
+                        "description": "Current SaaS status (should be false after disabling)"
+                    },
+                    "disabledAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when SaaS was disabled"
+                    }
+                }
+            },
+            "description": "List of locations that had SaaS disabled"
+        },
+        "errors": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "type": "string",
+                        "description": "ID of the location that failed"
+                    },
+                    "error": {
+                        "type": "string",
+                        "description": "Error message"
+                    }
+                }
+            },
+            "description": "List of errors encountered during the operation"
+        }
+    },
+    "version": 1
+} 

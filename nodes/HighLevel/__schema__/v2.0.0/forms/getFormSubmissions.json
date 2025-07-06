@@ -1,0 +1,293 @@
+{
+    "type": "object",
+    "properties": {
+        "submissions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the submission"
+                    },
+                    "formId": {
+                        "type": "string",
+                        "description": "ID of the form that was submitted"
+                    },
+                    "formName": {
+                        "type": "string",
+                        "description": "Name of the form that was submitted"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID where the submission was made"
+                    },
+                    "contactId": {
+                        "type": "string",
+                        "description": "Contact ID associated with the submission"
+                    },
+                    "submissionData": {
+                        "type": "object",
+                        "description": "Form field data submitted",
+                        "additionalProperties": true
+                    },
+                    "submissionFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "fieldId": {
+                                    "type": "string",
+                                    "description": "Form field ID"
+                                },
+                                "fieldName": {
+                                    "type": "string",
+                                    "description": "Form field name"
+                                },
+                                "fieldLabel": {
+                                    "type": "string",
+                                    "description": "Form field label"
+                                },
+                                "fieldType": {
+                                    "type": "string",
+                                    "description": "Form field type"
+                                },
+                                "value": {
+                                    "type": "string",
+                                    "description": "Submitted value"
+                                },
+                                "displayValue": {
+                                    "type": "string",
+                                    "description": "Human-readable value"
+                                }
+                            }
+                        },
+                        "description": "Detailed submission field data"
+                    },
+                    "files": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "fieldId": {
+                                    "type": "string",
+                                    "description": "File field ID"
+                                },
+                                "fieldName": {
+                                    "type": "string",
+                                    "description": "File field name"
+                                },
+                                "fileName": {
+                                    "type": "string",
+                                    "description": "Original file name"
+                                },
+                                "fileUrl": {
+                                    "type": "string",
+                                    "description": "URL to access the file"
+                                },
+                                "fileType": {
+                                    "type": "string",
+                                    "description": "File MIME type"
+                                },
+                                "fileSize": {
+                                    "type": "integer",
+                                    "description": "File size in bytes"
+                                },
+                                "uploadedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "File upload timestamp"
+                                }
+                            }
+                        },
+                        "description": "Files uploaded with the submission"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "properties": {
+                            "userAgent": {
+                                "type": "string",
+                                "description": "User agent string"
+                            },
+                            "ipAddress": {
+                                "type": "string",
+                                "description": "IP address of the submitter"
+                            },
+                            "referrer": {
+                                "type": "string",
+                                "description": "Referrer URL"
+                            },
+                            "utm": {
+                                "type": "object",
+                                "properties": {
+                                    "source": {
+                                        "type": "string",
+                                        "description": "UTM source"
+                                    },
+                                    "medium": {
+                                        "type": "string",
+                                        "description": "UTM medium"
+                                    },
+                                    "campaign": {
+                                        "type": "string",
+                                        "description": "UTM campaign"
+                                    },
+                                    "term": {
+                                        "type": "string",
+                                        "description": "UTM term"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "UTM content"
+                                    }
+                                },
+                                "description": "UTM tracking parameters"
+                            },
+                            "geolocation": {
+                                "type": "object",
+                                "properties": {
+                                    "country": {
+                                        "type": "string",
+                                        "description": "Country code"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "description": "State/region"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "description": "City"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "description": "Latitude"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "description": "Longitude"
+                                    }
+                                },
+                                "description": "Geolocation data"
+                            }
+                        },
+                        "description": "Submission metadata"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["new", "read", "processed", "archived", "spam"],
+                        "description": "Submission status"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the submission"
+                    },
+                    "notes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Note ID"
+                                },
+                                "content": {
+                                    "type": "string",
+                                    "description": "Note content"
+                                },
+                                "createdBy": {
+                                    "type": "string",
+                                    "description": "User ID who created the note"
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Note creation timestamp"
+                                }
+                            }
+                        },
+                        "description": "Notes added to the submission"
+                    },
+                    "completionTime": {
+                        "type": "number",
+                        "description": "Time taken to complete the form in seconds"
+                    },
+                    "submittedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Submission timestamp"
+                    },
+                    "processedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the submission was processed"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Record creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    }
+                }
+            },
+            "description": "Array of form submissions"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of submissions"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of submissions in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        },
+        "filters": {
+            "type": "object",
+            "properties": {
+                "formId": {
+                    "type": "string",
+                    "description": "Filter applied by form ID"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Filter applied by submission status"
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Filter applied by start date"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Filter applied by end date"
+                }
+            },
+            "description": "Applied filters"
+        }
+    },
+    "version": 1
+} 

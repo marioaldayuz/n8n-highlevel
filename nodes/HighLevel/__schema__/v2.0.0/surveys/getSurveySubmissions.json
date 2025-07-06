@@ -1,0 +1,439 @@
+{
+    "type": "object",
+    "properties": {
+        "submissions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the submission"
+                    },
+                    "surveyId": {
+                        "type": "string",
+                        "description": "ID of the survey that was submitted"
+                    },
+                    "surveyName": {
+                        "type": "string",
+                        "description": "Name of the survey that was submitted"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID where the submission was made"
+                    },
+                    "contactId": {
+                        "type": "string",
+                        "description": "Contact ID associated with the submission"
+                    },
+                    "respondentInfo": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Respondent name"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "Respondent email"
+                            },
+                            "phone": {
+                                "type": "string",
+                                "description": "Respondent phone"
+                            },
+                            "isAnonymous": {
+                                "type": "boolean",
+                                "description": "Whether the response is anonymous"
+                            }
+                        },
+                        "description": "Respondent information"
+                    },
+                    "responses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "questionId": {
+                                    "type": "string",
+                                    "description": "Question ID"
+                                },
+                                "questionTitle": {
+                                    "type": "string",
+                                    "description": "Question title"
+                                },
+                                "questionType": {
+                                    "type": "string",
+                                    "description": "Question type"
+                                },
+                                "answer": {
+                                    "type": "string",
+                                    "description": "Answer value"
+                                },
+                                "answerText": {
+                                    "type": "string",
+                                    "description": "Human-readable answer"
+                                },
+                                "selectedOptions": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "description": "Option ID"
+                                            },
+                                            "label": {
+                                                "type": "string",
+                                                "description": "Option label"
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "description": "Option value"
+                                            }
+                                        }
+                                    },
+                                    "description": "Selected options for choice-based questions"
+                                },
+                                "score": {
+                                    "type": "number",
+                                    "description": "Score for rating/scale questions"
+                                },
+                                "ranking": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "optionId": {
+                                                "type": "string",
+                                                "description": "Option ID"
+                                            },
+                                            "rank": {
+                                                "type": "integer",
+                                                "description": "Rank position"
+                                            }
+                                        }
+                                    },
+                                    "description": "Ranking for ranking questions"
+                                },
+                                "matrix": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rowId": {
+                                                "type": "string",
+                                                "description": "Matrix row ID"
+                                            },
+                                            "columnId": {
+                                                "type": "string",
+                                                "description": "Matrix column ID"
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "description": "Matrix cell value"
+                                            }
+                                        }
+                                    },
+                                    "description": "Matrix answers for matrix questions"
+                                },
+                                "timeSpent": {
+                                    "type": "number",
+                                    "description": "Time spent on this question in seconds"
+                                },
+                                "skipped": {
+                                    "type": "boolean",
+                                    "description": "Whether the question was skipped"
+                                },
+                                "answeredAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "When the question was answered"
+                                }
+                            }
+                        },
+                        "description": "Survey responses"
+                    },
+                    "scoring": {
+                        "type": "object",
+                        "properties": {
+                            "totalScore": {
+                                "type": "number",
+                                "description": "Total score for the survey"
+                            },
+                            "maxScore": {
+                                "type": "number",
+                                "description": "Maximum possible score"
+                            },
+                            "percentage": {
+                                "type": "number",
+                                "description": "Score as percentage"
+                            },
+                            "npsScore": {
+                                "type": "number",
+                                "description": "Net Promoter Score (if applicable)"
+                            },
+                            "csatScore": {
+                                "type": "number",
+                                "description": "Customer Satisfaction Score (if applicable)"
+                            },
+                            "category": {
+                                "type": "string",
+                                "enum": ["promoter", "passive", "detractor", "satisfied", "neutral", "dissatisfied"],
+                                "description": "Score category"
+                            }
+                        },
+                        "description": "Survey scoring information"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "properties": {
+                            "userAgent": {
+                                "type": "string",
+                                "description": "User agent string"
+                            },
+                            "ipAddress": {
+                                "type": "string",
+                                "description": "IP address of the respondent"
+                            },
+                            "referrer": {
+                                "type": "string",
+                                "description": "Referrer URL"
+                            },
+                            "device": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": ["desktop", "mobile", "tablet"],
+                                        "description": "Device type"
+                                    },
+                                    "browser": {
+                                        "type": "string",
+                                        "description": "Browser name"
+                                    },
+                                    "os": {
+                                        "type": "string",
+                                        "description": "Operating system"
+                                    }
+                                },
+                                "description": "Device information"
+                            },
+                            "utm": {
+                                "type": "object",
+                                "properties": {
+                                    "source": {
+                                        "type": "string",
+                                        "description": "UTM source"
+                                    },
+                                    "medium": {
+                                        "type": "string",
+                                        "description": "UTM medium"
+                                    },
+                                    "campaign": {
+                                        "type": "string",
+                                        "description": "UTM campaign"
+                                    },
+                                    "term": {
+                                        "type": "string",
+                                        "description": "UTM term"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "UTM content"
+                                    }
+                                },
+                                "description": "UTM tracking parameters"
+                            },
+                            "geolocation": {
+                                "type": "object",
+                                "properties": {
+                                    "country": {
+                                        "type": "string",
+                                        "description": "Country code"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "description": "State/region"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "description": "City"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "description": "Latitude"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "description": "Longitude"
+                                    }
+                                },
+                                "description": "Geolocation data"
+                            }
+                        },
+                        "description": "Submission metadata"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["completed", "partial", "abandoned", "reviewed", "archived"],
+                        "description": "Submission status"
+                    },
+                    "completionPercentage": {
+                        "type": "number",
+                        "description": "Completion percentage"
+                    },
+                    "totalTimeSpent": {
+                        "type": "number",
+                        "description": "Total time spent on the survey in seconds"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the submission"
+                    },
+                    "notes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Note ID"
+                                },
+                                "content": {
+                                    "type": "string",
+                                    "description": "Note content"
+                                },
+                                "createdBy": {
+                                    "type": "string",
+                                    "description": "User ID who created the note"
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Note creation timestamp"
+                                }
+                            }
+                        },
+                        "description": "Notes added to the submission"
+                    },
+                    "startedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the survey was started"
+                    },
+                    "submittedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the survey was submitted"
+                    },
+                    "reviewedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the submission was reviewed"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Record creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    }
+                }
+            },
+            "description": "Array of survey submissions"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of submissions"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of submissions in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        },
+        "analytics": {
+            "type": "object",
+            "properties": {
+                "averageScore": {
+                    "type": "number",
+                    "description": "Average score across all submissions"
+                },
+                "averageCompletionTime": {
+                    "type": "number",
+                    "description": "Average completion time in seconds"
+                },
+                "completionRate": {
+                    "type": "number",
+                    "description": "Completion rate percentage"
+                },
+                "responseDistribution": {
+                    "type": "object",
+                    "properties": {
+                        "completed": {
+                            "type": "integer",
+                            "description": "Number of completed submissions"
+                        },
+                        "partial": {
+                            "type": "integer",
+                            "description": "Number of partial submissions"
+                        },
+                        "abandoned": {
+                            "type": "integer",
+                            "description": "Number of abandoned submissions"
+                        }
+                    },
+                    "description": "Response status distribution"
+                }
+            },
+            "description": "Submission analytics"
+        },
+        "filters": {
+            "type": "object",
+            "properties": {
+                "surveyId": {
+                    "type": "string",
+                    "description": "Filter applied by survey ID"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Filter applied by submission status"
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Filter applied by start date"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Filter applied by end date"
+                }
+            },
+            "description": "Applied filters"
+        }
+    },
+    "version": 1
+} 

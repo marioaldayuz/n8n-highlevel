@@ -1,0 +1,186 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the blog post"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the blog post belongs"
+        },
+        "title": {
+            "type": "string",
+            "description": "The title of the blog post"
+        },
+        "content": {
+            "type": "string",
+            "description": "The HTML content of the blog post"
+        },
+        "excerpt": {
+            "type": "string",
+            "description": "A brief excerpt or summary of the blog post"
+        },
+        "slug": {
+            "type": "string",
+            "description": "URL-friendly slug for the blog post"
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "Author information for the blog post"
+        },
+        "featuredImage": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "alt": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "description": "Featured image for the blog post"
+        },
+        "categories": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of categories the blog post belongs to"
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of tags associated with the blog post"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["draft", "published", "scheduled", "archived"],
+            "description": "Current status of the blog post"
+        },
+        "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the blog post was published"
+        },
+        "scheduledFor": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Scheduled publish date for the blog post"
+        },
+        "seoTitle": {
+            "type": "string",
+            "description": "SEO-optimized title for the blog post"
+        },
+        "seoDescription": {
+            "type": "string",
+            "description": "SEO meta description for the blog post"
+        },
+        "seoKeywords": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "SEO keywords for the blog post"
+        },
+        "canonicalUrl": {
+            "type": "string",
+            "description": "Canonical URL for the blog post"
+        },
+        "readingTime": {
+            "type": "integer",
+            "description": "Estimated reading time in minutes"
+        },
+        "wordCount": {
+            "type": "integer",
+            "description": "Total word count of the blog post"
+        },
+        "isCommentEnabled": {
+            "type": "boolean",
+            "description": "Whether comments are enabled for this blog post"
+        },
+        "isFeatured": {
+            "type": "boolean",
+            "description": "Whether this blog post is featured"
+        },
+        "viewCount": {
+            "type": "integer",
+            "description": "Number of views for the blog post"
+        },
+        "socialShares": {
+            "type": "object",
+            "properties": {
+                "facebook": {
+                    "type": "integer"
+                },
+                "twitter": {
+                    "type": "integer"
+                },
+                "linkedin": {
+                    "type": "integer"
+                },
+                "pinterest": {
+                    "type": "integer"
+                }
+            },
+            "description": "Social media share counts"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the blog post was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the blog post was last updated"
+        },
+        "createdBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who created the blog post"
+        },
+        "updatedBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who last updated the blog post"
+        }
+    },
+    "version": 1
+} 

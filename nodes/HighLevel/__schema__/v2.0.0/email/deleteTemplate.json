@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the template was deleted successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "deletedTemplateId": {
+            "type": "string",
+            "description": "ID of the deleted template"
+        },
+        "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the template was deleted"
+        },
+        "templateDetails": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Template ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Template name"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Template subject"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Template type"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Template category"
+                },
+                "usageCount": {
+                    "type": "integer",
+                    "description": "Number of times the template was used"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the template was created"
+                },
+                "lastUsed": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the template was last used"
+                }
+            },
+            "description": "Details of the deleted template"
+        },
+        "backup": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "boolean",
+                    "description": "Whether a backup is available for recovery"
+                },
+                "backupId": {
+                    "type": "string",
+                    "description": "Backup ID for potential recovery"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the backup expires"
+                }
+            },
+            "description": "Backup information for potential recovery"
+        },
+        "dependencies": {
+            "type": "object",
+            "properties": {
+                "activeCampaigns": {
+                    "type": "integer",
+                    "description": "Number of active campaigns using this template"
+                },
+                "scheduledEmails": {
+                    "type": "integer",
+                    "description": "Number of scheduled emails using this template"
+                },
+                "automations": {
+                    "type": "integer",
+                    "description": "Number of automations using this template"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Warnings about dependencies that may be affected"
+                }
+            },
+            "description": "Dependencies that may be affected by deletion"
+        }
+    },
+    "version": 1
+} 

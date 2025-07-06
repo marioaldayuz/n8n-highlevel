@@ -1,0 +1,197 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the email"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Associated message ID"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this email belongs to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the email was sent"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the email"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["inbound", "outbound"],
+                    "description": "Direction of the email"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["sent", "delivered", "opened", "clicked", "bounced", "failed", "pending", "scheduled"],
+                    "description": "Current status of the email"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Email subject line"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Email HTML body content"
+                },
+                "textBody": {
+                    "type": "string",
+                    "description": "Email plain text body content"
+                },
+                "from": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string",
+                            "description": "Sender email address"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Sender name"
+                        }
+                    },
+                    "description": "Sender information"
+                },
+                "to": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "description": "Recipient email address"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Recipient name"
+                            }
+                        }
+                    },
+                    "description": "Recipients list"
+                },
+                "cc": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "description": "CC email address"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "CC name"
+                            }
+                        }
+                    },
+                    "description": "CC recipients list"
+                },
+                "bcc": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "description": "BCC email address"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "BCC name"
+                            }
+                        }
+                    },
+                    "description": "BCC recipients list"
+                },
+                "attachments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Attachment ID"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Attachment filename"
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "Attachment download URL"
+                            },
+                            "size": {
+                                "type": "integer",
+                                "description": "Attachment size in bytes"
+                            },
+                            "mimeType": {
+                                "type": "string",
+                                "description": "MIME type of the attachment"
+                            }
+                        }
+                    },
+                    "description": "Email attachments"
+                },
+                "analytics": {
+                    "type": "object",
+                    "properties": {
+                        "opens": {
+                            "type": "integer",
+                            "description": "Number of times email was opened"
+                        },
+                        "clicks": {
+                            "type": "integer",
+                            "description": "Number of link clicks"
+                        },
+                        "lastOpened": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Last time email was opened"
+                        },
+                        "lastClicked": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Last time a link was clicked"
+                        }
+                    },
+                    "description": "Email analytics data"
+                },
+                "scheduledDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Scheduled send date (for scheduled emails)"
+                },
+                "sentAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the email was sent"
+                },
+                "deliveredAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the email was delivered"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Email creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Complete email details"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,21 @@
+{
+  "update": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/{id}",
+      "method": "PUT",
+      "body": {
+        "name": "string",
+        "dataType": "string",
+        "position": "number",
+        "isRequired": "boolean",
+        "isMultipleValues": "boolean",
+        "isImportant": "boolean",
+        "picklistOptions": "object",
+        "picklistImageOptions": "object",
+        "fileType": "string",
+        "acceptedFormat": "string",
+        "placeholder": "string"
+      }
+    }
+  }
+} 

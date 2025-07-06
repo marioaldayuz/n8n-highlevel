@@ -1,0 +1,98 @@
+{
+    "type": "object",
+    "properties": {
+        "call": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the call record"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Associated message ID"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this call belongs to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the call was made"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID the call was made to"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["Phone"],
+                    "description": "Type of call"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["outbound"],
+                    "description": "Direction of the call"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["completed", "failed", "busy", "no-answer", "in-progress"],
+                    "description": "Status of the call"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Caller phone number"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "Called phone number"
+                },
+                "duration": {
+                    "type": "integer",
+                    "description": "Call duration in seconds"
+                },
+                "recordingUrl": {
+                    "type": "string",
+                    "description": "URL to call recording (if available)"
+                },
+                "cost": {
+                    "type": "number",
+                    "description": "Call cost in system currency"
+                },
+                "notes": {
+                    "type": "string",
+                    "description": "Call notes or description"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Additional call metadata"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the call started"
+                },
+                "endedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the call ended"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Call record creation timestamp"
+                }
+            },
+            "description": "External outbound call details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the call record was added successfully"
+        },
+        "conversationUpdated": {
+            "type": "boolean",
+            "description": "Whether the conversation was updated with this call"
+        }
+    },
+    "version": 1
+} 

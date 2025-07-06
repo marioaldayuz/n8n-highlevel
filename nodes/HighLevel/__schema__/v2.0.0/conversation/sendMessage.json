@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the sent message"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this message belongs to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the message was sent"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID the message was sent to"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of message sent"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["outbound"],
+                    "description": "Direction of the message"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["sent", "pending", "scheduled", "failed"],
+                    "description": "Current status of the sent message"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Message content that was sent"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Message subject (for emails)"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Sender information"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "Recipient information"
+                },
+                "scheduledDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Scheduled send date (if scheduled)"
+                },
+                "sentAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the message was sent"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Message creation timestamp"
+                }
+            },
+            "description": "Sent message details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the message was sent successfully"
+        },
+        "messageId": {
+            "type": "string",
+            "description": "ID of the sent message"
+        }
+    },
+    "version": 1
+} 

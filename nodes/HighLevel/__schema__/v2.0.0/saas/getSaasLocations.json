@@ -1,0 +1,207 @@
+{
+    "type": "object",
+    "properties": {
+        "locations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Location ID"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Location name"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "Company ID"
+                    },
+                    "saasEnabled": {
+                        "type": "boolean",
+                        "description": "Whether SaaS is enabled"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "paused", "cancelled", "trial", "suspended"],
+                        "description": "Current location status"
+                    },
+                    "subscription": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Subscription ID"
+                            },
+                            "planId": {
+                                "type": "string",
+                                "description": "SaaS plan ID"
+                            },
+                            "planName": {
+                                "type": "string",
+                                "description": "SaaS plan name"
+                            },
+                            "status": {
+                                "type": "string",
+                                "description": "Subscription status"
+                            },
+                            "amount": {
+                                "type": "number",
+                                "description": "Monthly/yearly amount"
+                            },
+                            "currency": {
+                                "type": "string",
+                                "description": "Currency code"
+                            },
+                            "interval": {
+                                "type": "string",
+                                "description": "Billing interval"
+                            },
+                            "nextBilling": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Next billing date"
+                            }
+                        },
+                        "description": "Subscription details"
+                    },
+                    "trial": {
+                        "type": "object",
+                        "properties": {
+                            "isTrialing": {
+                                "type": "boolean",
+                                "description": "Whether currently in trial"
+                            },
+                            "trialEnd": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Trial end date"
+                            },
+                            "daysRemaining": {
+                                "type": "integer",
+                                "description": "Trial days remaining"
+                            }
+                        },
+                        "description": "Trial information"
+                    },
+                    "usage": {
+                        "type": "object",
+                        "properties": {
+                            "users": {
+                                "type": "object",
+                                "properties": {
+                                    "current": {
+                                        "type": "integer"
+                                    },
+                                    "limit": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "contacts": {
+                                "type": "object",
+                                "properties": {
+                                    "current": {
+                                        "type": "integer"
+                                    },
+                                    "limit": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Current usage statistics"
+                    },
+                    "owner": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Owner user ID"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Owner name"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "Owner email"
+                            }
+                        },
+                        "description": "Location owner information"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Location creation date"
+                    },
+                    "saasEnabledAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When SaaS was enabled"
+                    },
+                    "lastActivity": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last activity timestamp"
+                    }
+                }
+            },
+            "description": "Array of SaaS-enabled locations"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of SaaS locations"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of locations in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        },
+        "summary": {
+            "type": "object",
+            "properties": {
+                "totalSaasLocations": {
+                    "type": "integer",
+                    "description": "Total SaaS locations"
+                },
+                "activeSubscriptions": {
+                    "type": "integer",
+                    "description": "Number of active subscriptions"
+                },
+                "trialSubscriptions": {
+                    "type": "integer",
+                    "description": "Number of trial subscriptions"
+                },
+                "pausedSubscriptions": {
+                    "type": "integer",
+                    "description": "Number of paused subscriptions"
+                },
+                "totalMrr": {
+                    "type": "number",
+                    "description": "Total monthly recurring revenue"
+                }
+            },
+            "description": "Summary statistics"
+        }
+    },
+    "version": 1
+} 

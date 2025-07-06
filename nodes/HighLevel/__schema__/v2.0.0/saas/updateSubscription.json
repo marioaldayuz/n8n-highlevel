@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "subscription": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Subscription ID"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID associated with the subscription"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "Updated SaaS plan ID"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active", "paused", "cancelled", "past_due", "unpaid"],
+                    "description": "Current subscription status"
+                },
+                "currentPeriodStart": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Current billing period start date"
+                },
+                "currentPeriodEnd": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Current billing period end date"
+                },
+                "trialEnd": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Trial period end date"
+                },
+                "cancelAtPeriodEnd": {
+                    "type": "boolean",
+                    "description": "Whether the subscription will be cancelled at the end of the current period"
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "Subscription amount"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Currency code"
+                },
+                "interval": {
+                    "type": "string",
+                    "enum": ["month", "year", "week", "day"],
+                    "description": "Billing interval"
+                },
+                "intervalCount": {
+                    "type": "integer",
+                    "description": "Number of intervals between billings"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Updated subscription details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the update was successful"
+        }
+    },
+    "version": 1
+} 

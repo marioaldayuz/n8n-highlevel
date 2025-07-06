@@ -156,6 +156,27 @@ export async function addLocationIdPreSendAction(
 	return requestOptions;
 }
 
+export async function addCompanyIdPreSendAction(
+	this: IExecuteSingleFunctions,
+	requestOptions: IHttpRequestOptions,
+): Promise<IHttpRequestOptions> {
+	const { companyId } =
+		((await this.getCredentials('highLevelOAuth2Api'))?.oauthTokenData as IDataObject) ?? {};
+
+	const resource = this.getNodeParameter('resource') as string;
+	const operation = this.getNodeParameter('operation') as string;
+
+	if (resource === 'saas') {
+		// For SaaS operations, add companyId to query string or body as needed
+		if (['getLocationsByStripeId', 'getAgencyPlans', 'getSaasLocations', 'getSaasPlan', 'bulkEnableSaas'].includes(operation)) {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { companyId });
+		}
+	}
+
+	return requestOptions;
+}
+
 export async function highLevelApiRequest(
 	this:
 		| IExecuteFunctions
@@ -262,8 +283,16 @@ export async function highLevelApiPagination(
 	const returnAll = this.getNodeParameter('returnAll', false) as boolean;
 
 	const resourceMapping: { [key: string]: string } = {
+		auth: 'auth',
+		blog: 'blogs',
 		contact: 'contacts',
+		conversation: 'conversations',
+		email: 'emails',
+		form: 'forms',
 		opportunity: 'opportunities',
+		saas: 'saas',
+		survey: 'surveys',
+		user: 'users',
 	};
 	const rootProperty = resourceMapping[resource];
 

@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "downloadInfo": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "Direct download URL for the transcription file"
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "Suggested filename for the download"
+                },
+                "format": {
+                    "type": "string",
+                    "enum": ["txt", "json", "srt", "vtt", "docx", "pdf"],
+                    "description": "File format of the transcription download"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "File size in bytes"
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "MIME type of the download file"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the download URL expires"
+                },
+                "checksumMd5": {
+                    "type": "string",
+                    "description": "MD5 checksum of the file for integrity verification"
+                }
+            },
+            "description": "Download information for the transcription"
+        },
+        "transcription": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Transcription ID"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Associated message ID"
+                },
+                "recordingId": {
+                    "type": "string",
+                    "description": "Associated recording ID"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["completed", "processing", "failed"],
+                    "description": "Current transcription status"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Transcription language"
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Overall confidence score"
+                },
+                "duration": {
+                    "type": "number",
+                    "description": "Duration of the transcribed content"
+                },
+                "wordCount": {
+                    "type": "integer",
+                    "description": "Total number of words"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the transcription was completed"
+                }
+            },
+            "description": "Basic transcription metadata"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the download URL was generated successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        }
+    },
+    "version": 1
+} 

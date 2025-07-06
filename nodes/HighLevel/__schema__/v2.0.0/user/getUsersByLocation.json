@@ -1,0 +1,288 @@
+{
+    "type": "object",
+    "properties": {
+        "users": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the user"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User's full name"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "User's first name"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "User's last name"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User's email address"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "User's phone number"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "User's username"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "Company ID the user belongs to"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Current location ID"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "role": {
+                                    "type": "string",
+                                    "enum": ["admin", "user", "readonly", "manager", "agent", "owner"],
+                                    "description": "User role"
+                                },
+                                "locationId": {
+                                    "type": "string",
+                                    "description": "Location ID for this role"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["account", "location", "company"],
+                                    "description": "Role scope type"
+                                },
+                                "isPrimary": {
+                                    "type": "boolean",
+                                    "description": "Whether this is the primary role for this location"
+                                }
+                            }
+                        },
+                        "description": "User roles for this location"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Specific permissions for this location"
+                    },
+                    "profile": {
+                        "type": "object",
+                        "properties": {
+                            "avatar": {
+                                "type": "string",
+                                "description": "URL to user's avatar image"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "User's job title"
+                            },
+                            "department": {
+                                "type": "string",
+                                "description": "User's department"
+                            },
+                            "timezone": {
+                                "type": "string",
+                                "description": "User's timezone"
+                            },
+                            "language": {
+                                "type": "string",
+                                "description": "User's preferred language"
+                            }
+                        },
+                        "description": "User profile information"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "pending", "suspended", "invited"],
+                        "description": "User account status"
+                    },
+                    "isEmailVerified": {
+                        "type": "boolean",
+                        "description": "Whether the user's email is verified"
+                    },
+                    "isPhoneVerified": {
+                        "type": "boolean",
+                        "description": "Whether the user's phone is verified"
+                    },
+                    "isTwoFactorEnabled": {
+                        "type": "boolean",
+                        "description": "Whether two-factor authentication is enabled"
+                    },
+                    "lastLoginAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last login timestamp"
+                    },
+                    "lastActiveAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last activity timestamp"
+                    },
+                    "joinedLocationAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the user joined this location"
+                    },
+                    "assignedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the user was assigned to this location"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "User creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    }
+                }
+            },
+            "description": "Array of users for the location"
+        },
+        "location": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Location ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Location name"
+                },
+                "businessName": {
+                    "type": "string",
+                    "description": "Business name"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Location address"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Location city"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Location state"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "Location country"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "Location timezone"
+                }
+            },
+            "description": "Location details"
+        },
+        "summary": {
+            "type": "object",
+            "properties": {
+                "totalUsers": {
+                    "type": "integer",
+                    "description": "Total number of users in this location"
+                },
+                "activeUsers": {
+                    "type": "integer",
+                    "description": "Number of active users"
+                },
+                "inactiveUsers": {
+                    "type": "integer",
+                    "description": "Number of inactive users"
+                },
+                "pendingUsers": {
+                    "type": "integer",
+                    "description": "Number of pending users"
+                },
+                "roleDistribution": {
+                    "type": "object",
+                    "properties": {
+                        "admin": {
+                            "type": "integer",
+                            "description": "Number of admin users"
+                        },
+                        "manager": {
+                            "type": "integer",
+                            "description": "Number of manager users"
+                        },
+                        "agent": {
+                            "type": "integer",
+                            "description": "Number of agent users"
+                        },
+                        "user": {
+                            "type": "integer",
+                            "description": "Number of regular users"
+                        },
+                        "readonly": {
+                            "type": "integer",
+                            "description": "Number of readonly users"
+                        }
+                    },
+                    "description": "Distribution of users by role"
+                }
+            },
+            "description": "Summary statistics for the location"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of users"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of users in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        },
+        "filters": {
+            "type": "object",
+            "properties": {
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID filter applied"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role filter applied"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status filter applied"
+                }
+            },
+            "description": "Applied filters"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,188 @@
+{
+    "type": "object",
+    "properties": {
+        "template": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the template"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Updated template name"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Updated email subject line template"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID associated with the template"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["email", "sms", "notification"],
+                    "description": "Type of template"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": ["marketing", "transactional", "automated", "drip", "welcome", "followup"],
+                    "description": "Updated template category"
+                },
+                "content": {
+                    "type": "object",
+                    "properties": {
+                        "html": {
+                            "type": "string",
+                            "description": "Updated HTML content of the template"
+                        },
+                        "text": {
+                            "type": "string",
+                            "description": "Updated plain text content of the template"
+                        },
+                        "design": {
+                            "type": "object",
+                            "description": "Updated design/layout information"
+                        }
+                    },
+                    "description": "Updated template content"
+                },
+                "variables": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Variable name"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": ["text", "number", "date", "boolean", "url", "email"],
+                                "description": "Variable type"
+                            },
+                            "defaultValue": {
+                                "type": "string",
+                                "description": "Default value for the variable"
+                            },
+                            "required": {
+                                "type": "boolean",
+                                "description": "Whether the variable is required"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Variable description"
+                            }
+                        }
+                    },
+                    "description": "Updated template variables/placeholders"
+                },
+                "settings": {
+                    "type": "object",
+                    "properties": {
+                        "trackOpens": {
+                            "type": "boolean",
+                            "description": "Whether to track email opens"
+                        },
+                        "trackClicks": {
+                            "type": "boolean",
+                            "description": "Whether to track link clicks"
+                        },
+                        "enableUnsubscribe": {
+                            "type": "boolean",
+                            "description": "Whether to include unsubscribe link"
+                        },
+                        "previewText": {
+                            "type": "string",
+                            "description": "Email preview text"
+                        },
+                        "fromEmail": {
+                            "type": "string",
+                            "description": "Default sender email"
+                        },
+                        "fromName": {
+                            "type": "string",
+                            "description": "Default sender name"
+                        },
+                        "replyTo": {
+                            "type": "string",
+                            "description": "Default reply-to email"
+                        }
+                    },
+                    "description": "Updated template settings"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Updated template tags for organization"
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Whether the template is active"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether this is a default template"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User ID who updated the template"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the template was updated"
+                },
+                "version": {
+                    "type": "integer",
+                    "description": "Template version number"
+                },
+                "previousVersion": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "Previous version ID"
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the previous version was created"
+                        }
+                    },
+                    "description": "Previous version information"
+                }
+            },
+            "description": "Updated template details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the template was updated successfully"
+        },
+        "changes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "description": "Field that was changed"
+                    },
+                    "oldValue": {
+                        "type": "string",
+                        "description": "Previous value"
+                    },
+                    "newValue": {
+                        "type": "string",
+                        "description": "New value"
+                    }
+                }
+            },
+            "description": "Summary of changes made"
+        }
+    },
+    "version": 1
+} 

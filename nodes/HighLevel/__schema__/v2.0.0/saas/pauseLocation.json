@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the location was successfully paused"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "location": {
+            "type": "object",
+            "properties": {
+                "locationId": {
+                    "type": "string",
+                    "description": "ID of the paused location"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the location"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["paused", "active", "inactive"],
+                    "description": "Current status of the location"
+                },
+                "pausedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when the location was paused"
+                },
+                "pausedBy": {
+                    "type": "string",
+                    "description": "User who paused the location"
+                },
+                "pauseReason": {
+                    "type": "string",
+                    "description": "Reason for pausing the location"
+                },
+                "subscriptionStatus": {
+                    "type": "string",
+                    "description": "Current subscription status after pausing"
+                }
+            },
+            "description": "Details of the paused location"
+        }
+    },
+    "version": 1
+} 

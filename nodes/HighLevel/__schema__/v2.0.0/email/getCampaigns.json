@@ -1,0 +1,215 @@
+{
+    "type": "object",
+    "properties": {
+        "campaigns": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the campaign"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Campaign name"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Email subject line"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["draft", "scheduled", "sending", "sent", "paused", "cancelled"],
+                        "description": "Current campaign status"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": ["one-time", "recurring", "automated", "drip"],
+                        "description": "Type of email campaign"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "ID of the email template used"
+                    },
+                    "templateName": {
+                        "type": "string",
+                        "description": "Name of the email template used"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID associated with the campaign"
+                    },
+                    "fromEmail": {
+                        "type": "string",
+                        "description": "Sender email address"
+                    },
+                    "fromName": {
+                        "type": "string",
+                        "description": "Sender name"
+                    },
+                    "replyTo": {
+                        "type": "string",
+                        "description": "Reply-to email address"
+                    },
+                    "recipients": {
+                        "type": "object",
+                        "properties": {
+                            "total": {
+                                "type": "integer",
+                                "description": "Total number of recipients"
+                            },
+                            "sent": {
+                                "type": "integer",
+                                "description": "Number of emails sent"
+                            },
+                            "delivered": {
+                                "type": "integer",
+                                "description": "Number of emails delivered"
+                            },
+                            "opened": {
+                                "type": "integer",
+                                "description": "Number of emails opened"
+                            },
+                            "clicked": {
+                                "type": "integer",
+                                "description": "Number of emails clicked"
+                            },
+                            "bounced": {
+                                "type": "integer",
+                                "description": "Number of emails bounced"
+                            },
+                            "unsubscribed": {
+                                "type": "integer",
+                                "description": "Number of unsubscribes"
+                            }
+                        },
+                        "description": "Recipient statistics"
+                    },
+                    "analytics": {
+                        "type": "object",
+                        "properties": {
+                            "openRate": {
+                                "type": "number",
+                                "description": "Email open rate percentage"
+                            },
+                            "clickRate": {
+                                "type": "number",
+                                "description": "Email click rate percentage"
+                            },
+                            "bounceRate": {
+                                "type": "number",
+                                "description": "Email bounce rate percentage"
+                            },
+                            "unsubscribeRate": {
+                                "type": "number",
+                                "description": "Unsubscribe rate percentage"
+                            },
+                            "deliveryRate": {
+                                "type": "number",
+                                "description": "Email delivery rate percentage"
+                            }
+                        },
+                        "description": "Campaign analytics"
+                    },
+                    "scheduling": {
+                        "type": "object",
+                        "properties": {
+                            "scheduledAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "When the campaign is scheduled to send"
+                            },
+                            "timezone": {
+                                "type": "string",
+                                "description": "Timezone for scheduling"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "enum": ["once", "daily", "weekly", "monthly"],
+                                "description": "Frequency for recurring campaigns"
+                            },
+                            "endDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "End date for recurring campaigns"
+                            }
+                        },
+                        "description": "Campaign scheduling information"
+                    },
+                    "targeting": {
+                        "type": "object",
+                        "properties": {
+                            "segments": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Target segments or lists"
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Target tags"
+                            },
+                            "filters": {
+                                "type": "object",
+                                "description": "Additional targeting filters"
+                            }
+                        },
+                        "description": "Campaign targeting criteria"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "User ID who created the campaign"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Campaign creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    },
+                    "sentAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the campaign was sent (if applicable)"
+                    }
+                }
+            },
+            "description": "Array of email campaigns"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of campaigns"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of campaigns in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        }
+    },
+    "version": 1
+} 

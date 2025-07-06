@@ -1,0 +1,222 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the user was deleted successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "deletedUserId": {
+            "type": "string",
+            "description": "ID of the deleted user"
+        },
+        "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the user was deleted"
+        },
+        "userDetails": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "User ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User email"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "role": {
+                                "type": "string",
+                                "description": "User role"
+                            },
+                            "locationId": {
+                                "type": "string",
+                                "description": "Location ID"
+                            }
+                        }
+                    },
+                    "description": "User roles"
+                },
+                "locationIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Location IDs user had access to"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "User status before deletion"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the user was created"
+                },
+                "lastLoginAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last login timestamp"
+                }
+            },
+            "description": "Details of the deleted user"
+        },
+        "backup": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "boolean",
+                    "description": "Whether a backup is available for recovery"
+                },
+                "backupId": {
+                    "type": "string",
+                    "description": "Backup ID for potential recovery"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the backup expires"
+                },
+                "dataIncluded": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types of data included in backup"
+                }
+            },
+            "description": "Backup information for potential recovery"
+        },
+        "dependencies": {
+            "type": "object",
+            "properties": {
+                "ownedContacts": {
+                    "type": "integer",
+                    "description": "Number of contacts owned by this user"
+                },
+                "createdCampaigns": {
+                    "type": "integer",
+                    "description": "Number of campaigns created by this user"
+                },
+                "assignedTasks": {
+                    "type": "integer",
+                    "description": "Number of tasks assigned to this user"
+                },
+                "sharedResources": {
+                    "type": "integer",
+                    "description": "Number of shared resources this user had access to"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Warnings about dependencies that may be affected"
+                }
+            },
+            "description": "Dependencies that may be affected by deletion"
+        },
+        "dataTransfer": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether data transfer is required"
+                },
+                "transferredTo": {
+                    "type": "string",
+                    "description": "User ID data was transferred to"
+                },
+                "transferredToName": {
+                    "type": "string",
+                    "description": "Name of user data was transferred to"
+                },
+                "itemsTransferred": {
+                    "type": "object",
+                    "properties": {
+                        "contacts": {
+                            "type": "integer",
+                            "description": "Number of contacts transferred"
+                        },
+                        "campaigns": {
+                            "type": "integer",
+                            "description": "Number of campaigns transferred"
+                        },
+                        "tasks": {
+                            "type": "integer",
+                            "description": "Number of tasks transferred"
+                        },
+                        "other": {
+                            "type": "integer",
+                            "description": "Number of other items transferred"
+                        }
+                    },
+                    "description": "Items transferred to another user"
+                }
+            },
+            "description": "Data transfer information"
+        },
+        "notifications": {
+            "type": "object",
+            "properties": {
+                "adminNotified": {
+                    "type": "boolean",
+                    "description": "Whether admin users were notified"
+                },
+                "teamNotified": {
+                    "type": "boolean",
+                    "description": "Whether team members were notified"
+                },
+                "userNotified": {
+                    "type": "boolean",
+                    "description": "Whether the deleted user was notified"
+                }
+            },
+            "description": "Notification status"
+        },
+        "auditLog": {
+            "type": "object",
+            "properties": {
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User ID who performed the deletion"
+                },
+                "deletedByName": {
+                    "type": "string",
+                    "description": "Name of user who performed the deletion"
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "Reason for deletion"
+                },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "IP address from which deletion was performed"
+                },
+                "userAgent": {
+                    "type": "string",
+                    "description": "User agent of deletion request"
+                }
+            },
+            "description": "Audit log information"
+        }
+    },
+    "version": 1
+} 

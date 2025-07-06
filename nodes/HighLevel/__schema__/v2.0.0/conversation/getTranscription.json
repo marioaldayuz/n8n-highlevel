@@ -1,0 +1,189 @@
+{
+    "type": "object",
+    "properties": {
+        "transcription": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the transcription"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Message ID this transcription belongs to"
+                },
+                "recordingId": {
+                    "type": "string",
+                    "description": "Recording ID this transcription was generated from"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the transcription"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["completed", "processing", "failed", "pending"],
+                    "description": "Transcription processing status"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Full transcription text"
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Overall confidence score of the transcription"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Detected or specified language of the transcription"
+                },
+                "speakers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Speaker identifier"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Speaker name (if identified)"
+                            },
+                            "role": {
+                                "type": "string",
+                                "enum": ["caller", "agent", "unknown"],
+                                "description": "Speaker role"
+                            }
+                        }
+                    },
+                    "description": "Identified speakers in the transcription"
+                },
+                "segments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Segment identifier"
+                            },
+                            "speakerId": {
+                                "type": "string",
+                                "description": "ID of the speaker for this segment"
+                            },
+                            "text": {
+                                "type": "string",
+                                "description": "Transcribed text for this segment"
+                            },
+                            "confidence": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "description": "Confidence score for this segment"
+                            },
+                            "startTime": {
+                                "type": "number",
+                                "description": "Start time of segment in seconds"
+                            },
+                            "endTime": {
+                                "type": "number",
+                                "description": "End time of segment in seconds"
+                            },
+                            "words": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "word": {
+                                            "type": "string",
+                                            "description": "Individual word"
+                                        },
+                                        "confidence": {
+                                            "type": "number",
+                                            "description": "Word confidence score"
+                                        },
+                                        "startTime": {
+                                            "type": "number",
+                                            "description": "Word start time"
+                                        },
+                                        "endTime": {
+                                            "type": "number",
+                                            "description": "Word end time"
+                                        }
+                                    }
+                                },
+                                "description": "Individual words with timing information"
+                            }
+                        }
+                    },
+                    "description": "Transcription segments with speaker and timing information"
+                },
+                "summary": {
+                    "type": "object",
+                    "properties": {
+                        "duration": {
+                            "type": "number",
+                            "description": "Total duration of the transcribed content"
+                        },
+                        "wordCount": {
+                            "type": "integer",
+                            "description": "Total number of words"
+                        },
+                        "speakerCount": {
+                            "type": "integer",
+                            "description": "Number of identified speakers"
+                        },
+                        "topics": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "Identified topics or keywords"
+                        },
+                        "sentiment": {
+                            "type": "string",
+                            "enum": ["positive", "negative", "neutral"],
+                            "description": "Overall sentiment analysis"
+                        }
+                    },
+                    "description": "Transcription summary and analysis"
+                },
+                "processingTime": {
+                    "type": "number",
+                    "description": "Time taken to process the transcription in seconds"
+                },
+                "engine": {
+                    "type": "string",
+                    "description": "Transcription engine used"
+                },
+                "downloadUrl": {
+                    "type": "string",
+                    "description": "URL to download the transcription file"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the transcription was completed"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Transcription creation timestamp"
+                }
+            },
+            "description": "Complete transcription details"
+        }
+    },
+    "version": 1
+} 

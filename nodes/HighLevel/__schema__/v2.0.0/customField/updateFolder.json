@@ -1,0 +1,11 @@
+{
+  "updateFolder": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/folders/{id}",
+      "method": "PUT",
+      "body": {
+        "name": "string"
+      }
+    }
+  }
+} 

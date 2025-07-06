@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the message"
+                },
+                "conversationId": {
+                    "type": "string",
+                    "description": "Conversation ID this message belongs to"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the message exists"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the message"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of message"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["inbound", "outbound"],
+                    "description": "Direction of the message"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["sent", "delivered", "read", "failed", "pending", "cancelled", "opened", "clicked", "bounced"],
+                    "description": "Updated status of the message"
+                },
+                "previousStatus": {
+                    "type": "string",
+                    "description": "Previous status before the update"
+                },
+                "statusReason": {
+                    "type": "string",
+                    "description": "Reason for the status change"
+                },
+                "errorMessage": {
+                    "type": "string",
+                    "description": "Error message (if status is failed)"
+                },
+                "statusUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the status was updated"
+                },
+                "statusUpdatedBy": {
+                    "type": "string",
+                    "description": "Who/what updated the status"
+                },
+                "analytics": {
+                    "type": "object",
+                    "properties": {
+                        "opens": {
+                            "type": "integer",
+                            "description": "Number of opens (for emails)"
+                        },
+                        "clicks": {
+                            "type": "integer",
+                            "description": "Number of clicks (for emails)"
+                        },
+                        "lastActivity": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Last activity timestamp"
+                        }
+                    },
+                    "description": "Updated analytics data"
+                }
+            },
+            "description": "Message with updated status"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the status was updated successfully"
+        },
+        "statusChange": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "description": "Previous status"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "New status"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the change occurred"
+                }
+            },
+            "description": "Status change details"
+        }
+    },
+    "version": 1
+} 

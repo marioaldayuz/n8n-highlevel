@@ -1,0 +1,88 @@
+{
+    "type": "object",
+    "properties": {
+        "attachment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the uploaded attachment"
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "Original filename of the uploaded file"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to access the uploaded file"
+                },
+                "downloadUrl": {
+                    "type": "string",
+                    "description": "Direct download URL for the file"
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "MIME type of the uploaded file"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "File size in bytes"
+                },
+                "extension": {
+                    "type": "string",
+                    "description": "File extension"
+                },
+                "isImage": {
+                    "type": "boolean",
+                    "description": "Whether the file is an image"
+                },
+                "thumbnailUrl": {
+                    "type": "string",
+                    "description": "Thumbnail URL (for images/videos)"
+                },
+                "metadata": {
+                    "type": "object",
+                    "properties": {
+                        "width": {
+                            "type": "integer",
+                            "description": "Image width in pixels (for images)"
+                        },
+                        "height": {
+                            "type": "integer",
+                            "description": "Image height in pixels (for images)"
+                        },
+                        "duration": {
+                            "type": "number",
+                            "description": "Duration in seconds (for audio/video)"
+                        }
+                    },
+                    "description": "File metadata"
+                },
+                "uploadedBy": {
+                    "type": "string",
+                    "description": "User ID who uploaded the file"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the file access expires (if applicable)"
+                },
+                "uploadedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the file was uploaded"
+                }
+            },
+            "description": "Uploaded attachment details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the file was uploaded successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        }
+    },
+    "version": 1
+} 

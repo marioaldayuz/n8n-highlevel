@@ -1,0 +1,141 @@
+{
+    "type": "object",
+    "properties": {
+        "plans": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Plan ID"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Plan name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Plan description"
+                    },
+                    "pricing": {
+                        "type": "object",
+                        "properties": {
+                            "monthly": {
+                                "type": "object",
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "description": "Monthly price"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "description": "Currency code"
+                                    },
+                                    "stripeProductId": {
+                                        "type": "string",
+                                        "description": "Stripe product ID for monthly billing"
+                                    }
+                                }
+                            },
+                            "yearly": {
+                                "type": "object",
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "description": "Yearly price"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "description": "Currency code"
+                                    },
+                                    "stripeProductId": {
+                                        "type": "string",
+                                        "description": "Stripe product ID for yearly billing"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Pricing information for the plan"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of features included in the plan"
+                    },
+                    "limits": {
+                        "type": "object",
+                        "properties": {
+                            "users": {
+                                "type": "integer",
+                                "description": "Maximum number of users"
+                            },
+                            "contacts": {
+                                "type": "integer",
+                                "description": "Maximum number of contacts"
+                            },
+                            "apiCalls": {
+                                "type": "integer",
+                                "description": "API calls per month limit"
+                            },
+                            "storage": {
+                                "type": "integer",
+                                "description": "Storage limit in GB"
+                            },
+                            "emailsSent": {
+                                "type": "integer",
+                                "description": "Monthly email sending limit"
+                            },
+                            "smsSent": {
+                                "type": "integer",
+                                "description": "Monthly SMS sending limit"
+                            }
+                        },
+                        "description": "Usage limits for the plan"
+                    },
+                    "trial": {
+                        "type": "object",
+                        "properties": {
+                            "enabled": {
+                                "type": "boolean",
+                                "description": "Whether trial is available"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "description": "Trial duration in days"
+                            }
+                        },
+                        "description": "Trial period information"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "archived"],
+                        "description": "Plan status"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Whether this is the default plan"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Plan creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Plan last updated timestamp"
+                    }
+                }
+            },
+            "description": "Array of available agency plans"
+        },
+        "count": {
+            "type": "integer",
+            "description": "Total number of plans"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,302 @@
+{
+    "type": "object",
+    "properties": {
+        "forms": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the form"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Form name"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Form title displayed to users"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Form description"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID where the form belongs"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "Form URL"
+                    },
+                    "isActive": {
+                        "type": "boolean",
+                        "description": "Whether the form is active"
+                    },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "Whether the form is publicly accessible"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "draft", "archived"],
+                        "description": "Form status"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": ["contact", "lead", "appointment", "survey", "registration", "feedback"],
+                        "description": "Type of form"
+                    },
+                    "fields": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Field ID"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Field name"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Field label"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["text", "email", "phone", "number", "date", "textarea", "select", "checkbox", "radio", "file", "password", "url"],
+                                    "description": "Field type"
+                                },
+                                "required": {
+                                    "type": "boolean",
+                                    "description": "Whether the field is required"
+                                },
+                                "placeholder": {
+                                    "type": "string",
+                                    "description": "Field placeholder text"
+                                },
+                                "options": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string",
+                                                "description": "Option label"
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "description": "Option value"
+                                            }
+                                        }
+                                    },
+                                    "description": "Field options for select, checkbox, or radio fields"
+                                },
+                                "validation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "minLength": {
+                                            "type": "integer",
+                                            "description": "Minimum length for text fields"
+                                        },
+                                        "maxLength": {
+                                            "type": "integer",
+                                            "description": "Maximum length for text fields"
+                                        },
+                                        "pattern": {
+                                            "type": "string",
+                                            "description": "Regular expression pattern for validation"
+                                        },
+                                        "min": {
+                                            "type": "number",
+                                            "description": "Minimum value for number fields"
+                                        },
+                                        "max": {
+                                            "type": "number",
+                                            "description": "Maximum value for number fields"
+                                        }
+                                    },
+                                    "description": "Field validation rules"
+                                },
+                                "defaultValue": {
+                                    "type": "string",
+                                    "description": "Default value for the field"
+                                },
+                                "order": {
+                                    "type": "integer",
+                                    "description": "Field display order"
+                                },
+                                "isHidden": {
+                                    "type": "boolean",
+                                    "description": "Whether the field is hidden"
+                                },
+                                "isReadOnly": {
+                                    "type": "boolean",
+                                    "description": "Whether the field is read-only"
+                                }
+                            }
+                        },
+                        "description": "Form fields"
+                    },
+                    "settings": {
+                        "type": "object",
+                        "properties": {
+                            "allowMultipleSubmissions": {
+                                "type": "boolean",
+                                "description": "Whether multiple submissions are allowed"
+                            },
+                            "submitButtonText": {
+                                "type": "string",
+                                "description": "Submit button text"
+                            },
+                            "successMessage": {
+                                "type": "string",
+                                "description": "Success message after submission"
+                            },
+                            "redirectUrl": {
+                                "type": "string",
+                                "description": "URL to redirect after successful submission"
+                            },
+                            "notifications": {
+                                "type": "object",
+                                "properties": {
+                                    "emailEnabled": {
+                                        "type": "boolean",
+                                        "description": "Whether email notifications are enabled"
+                                    },
+                                    "emailTo": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Email addresses to notify"
+                                    },
+                                    "emailSubject": {
+                                        "type": "string",
+                                        "description": "Email notification subject"
+                                    },
+                                    "emailTemplate": {
+                                        "type": "string",
+                                        "description": "Email notification template"
+                                    },
+                                    "smsEnabled": {
+                                        "type": "boolean",
+                                        "description": "Whether SMS notifications are enabled"
+                                    },
+                                    "smsTo": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Phone numbers to notify via SMS"
+                                    }
+                                },
+                                "description": "Notification settings"
+                            }
+                        },
+                        "description": "Form settings"
+                    },
+                    "styling": {
+                        "type": "object",
+                        "properties": {
+                            "theme": {
+                                "type": "string",
+                                "enum": ["default", "modern", "minimal", "corporate", "creative"],
+                                "description": "Form theme"
+                            },
+                            "primaryColor": {
+                                "type": "string",
+                                "description": "Primary color for the form"
+                            },
+                            "backgroundColor": {
+                                "type": "string",
+                                "description": "Background color for the form"
+                            },
+                            "fontFamily": {
+                                "type": "string",
+                                "description": "Font family for the form"
+                            },
+                            "customCss": {
+                                "type": "string",
+                                "description": "Custom CSS for the form"
+                            }
+                        },
+                        "description": "Form styling options"
+                    },
+                    "analytics": {
+                        "type": "object",
+                        "properties": {
+                            "totalViews": {
+                                "type": "integer",
+                                "description": "Total number of form views"
+                            },
+                            "totalSubmissions": {
+                                "type": "integer",
+                                "description": "Total number of form submissions"
+                            },
+                            "conversionRate": {
+                                "type": "number",
+                                "description": "Form conversion rate percentage"
+                            },
+                            "averageCompletionTime": {
+                                "type": "number",
+                                "description": "Average time to complete form in seconds"
+                            }
+                        },
+                        "description": "Form analytics"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "User ID who created the form"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Form creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                    },
+                    "lastSubmissionAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last submission timestamp"
+                    }
+                }
+            },
+            "description": "Array of forms"
+        },
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of forms"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of forms in this response"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number per page"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Current offset"
+                },
+                "hasMore": {
+                    "type": "boolean",
+                    "description": "Whether there are more results"
+                }
+            },
+            "description": "Pagination information"
+        }
+    },
+    "version": 1
+} 

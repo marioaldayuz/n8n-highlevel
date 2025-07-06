@@ -1,0 +1,237 @@
+{
+    "type": "object",
+    "properties": {
+        "plan": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Plan ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Plan name"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Plan description"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active", "inactive", "archived"],
+                    "description": "Plan status"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether this is the default plan"
+                },
+                "pricing": {
+                    "type": "object",
+                    "properties": {
+                        "monthly": {
+                            "type": "object",
+                            "properties": {
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Monthly price"
+                                },
+                                "currency": {
+                                    "type": "string",
+                                    "description": "Currency code"
+                                },
+                                "stripeProductId": {
+                                    "type": "string",
+                                    "description": "Stripe product ID for monthly billing"
+                                },
+                                "stripePriceId": {
+                                    "type": "string",
+                                    "description": "Stripe price ID for monthly billing"
+                                }
+                            }
+                        },
+                        "yearly": {
+                            "type": "object",
+                            "properties": {
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Yearly price"
+                                },
+                                "currency": {
+                                    "type": "string",
+                                    "description": "Currency code"
+                                },
+                                "stripeProductId": {
+                                    "type": "string",
+                                    "description": "Stripe product ID for yearly billing"
+                                },
+                                "stripePriceId": {
+                                    "type": "string",
+                                    "description": "Stripe price ID for yearly billing"
+                                },
+                                "discount": {
+                                    "type": "number",
+                                    "description": "Yearly discount percentage"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Pricing tiers for the plan"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Feature name"
+                            },
+                            "enabled": {
+                                "type": "boolean",
+                                "description": "Whether feature is enabled"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Feature description"
+                            }
+                        }
+                    },
+                    "description": "List of features and their availability"
+                },
+                "limits": {
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "integer",
+                            "description": "Maximum number of users (-1 for unlimited)"
+                        },
+                        "contacts": {
+                            "type": "integer",
+                            "description": "Maximum number of contacts (-1 for unlimited)"
+                        },
+                        "apiCalls": {
+                            "type": "integer",
+                            "description": "API calls per month limit (-1 for unlimited)"
+                        },
+                        "storage": {
+                            "type": "integer",
+                            "description": "Storage limit in GB (-1 for unlimited)"
+                        },
+                        "emailsSent": {
+                            "type": "integer",
+                            "description": "Monthly email sending limit (-1 for unlimited)"
+                        },
+                        "smsSent": {
+                            "type": "integer",
+                            "description": "Monthly SMS sending limit (-1 for unlimited)"
+                        },
+                        "funnels": {
+                            "type": "integer",
+                            "description": "Maximum number of funnels (-1 for unlimited)"
+                        },
+                        "websites": {
+                            "type": "integer",
+                            "description": "Maximum number of websites (-1 for unlimited)"
+                        },
+                        "workflows": {
+                            "type": "integer",
+                            "description": "Maximum number of workflows (-1 for unlimited)"
+                        }
+                    },
+                    "description": "Usage limits for the plan"
+                },
+                "trial": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether trial is available"
+                        },
+                        "days": {
+                            "type": "integer",
+                            "description": "Trial duration in days"
+                        },
+                        "requiresPaymentMethod": {
+                            "type": "boolean",
+                            "description": "Whether payment method is required for trial"
+                        }
+                    },
+                    "description": "Trial period configuration"
+                },
+                "rebilling": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether rebilling is enabled for this plan"
+                        },
+                        "markupPercentage": {
+                            "type": "number",
+                            "description": "Default markup percentage for rebilling"
+                        },
+                        "services": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "List of rebillable services"
+                        }
+                    },
+                    "description": "Rebilling configuration"
+                },
+                "analytics": {
+                    "type": "object",
+                    "properties": {
+                        "totalSubscriptions": {
+                            "type": "integer",
+                            "description": "Total number of active subscriptions"
+                        },
+                        "monthlyRevenue": {
+                            "type": "number",
+                            "description": "Monthly revenue from this plan"
+                        },
+                        "averageLifetime": {
+                            "type": "number",
+                            "description": "Average subscription lifetime in months"
+                        },
+                        "churnRate": {
+                            "type": "number",
+                            "description": "Monthly churn rate percentage"
+                        }
+                    },
+                    "description": "Plan analytics and metrics"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Plan creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Plan last updated timestamp"
+                },
+                "createdBy": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "User ID who created the plan"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "User name"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "User email"
+                        }
+                    },
+                    "description": "User who created the plan"
+                }
+            },
+            "description": "Complete SaaS plan details"
+        }
+    },
+    "version": 1
+} 

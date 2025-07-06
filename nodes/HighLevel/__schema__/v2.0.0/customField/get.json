@@ -1,0 +1,11 @@
+{
+  "get": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields",
+      "method": "GET",
+      "qs": {
+        "model": "string"
+      }
+    }
+  }
+} 

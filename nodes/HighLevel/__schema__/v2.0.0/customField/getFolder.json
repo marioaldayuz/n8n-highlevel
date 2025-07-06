@@ -1,0 +1,8 @@
+{
+  "getFolder": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/folders/{id}",
+      "method": "GET"
+    }
+  }
+} 

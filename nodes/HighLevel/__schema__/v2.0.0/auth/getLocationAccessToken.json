@@ -1,0 +1,223 @@
+{
+    "type": "object",
+    "properties": {
+        "accessToken": {
+            "type": "string",
+            "description": "Location-specific access token"
+        },
+        "tokenType": {
+            "type": "string",
+            "enum": ["Bearer"],
+            "description": "Token type (typically Bearer)"
+        },
+        "expiresIn": {
+            "type": "integer",
+            "description": "Token expiration time in seconds"
+        },
+        "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Token expiration timestamp"
+        },
+        "scope": {
+            "type": "string",
+            "description": "Token scope and permissions"
+        },
+        "location": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Location ID this token is valid for"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Location name"
+                },
+                "businessName": {
+                    "type": "string",
+                    "description": "Business name"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "Location timezone"
+                },
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "street": {
+                            "type": "string",
+                            "description": "Street address"
+                        },
+                        "city": {
+                            "type": "string",
+                            "description": "City"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "State/Province"
+                        },
+                        "postalCode": {
+                            "type": "string",
+                            "description": "Postal/ZIP code"
+                        },
+                        "country": {
+                            "type": "string",
+                            "description": "Country"
+                        }
+                    },
+                    "description": "Location address"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "Location phone number"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Location email"
+                },
+                "website": {
+                    "type": "string",
+                    "description": "Location website"
+                }
+            },
+            "description": "Location details"
+        },
+        "agency": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Agency ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Agency name"
+                },
+                "companyId": {
+                    "type": "string",
+                    "description": "Company ID"
+                }
+            },
+            "description": "Agency information"
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "User ID associated with the token"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User email"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "role": {
+                                "type": "string",
+                                "description": "User role for this location"
+                            },
+                            "permissions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Specific permissions"
+                            }
+                        }
+                    },
+                    "description": "User roles and permissions for this location"
+                }
+            },
+            "description": "User information"
+        },
+        "permissions": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Available permissions with this token"
+        },
+        "rateLimit": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Rate limit per hour"
+                },
+                "remaining": {
+                    "type": "integer",
+                    "description": "Remaining requests in current period"
+                },
+                "resetTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the rate limit resets"
+                }
+            },
+            "description": "Rate limiting information"
+        },
+        "usage": {
+            "type": "object",
+            "properties": {
+                "dailyLimit": {
+                    "type": "integer",
+                    "description": "Daily API call limit"
+                },
+                "dailyUsed": {
+                    "type": "integer",
+                    "description": "Daily API calls used"
+                },
+                "monthlyLimit": {
+                    "type": "integer",
+                    "description": "Monthly API call limit"
+                },
+                "monthlyUsed": {
+                    "type": "integer",
+                    "description": "Monthly API calls used"
+                }
+            },
+            "description": "API usage statistics"
+        },
+        "environment": {
+            "type": "string",
+            "enum": ["production", "sandbox", "development"],
+            "description": "Environment this token is valid for"
+        },
+        "clientId": {
+            "type": "string",
+            "description": "OAuth client ID"
+        },
+        "issuedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the token was issued"
+        },
+        "refreshToken": {
+            "type": "string",
+            "description": "Refresh token for renewing access"
+        },
+        "refreshExpiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Refresh token expiration timestamp"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the token exchange was successful"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        }
+    },
+    "version": 1
+} 

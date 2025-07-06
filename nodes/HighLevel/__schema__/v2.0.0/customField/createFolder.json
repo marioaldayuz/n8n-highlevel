@@ -1,0 +1,13 @@
+{
+  "createFolder": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/folders",
+      "method": "POST",
+      "body": {
+        "name": "string",
+        "position": "number",
+        "model": "string"
+      }
+    }
+  }
+} 

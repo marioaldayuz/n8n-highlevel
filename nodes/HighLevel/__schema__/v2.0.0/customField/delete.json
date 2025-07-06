@@ -1,0 +1,8 @@
+{
+  "delete": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields/{id}",
+      "method": "DELETE"
+    }
+  }
+} 

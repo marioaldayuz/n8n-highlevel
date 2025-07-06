@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the scheduled message was cancelled successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "cancelledMessageId": {
+            "type": "string",
+            "description": "ID of the cancelled message"
+        },
+        "originalScheduledDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Original scheduled send date"
+        },
+        "cancelledAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the message was cancelled"
+        },
+        "messageDetails": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Message ID"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp"],
+                    "description": "Type of cancelled message"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["cancelled"],
+                    "description": "Updated status after cancellation"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Message subject (for emails)"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Message content"
+                }
+            },
+            "description": "Details of the cancelled message"
+        }
+    },
+    "version": 1
+} 

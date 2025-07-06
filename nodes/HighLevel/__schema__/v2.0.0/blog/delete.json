@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Indicates whether the blog post was successfully deleted"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "deletedId": {
+            "type": "string",
+            "description": "ID of the deleted blog post"
+        }
+    },
+    "version": 1
+} 

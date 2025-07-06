@@ -1,0 +1,23 @@
+{
+  "create": {
+    "request": {
+      "basePath": "/locations/{locationId}/customFields",
+      "method": "POST",
+      "body": {
+        "name": "string",
+        "dataType": "string",
+        "position": "number",
+        "isRequired": "boolean",
+        "isMultipleValues": "boolean",
+        "model": "string",
+        "parentId": "string",
+        "isImportant": "boolean",
+        "picklistOptions": "object",
+        "picklistImageOptions": "object",
+        "fileType": "string",
+        "acceptedFormat": "string",
+        "placeholder": "string"
+      }
+    }
+  }
+} 

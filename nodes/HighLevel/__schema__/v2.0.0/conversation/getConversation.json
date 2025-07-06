@@ -1,0 +1,103 @@
+{
+    "type": "object",
+    "properties": {
+        "conversation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the conversation"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the conversation belongs"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the conversation"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of conversation"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["open", "closed", "archived"],
+                    "description": "Current status of the conversation"
+                },
+                "assignedTo": {
+                    "type": "string",
+                    "description": "User ID assigned to handle the conversation"
+                },
+                "lastMessageDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date and time of the last message"
+                },
+                "lastMessageType": {
+                    "type": "string",
+                    "description": "Type of the last message"
+                },
+                "lastMessageDirection": {
+                    "type": "string",
+                    "enum": ["inbound", "outbound"],
+                    "description": "Direction of the last message"
+                },
+                "unreadCount": {
+                    "type": "integer",
+                    "description": "Number of unread messages"
+                },
+                "totalMessages": {
+                    "type": "integer",
+                    "description": "Total number of messages in the conversation"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the conversation"
+                },
+                "customFields": {
+                    "type": "object",
+                    "description": "Custom fields associated with the conversation"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Conversation creation timestamp"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                },
+                "contact": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "Contact ID"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Contact name"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "Contact email"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "description": "Contact phone"
+                        }
+                    },
+                    "description": "Contact information"
+                }
+            },
+            "description": "Complete conversation details"
+        }
+    },
+    "version": 1
+} 

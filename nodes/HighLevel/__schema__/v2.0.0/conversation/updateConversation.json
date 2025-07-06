@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "conversation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the conversation"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID where the conversation belongs"
+                },
+                "contactId": {
+                    "type": "string",
+                    "description": "Contact ID associated with the conversation"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["SMS", "Email", "WhatsApp", "Phone", "Voicemail", "Chat", "Review", "Facebook", "Instagram"],
+                    "description": "Type of conversation"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["open", "closed", "archived"],
+                    "description": "Updated status of the conversation"
+                },
+                "assignedTo": {
+                    "type": "string",
+                    "description": "User ID assigned to handle the conversation"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Updated tags associated with the conversation"
+                },
+                "customFields": {
+                    "type": "object",
+                    "description": "Updated custom fields associated with the conversation"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update timestamp"
+                }
+            },
+            "description": "Updated conversation details"
+        },
+        "success": {
+            "type": "boolean",
+            "description": "Whether the conversation was updated successfully"
+        }
+    },
+    "version": 1
+} 

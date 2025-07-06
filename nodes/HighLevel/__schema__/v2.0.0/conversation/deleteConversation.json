@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the conversation was deleted successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "deletedConversationId": {
+            "type": "string",
+            "description": "ID of the deleted conversation"
+        },
+        "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the conversation was deleted"
+        }
+    },
+    "version": 1
+} 

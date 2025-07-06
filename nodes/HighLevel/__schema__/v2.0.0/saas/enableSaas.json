@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether SaaS was successfully enabled"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "location": {
+            "type": "object",
+            "properties": {
+                "locationId": {
+                    "type": "string",
+                    "description": "ID of the location"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the location"
+                },
+                "saasEnabled": {
+                    "type": "boolean",
+                    "description": "Current SaaS status (should be true after enabling)"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "Assigned SaaS plan ID"
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "Created subscription ID"
+                },
+                "enabledAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when SaaS was enabled"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of enabled features"
+                },
+                "limits": {
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "integer",
+                            "description": "Maximum number of users allowed"
+                        },
+                        "contacts": {
+                            "type": "integer",
+                            "description": "Maximum number of contacts allowed"
+                        },
+                        "apiCalls": {
+                            "type": "integer",
+                            "description": "Maximum API calls per month"
+                        },
+                        "storage": {
+                            "type": "integer",
+                            "description": "Storage limit in GB"
+                        }
+                    },
+                    "description": "Usage limits for the SaaS plan"
+                }
+            },
+            "description": "Details of the location with enabled SaaS"
+        }
+    },
+    "version": 1
+} 

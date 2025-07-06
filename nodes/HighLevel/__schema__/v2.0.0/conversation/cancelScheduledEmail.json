@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the scheduled email was cancelled successfully"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success or error message"
+        },
+        "cancelledEmailId": {
+            "type": "string",
+            "description": "ID of the cancelled email"
+        },
+        "originalScheduledDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Original scheduled send date"
+        },
+        "cancelledAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the email was cancelled"
+        },
+        "emailDetails": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Email ID"
+                },
+                "messageId": {
+                    "type": "string",
+                    "description": "Associated message ID"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["cancelled"],
+                    "description": "Updated status after cancellation"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Email subject"
+                },
+                "to": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "description": "Recipient email address"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Recipient name"
+                            }
+                        }
+                    },
+                    "description": "Email recipients"
+                },
+                "campaignId": {
+                    "type": "string",
+                    "description": "Campaign ID (if part of a campaign)"
+                }
+            },
+            "description": "Details of the cancelled email"
+        },
+        "refundInfo": {
+            "type": "object",
+            "properties": {
+                "eligible": {
+                    "type": "boolean",
+                    "description": "Whether the cancellation is eligible for a refund"
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "Refund amount (if applicable)"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Currency of the refund"
+                },
+                "processedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the refund was processed"
+                }
+            },
+            "description": "Refund information (if applicable)"
+        }
+    },
+    "version": 1
+} 
