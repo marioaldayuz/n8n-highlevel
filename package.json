@@ -1,11 +1,12 @@
 {
-  "name": "n8n-nodes-highlevel",
+  "name": "n8n-nodes-highlevelv2",
   "version": "1.0.0",
   "description": "n8n community node for HighLevel v2 API integration - comprehensive CRM, marketing automation, and business management platform",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
     "highlevel",
+    "highlevelv2",
     "crm",
     "marketing-automation",
     "business-management",
@@ -13,17 +14,17 @@
     "leadconnector"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/n8n-io/n8n-nodes-highlevel",
+  "homepage": "https://github.com/marioaldayuz/n8n-highlevel",
   "author": {
-    "name": "n8n Community",
-    "email": "community@n8n.io"
+    "name": "Mario Aldayuz",
+    "email": "mario@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/n8n-io/n8n-nodes-highlevel.git"
+    "url": "https://github.com/marioaldayuz/n8n-highlevel.git"
   },
   "bugs": {
-    "url": "https://github.com/n8n-io/n8n-nodes-highlevel/issues"
+    "url": "https://github.com/marioaldayuz/n8n-highlevel/issues"
   },
   "engines": {
     "node": ">=20.15",

@@ -1,4 +1,4 @@
-# n8n-nodes-highlevel
+# n8n-nodes-highlevelv2
 
 This is an n8n community node that provides comprehensive integration with the HighLevel API v2. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
 
@@ -261,12 +261,13 @@ npm run lintfix
 - [HighLevel API Documentation](https://highlevel.stoplight.io/docs/integrations)
 - [HighLevel Developer Portal](https://marketplace.leadconnectorhq.com/)
 - [n8n Workflow Automation](https://n8n.io/)
+- [Project Repository](https://github.com/marioaldayuz/n8n-highlevel)
 
 ## Contributing
 
 This is an open-source project. Contributions are welcome! Please:
 
-1. Fork the repository
+1. Fork the repository at [https://github.com/marioaldayuz/n8n-highlevel](https://github.com/marioaldayuz/n8n-highlevel)
 2. Create a feature branch
 3. Add tests for new functionality
 4. Ensure all tests pass
