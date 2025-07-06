@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the relation"
+        },
+        "associationId": {
+            "type": "string",
+            "description": "ID of the association this relation belongs to"
+        },
+        "fromObjectId": {
+            "type": "string",
+            "description": "ID of the source object"
+        },
+        "toObjectId": {
+            "type": "string",
+            "description": "ID of the target object"
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Additional metadata for the relation"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the relation was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the relation was last updated"
+        },
+        "createdBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who created the relation"
+        }
+    },
+    "version": 1
+} 

@@ -64,6 +64,13 @@ This node provides access to the following HighLevel resources and operations:
 - **Update Message Status**: Modify message delivery status
 - **Search Conversations**: Find conversations using filters
 
+### 🎫 Coupon Management
+- **Create**: Create new discount coupons
+- **Get**: Retrieve specific coupon details
+- **Get Many**: List multiple coupons with filtering options
+- **Update**: Modify existing coupon information
+- **Delete**: Remove coupons from the system
+
 ### 🏷️ Custom Fields
 - **Create**: Add new custom fields
 - **Update**: Modify existing custom fields
@@ -91,6 +98,37 @@ This node provides access to the following HighLevel resources and operations:
 - **Update**: Modify opportunity details
 - **Get**: Retrieve specific opportunities
 - **Get All**: List multiple opportunities
+
+### 🛍️ Product Management
+- **Create**: Add new products to inventory
+- **Get**: Retrieve specific product details
+- **Get Many**: List multiple products with filtering options
+- **Update**: Modify existing product information
+- **Delete**: Remove products from inventory
+- **Bulk Update**: Update multiple products at once
+
+### 🗂️ Custom Objects
+- **Create Custom Object**: Define new custom object schemas
+- **Get Object Schema**: Retrieve custom object schema details
+- **Get All Objects**: List all custom objects for a location
+- **Update Object Schema**: Modify existing custom object schemas
+- **Create Record**: Add new records to custom objects
+- **Get Record**: Retrieve specific custom object records
+- **Update Record**: Modify existing custom object records
+- **Delete Record**: Remove records from custom objects
+- **Search Records**: Find records using filters and queries
+
+### 🔗 Object Associations
+- **Create Association**: Define relationships between different object types
+- **Get Association by ID**: Retrieve association details by ID
+- **Get Association by Object Keys**: Find associations between specific objects
+- **Get Association Key by Key Name**: Retrieve association keys by name
+- **Update Association**: Modify existing association definitions
+- **Delete Association**: Remove association definitions
+- **Get All Associations**: List all associations for a location
+- **Create Relation**: Establish relations between specific object instances
+- **Get All Relations by Record ID**: Retrieve relations for specific records
+- **Delete Relation**: Remove specific object relations
 
 ### 🏢 SaaS Management
 - **Enable SaaS**: Activate SaaS features for locations
@@ -206,6 +244,126 @@ The node automatically handles location-specific token management and API versio
   "message": "Check out our latest offer!",
   "platform": "facebook",
   "scheduleDate": "2024-01-15T10:00:00Z"
+}
+```
+
+### Create Coupon
+```javascript
+// Create a discount coupon
+{
+  "resource": "coupon",
+  "operation": "create",
+  "name": "Summer Sale",
+  "code": "SUMMER2024",
+  "discountType": "percentage",
+  "discountValue": 20,
+  "description": "20% off summer collection",
+  "startDate": "2024-06-01T00:00:00Z",
+  "endDate": "2024-08-31T23:59:59Z",
+  "usageLimit": 100,
+  "minimumAmount": 50
+}
+```
+
+### Create Product
+```javascript
+// Create a new product
+{
+  "resource": "product",
+  "operation": "create",
+  "name": "Premium T-Shirt",
+  "price": 29.99,
+  "description": "High-quality cotton t-shirt",
+  "category": "Clothing",
+  "sku": "TSHIRT-001",
+  "stockQuantity": 100,
+  "status": "active",
+  "trackInventory": true,
+  "tags": "clothing,premium,cotton",
+  "weight": 0.3,
+  "taxRate": 8.5
+}
+```
+
+### Create Custom Object and Record
+```javascript
+// Create a custom object schema
+{
+  "resource": "customObjects",
+  "operation": "createObject",
+  "name": "Property Listings",
+  "description": "Real estate property listings",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "address": { "type": "string" },
+      "price": { "type": "number" },
+      "bedrooms": { "type": "integer" },
+      "bathrooms": { "type": "number" },
+      "squareFootage": { "type": "number" },
+      "propertyType": { "type": "string" },
+      "description": { "type": "string" },
+      "listingDate": { "type": "string", "format": "date" }
+    },
+    "required": ["address", "price", "propertyType"]
+  },
+  "displayField": "address",
+  "enableApiAccess": true
+}
+
+// Create a record in the custom object
+{
+  "resource": "customObjects",
+  "operation": "createRecord",
+  "objectId": "obj_123",
+  "recordData": {
+    "address": "123 Main St, City, State 12345",
+    "price": 350000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "squareFootage": 1800,
+    "propertyType": "Single Family",
+    "description": "Beautiful family home with modern amenities",
+    "listingDate": "2024-01-15"
+  }
+}
+```
+
+### Create Object Association and Relation
+```javascript
+// Create an association between contacts and opportunities
+{
+  "resource": "objectAssociations",
+  "operation": "createAssociation",
+  "name": "Contact-Opportunity",
+  "description": "Associates contacts with opportunities",
+  "fromObjectType": "contact",
+  "toObjectType": "opportunity",
+  "cardinality": "ONE_TO_MANY"
+}
+
+// Create a relation between a specific contact and opportunity
+{
+  "resource": "objectAssociations",
+  "operation": "createRelation",
+  "associationId": "assoc_123",
+  "fromObjectId": "contact_456",
+  "toObjectId": "opportunity_789",
+  "metadata": {
+    "relationshipType": "primary_contact",
+    "confidence": 0.95,
+    "source": "crm_integration"
+  }
+}
+
+// Get all relations for a specific contact
+{
+  "resource": "objectAssociations",
+  "operation": "getAllRelationsByRecordId",
+  "associationId": "assoc_123",
+  "filterOptions": {
+    "recordId": "contact_456"
+  }
 }
 ```
 

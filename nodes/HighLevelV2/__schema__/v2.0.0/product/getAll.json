@@ -1,0 +1,152 @@
+{
+    "type": "object",
+    "properties": {
+        "products": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the product"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "The location ID where the product belongs"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the product"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the product"
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Price of the product"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Product category"
+                    },
+                    "sku": {
+                        "type": "string",
+                        "description": "Product SKU (Stock Keeping Unit)"
+                    },
+                    "barcode": {
+                        "type": "string",
+                        "description": "Product barcode"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "description": "Product weight"
+                    },
+                    "dimensions": {
+                        "type": "string",
+                        "description": "Product dimensions"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Array of product image URLs"
+                    },
+                    "stockQuantity": {
+                        "type": "integer",
+                        "description": "Available stock quantity"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "draft", "inactive"],
+                        "description": "Product status"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Array of product tags"
+                    },
+                    "taxRate": {
+                        "type": "number",
+                        "description": "Tax rate for the product (percentage)"
+                    },
+                    "trackInventory": {
+                        "type": "boolean",
+                        "description": "Whether inventory tracking is enabled for this product"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the product was created"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the product was last updated"
+                    },
+                    "createdBy": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "User who created the product"
+                    },
+                    "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "User who last updated the product"
+                    }
+                }
+            },
+            "description": "Array of product objects"
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of products"
+                },
+                "currentPage": {
+                    "type": "integer",
+                    "description": "Current page number"
+                },
+                "nextPage": {
+                    "type": "integer",
+                    "description": "Next page number"
+                },
+                "prevPage": {
+                    "type": "integer",
+                    "description": "Previous page number"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "description": "Total number of pages"
+                }
+            },
+            "description": "Pagination metadata"
+        }
+    },
+    "version": 1
+} 

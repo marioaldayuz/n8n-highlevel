@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the association"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the association belongs"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the association"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the association"
+        },
+        "fromObjectType": {
+            "type": "string",
+            "description": "Type of the source object"
+        },
+        "toObjectType": {
+            "type": "string",
+            "description": "Type of the target object"
+        },
+        "cardinality": {
+            "type": "string",
+            "enum": ["ONE_TO_ONE", "ONE_TO_MANY", "MANY_TO_ONE", "MANY_TO_MANY"],
+            "description": "Cardinality of the association"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the association was last updated"
+        },
+        "updatedBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who updated the association"
+        }
+    },
+    "version": 1
+} 

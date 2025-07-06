@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the record"
+        },
+        "objectId": {
+            "type": "string",
+            "description": "ID of the custom object this record belongs to"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the record belongs"
+        },
+        "data": {
+            "type": "object",
+            "description": "The record data according to the custom object schema"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the record was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the record was last updated"
+        },
+        "createdBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who created the record"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,145 @@
+{
+    "type": "object",
+    "properties": {
+        "coupons": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the coupon"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "The location ID where the coupon belongs"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the coupon"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "The unique coupon code"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the coupon"
+                    },
+                    "discountType": {
+                        "type": "string",
+                        "enum": ["fixed", "percentage"],
+                        "description": "Type of discount (fixed amount or percentage)"
+                    },
+                    "discountValue": {
+                        "type": "number",
+                        "description": "The discount value (amount or percentage)"
+                    },
+                    "minimumAmount": {
+                        "type": "number",
+                        "description": "Minimum order amount required to use the coupon"
+                    },
+                    "maximumDiscountAmount": {
+                        "type": "number",
+                        "description": "Maximum discount amount (useful for percentage discounts)"
+                    },
+                    "usageLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of times the coupon can be used"
+                    },
+                    "usageLimitPerCustomer": {
+                        "type": "integer",
+                        "description": "Maximum number of times a single customer can use the coupon"
+                    },
+                    "timesUsed": {
+                        "type": "integer",
+                        "description": "Number of times the coupon has been used"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive"],
+                        "description": "Current status of the coupon"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start date for the coupon validity"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End date for the coupon validity"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the coupon was created"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the coupon was last updated"
+                    },
+                    "createdBy": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "User who created the coupon"
+                    },
+                    "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "User who last updated the coupon"
+                    }
+                }
+            },
+            "description": "Array of coupon objects"
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of coupons"
+                },
+                "currentPage": {
+                    "type": "integer",
+                    "description": "Current page number"
+                },
+                "nextPage": {
+                    "type": "integer",
+                    "description": "Next page number"
+                },
+                "prevPage": {
+                    "type": "integer",
+                    "description": "Previous page number"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "description": "Total number of pages"
+                }
+            },
+            "description": "Pagination metadata"
+        }
+    },
+    "version": 1
+} 

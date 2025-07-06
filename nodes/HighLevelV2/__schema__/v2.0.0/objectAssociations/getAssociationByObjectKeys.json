@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the association"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the association belongs"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the association"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the association"
+        },
+        "fromObjectType": {
+            "type": "string",
+            "description": "Type of the source object"
+        },
+        "toObjectType": {
+            "type": "string",
+            "description": "Type of the target object"
+        },
+        "cardinality": {
+            "type": "string",
+            "enum": ["ONE_TO_ONE", "ONE_TO_MANY", "MANY_TO_ONE", "MANY_TO_MANY"],
+            "description": "Cardinality of the association"
+        },
+        "relations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Relation ID"
+                    },
+                    "fromObjectId": {
+                        "type": "string",
+                        "description": "Source object ID"
+                    },
+                    "toObjectId": {
+                        "type": "string",
+                        "description": "Target object ID"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "description": "Additional metadata"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "description": "Relations using this association"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the association was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the association was last updated"
+        }
+    },
+    "version": 1
+} 

@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "associations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the association"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "The location ID where the association belongs"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the association"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the association"
+                    },
+                    "fromObjectType": {
+                        "type": "string",
+                        "description": "Type of the source object"
+                    },
+                    "toObjectType": {
+                        "type": "string",
+                        "description": "Type of the target object"
+                    },
+                    "cardinality": {
+                        "type": "string",
+                        "enum": ["ONE_TO_ONE", "ONE_TO_MANY", "MANY_TO_ONE", "MANY_TO_MANY"],
+                        "description": "Cardinality of the association"
+                    },
+                    "relationCount": {
+                        "type": "integer",
+                        "description": "Number of relations using this association"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the association was created"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the association was last updated"
+                    }
+                }
+            },
+            "description": "Array of association definitions"
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of associations"
+                },
+                "currentPage": {
+                    "type": "integer",
+                    "description": "Current page number"
+                },
+                "nextPage": {
+                    "type": "integer",
+                    "description": "Next page number"
+                },
+                "prevPage": {
+                    "type": "integer",
+                    "description": "Previous page number"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "description": "Total number of pages"
+                }
+            },
+            "description": "Pagination metadata"
+        }
+    },
+    "version": 1
+} 

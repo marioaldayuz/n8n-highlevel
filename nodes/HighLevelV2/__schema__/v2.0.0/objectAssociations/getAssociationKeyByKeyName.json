@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the association key"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the association key"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the association key"
+        },
+        "fromObjectType": {
+            "type": "string",
+            "description": "Type of the source object"
+        },
+        "toObjectType": {
+            "type": "string",
+            "description": "Type of the target object"
+        },
+        "cardinality": {
+            "type": "string",
+            "enum": ["ONE_TO_ONE", "ONE_TO_MANY", "MANY_TO_ONE", "MANY_TO_MANY"],
+            "description": "Cardinality of the association"
+        },
+        "isSystemDefined": {
+            "type": "boolean",
+            "description": "Whether this is a system-defined association key"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the association key was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the association key was last updated"
+        }
+    },
+    "version": 1
+} 

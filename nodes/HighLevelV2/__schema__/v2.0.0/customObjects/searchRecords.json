@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "records": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the record"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "ID of the custom object this record belongs to"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "The location ID where the record belongs"
+                    },
+                    "data": {
+                        "type": "object",
+                        "description": "The record data according to the custom object schema"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the record was created"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the record was last updated"
+                    }
+                }
+            },
+            "description": "Array of records matching the search criteria"
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of records matching the search"
+                },
+                "currentPage": {
+                    "type": "integer",
+                    "description": "Current page number"
+                },
+                "nextPage": {
+                    "type": "integer",
+                    "description": "Next page number"
+                },
+                "prevPage": {
+                    "type": "integer",
+                    "description": "Previous page number"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "description": "Total number of pages"
+                }
+            },
+            "description": "Pagination metadata"
+        }
+    },
+    "version": 1
+} 

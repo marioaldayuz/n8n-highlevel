@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean",
+            "description": "Whether the deletion was successful"
+        },
+        "message": {
+            "type": "string",
+            "description": "Success message"
+        }
+    },
+    "version": 1
+} 

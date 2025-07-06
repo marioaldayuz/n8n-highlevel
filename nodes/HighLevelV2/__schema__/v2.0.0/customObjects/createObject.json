@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the custom object"
+        },
+        "locationId": {
+            "type": "string",
+            "description": "The location ID where the custom object belongs"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the custom object"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the custom object"
+        },
+        "schema": {
+            "type": "object",
+            "description": "JSON schema definition for the custom object"
+        },
+        "displayField": {
+            "type": "string",
+            "description": "Field to use as display name for records"
+        },
+        "enableApiAccess": {
+            "type": "boolean",
+            "description": "Whether API access is enabled for this object"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the custom object was created"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the custom object was last updated"
+        },
+        "createdBy": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "description": "User who created the custom object"
+        }
+    },
+    "version": 1
+} 

@@ -14,7 +14,11 @@ import { blogFields, blogOperations } from './description/BlogDescription';
 import { calendarFields, calendarOperations } from './description/CalendarDescription';
 import { contactFields, contactNotes, contactOperations } from './description/ContactDescription';
 import { conversationFields, conversationOperations } from './description/ConversationDescription';
+import { couponFields, couponOperations } from './description/CouponDescription';
 import { customFieldFields, customFieldOperations } from './description/CustomFieldDescription';
+import { customObjectsFields, customObjectsOperations } from './description/CustomObjectsDescription';
+import { objectAssociationsFields, objectAssociationsOperations } from './description/ObjectAssociationsDescription';
+import { productFields, productOperations } from './description/ProductDescription';
 import { emailFields, emailOperations } from './description/EmailDescription';
 import { formFields, formOperations } from './description/FormDescription';
 import { opportunityFields, opportunityOperations } from './description/OpportunityDescription';
@@ -59,8 +63,16 @@ const resources: INodeProperties[] = [
 				value: 'conversation',
 			},
 			{
+				name: 'Coupon',
+				value: 'coupon',
+			},
+			{
 				name: 'Custom Field',
 				value: 'customField',
+			},
+			{
+				name: 'Custom Objects',
+				value: 'customObjects',
 			},
 			{
 				name: 'Email',
@@ -71,8 +83,16 @@ const resources: INodeProperties[] = [
 				value: 'form',
 			},
 			{
+				name: 'Object Associations',
+				value: 'objectAssociations',
+			},
+			{
 				name: 'Opportunity',
 				value: 'opportunity',
+			},
+			{
+				name: 'Product',
+				value: 'product',
 			},
 			{
 				name: 'SaaS',
@@ -150,14 +170,22 @@ const versionDescription: INodeTypeDescription = {
 		...contactFields,
 		...conversationOperations,
 		...conversationFields,
+		...couponOperations,
+		...couponFields,
 		...customFieldOperations,
 		...customFieldFields,
+		...customObjectsOperations,
+		...customObjectsFields,
 		...emailOperations,
 		...emailFields,
 		...formOperations,
 		...formFields,
+		...objectAssociationsOperations,
+		...objectAssociationsFields,
 		...opportunityOperations,
 		...opportunityFields,
+		...productOperations,
+		...productFields,
 		...saasOperations,
 		...saasFields,
 		...taskOperations,
