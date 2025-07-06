@@ -114,7 +114,7 @@ const versionDescription: INodeTypeDescription = {
 	icon: 'file:highLevel.svg',
 	group: ['transform'],
 	version: 2,
-	description: 'Consume HighLevel API v2',
+	description: 'For utilizing the HighLevel API v2 by Mario Aldayuz. This is a fork of the original HighLevel node. This is a work in progress and is not yet ready for production. Submit isues here: https://github.com/marioaldayuz/n8n-highlevel/issues',
 	subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 	defaults: {
 		name: 'HighLevel v2',

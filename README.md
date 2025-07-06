@@ -1,8 +1,10 @@
-# n8n-nodes-highlevelv2
+# n8n-nodes-highlevelv2 (BETA)
 
 This is an n8n community node that provides comprehensive integration with the HighLevel API v2. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
 
-[HighLevel](https://www.gohighlevel.com/) is an all-in-one business platform that combines CRM, marketing automation, website building, funnel creation, appointment scheduling, and more into a single unified system.
+Get your 30 Day FREE Trial of [HighLevel](https://www.gohighlevel.com/marioaldayuz) by clicking [HERE](https://www.gohighlevel.com/marioaldayuz)!
+
+[HighLevel](https://www.gohighlevel.com/marioaldayuz) is an all-in-one business platform that combines CRM, marketing automation, website building, funnel creation, appointment scheduling, and more into a single unified system.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
@@ -20,7 +22,7 @@ This is an n8n community node that provides comprehensive integration with the H
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+Simply go to N8N Settings > Community Nodes > Install > `n8n-nodes-highlevelv2` and you're off to the races!
 
 ## Resources & Operations
 

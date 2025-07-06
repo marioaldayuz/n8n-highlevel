@@ -11,7 +11,7 @@ export class HighLevel extends VersionedNodeType {
 			icon: 'file:highLevel.svg',
 			group: ['transform'],
 			defaultVersion: 2,
-			description: 'Consume HighLevel v2 API',
+			description: 'For utilizing the HighLevel API v2 by Mario Aldayuz. This is a fork of the original HighLevel node. This is a work in progress and is not yet ready for production. Submit isues here: https://github.com/marioaldayuz/n8n-highlevel/issues',
 		};
 
 		const nodeVersions: IVersionedNodeType['nodeVersions'] = {
