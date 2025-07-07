@@ -1,6 +1,6 @@
 # n8n-nodes-highlevelv2 (BETA)
 
-This is an n8n community node that provides comprehensive integration with the HighLevel API v2. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
+This is an n8n community node that provides **comprehensive integration** with the HighLevel API v2, featuring **25 resources** with **100+ operations**. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
 
 Get your 30 Day FREE Trial of [HighLevel](https://www.gohighlevel.com/marioaldayuz) by clicking [HERE](https://www.gohighlevel.com/marioaldayuz)!
 
@@ -19,6 +19,36 @@ Get your 30 Day FREE Trial of [HighLevel](https://www.gohighlevel.com/marioalday
 [Testing](#testing)  
 [Development](#development)  
 [Resources](#resources)  
+
+## 🚀 Full Feature Overview
+
+This comprehensive n8n community node provides complete coverage of the HighLevel API v2 with:
+
+### **25 Core Resources**
+Auth • Blog • Calendar • Contact • Conversation • Coupon • Custom Field • Custom Objects • Custom Values • Email • Form • Funnel • Media • Notes • Object Associations • Opportunity • Product • Redirect • SaaS • Social Planner • Sub-Account • Survey • Task • Tags • User
+
+### **100+ Operations** Including:
+- **Full CRUD Operations** across all resources
+- **Advanced Search & Filtering** with pagination
+- **Bulk Operations** for efficiency
+- **File Management** (upload, organize, delete)
+- **Relationship Management** (object associations)
+- **Marketing Automation** (email templates, social posts, funnels)
+- **E-commerce Features** (products, coupons, redirects)
+- **Business Management** (sub-accounts, users, SaaS)
+- **CRM Features** (contacts, conversations, notes, tags)
+- **Analytics & Reporting** (social analytics, funnel metrics)
+
+### **Advanced Features**
+- 🔄 **Automatic Pagination** for large datasets
+- 🏷️ **Dynamic Custom Fields** with live search
+- 🌍 **Timezone Management** with location awareness
+- 📧 **Email/Phone Validation** with format checking
+- 🔗 **Location-aware Operations** with automatic context injection
+- 🎯 **Flexible Tag Processing** (comma-separated or array formats)
+- 📁 **File Upload Support** with metadata management
+- ⚡ **Comprehensive Error Handling** with detailed responses
+- 🔍 **Advanced Search Capabilities** across multiple resources
 
 ## Installation
 
@@ -178,7 +208,11 @@ This node provides access to the following HighLevel resources and operations:
 - **Create Post**: Create social media posts
 - **Schedule Post**: Schedule posts for later publication
 - **Get Posts**: Retrieve social media posts
+- **Get Post**: Get a specific social media post
+- **Update Post**: Update existing social media posts
+- **Delete Post**: Delete social media posts
 - **Get Social Accounts**: List connected social accounts
+- **Get Analytics**: Retrieve social media analytics and performance data
 
 ### 🏢 Sub-Account Management
 - **Create Sub-Account**: Add new sub-accounts
@@ -234,20 +268,52 @@ The node automatically handles location-specific token management and API versio
 
 ## Features
 
-### Advanced Functionality
-- **Automatic Pagination**: Handles large datasets automatically
-- **Custom Field Management**: Dynamic custom field integration
-- **Timezone Support**: Automatic timezone handling
-- **Email/Phone Validation**: Built-in validation for contact data
-- **Tag Processing**: Flexible tag management (comma-separated or array)
-- **File Upload Support**: Handle file attachments in conversations and forms
-- **Error Handling**: Comprehensive error handling and reporting
+### 🔧 Core Functionality
+- **25 Resource Types**: Complete coverage of HighLevel API v2
+- **100+ Operations**: Full CRUD operations across all resources
+- **Advanced Search**: Powerful filtering and search capabilities
+- **Bulk Operations**: Efficient handling of multiple records
+- **Real-time Data**: Live integration with HighLevel platform
 
-### Pre/Post Processing
-- **Data Transformation**: Automatic data formatting for API compatibility
-- **Custom Field Mapping**: Dynamic field mapping for contacts
-- **Note Management**: Automatic note addition for contacts
-- **Location ID Injection**: Automatic location context management
+### 🚀 Advanced Automation
+- **Automatic Pagination**: Seamlessly handles large datasets
+- **Location-aware Operations**: Automatic location context injection
+- **Dynamic Field Mapping**: Smart custom field integration with live search
+- **Timezone Management**: Automatic timezone handling and conversion
+- **Email/Phone Validation**: Built-in format validation and verification
+- **Tag Processing**: Flexible tag management (comma-separated or array formats)
+- **File Upload Support**: Handle attachments in conversations, forms, and media library
+- **Error Handling**: Comprehensive error handling with detailed reporting
+
+### 📊 Data Management
+- **Custom Objects & Fields**: Create and manage custom data structures
+- **Object Associations**: Define relationships between different data types
+- **Custom Values**: Typed custom values with categories and organization
+- **Media Library**: Complete file and folder management
+- **Notes & Tags**: Rich contact annotation and categorization
+
+### 🎯 Marketing & Sales
+- **Contact Management**: Complete CRM with custom fields and validation
+- **Conversation Handling**: SMS, email, calls with file attachments
+- **Social Media Planning**: Multi-platform post creation and scheduling
+- **Email Campaigns**: Template management and campaign tracking
+- **Funnel Analytics**: Page performance and conversion tracking
+- **Product Catalog**: Inventory management with bulk operations
+- **Coupon System**: Discount management with usage tracking
+
+### 🏢 Business Operations
+- **Sub-Account Management**: Multi-location business support
+- **User Administration**: Role-based access and user management
+- **SaaS Integration**: Subscription and billing management
+- **Task Management**: Project tracking with advanced search
+- **Survey Collection**: Form submission and response handling
+- **Redirect Management**: URL management and traffic routing
+
+### 🔒 Security & Authentication
+- **OAuth2 Integration**: Secure token-based authentication
+- **Location Scoping**: Automatic location context for all operations
+- **API Versioning**: Consistent API version management
+- **Rate Limit Handling**: Intelligent request throttling
 
 ## Usage Examples
 
@@ -277,15 +343,64 @@ The node automatically handles location-specific token management and API versio
 }
 ```
 
-### Create Social Media Post
+### Social Media Management
 ```javascript
+// Create a social media post
+{
+  "resource": "socialPlanner",
+  "operation": "createPost",
+  "locationId": "loc_123",
+  "content": "Check out our latest offer! #sale #discount",
+  "socialAccounts": ["facebook", "instagram"],
+  "additionalFields": {
+    "mediaUrls": "https://example.com/image1.jpg,https://example.com/image2.jpg",
+    "hashtags": "sale,discount,promotion",
+    "postType": "post",
+    "postImmediately": true
+  }
+}
+
 // Schedule a social media post
 {
   "resource": "socialPlanner",
   "operation": "schedulePost",
-  "message": "Check out our latest offer!",
-  "platform": "facebook",
-  "scheduleDate": "2024-01-15T10:00:00Z"
+  "locationId": "loc_123",
+  "content": "Coming soon: New product launch!",
+  "scheduledDate": "2024-01-15T10:00:00Z",
+  "socialAccounts": ["facebook", "linkedin"],
+  "additionalFields": {
+    "timezone": "America/New_York",
+    "postType": "post"
+  }
+}
+
+// Get a specific social media post
+{
+  "resource": "socialPlanner",
+  "operation": "getPost",
+  "locationId": "loc_123",
+  "postId": "post_456"
+}
+
+// Update a social media post
+{
+  "resource": "socialPlanner",
+  "operation": "updatePost",
+  "locationId": "loc_123",
+  "postId": "post_456",
+  "content": "Updated post content with new information!"
+}
+
+// Get social media analytics
+{
+  "resource": "socialPlanner",
+  "operation": "getAnalytics",
+  "locationId": "loc_123",
+  "additionalFields": {
+    "dateFrom": "2024-01-01",
+    "dateTo": "2024-01-31",
+    "platform": "facebook"
+  }
 }
 ```
 
