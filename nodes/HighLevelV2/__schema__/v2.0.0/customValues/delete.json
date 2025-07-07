@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        },
+        "deletedCustomValue": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

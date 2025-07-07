@@ -17,6 +17,7 @@ import { conversationFields, conversationOperations } from './description/Conver
 import { couponFields, couponOperations } from './description/CouponDescription';
 import { customFieldFields, customFieldOperations } from './description/CustomFieldDescription';
 import { customObjectsFields, customObjectsOperations } from './description/CustomObjectsDescription';
+import { customValuesFields, customValuesOperations } from './description/CustomValuesDescription';
 import { objectAssociationsFields, objectAssociationsOperations } from './description/ObjectAssociationsDescription';
 import { productFields, productOperations } from './description/ProductDescription';
 import { emailFields, emailOperations } from './description/EmailDescription';
@@ -78,6 +79,10 @@ const resources: INodeProperties[] = [
 			{
 				name: 'Custom Objects',
 				value: 'customObjects',
+			},
+			{
+				name: 'Custom Values',
+				value: 'customValues',
 			},
 			{
 				name: 'Email',
@@ -201,6 +206,8 @@ const versionDescription: INodeTypeDescription = {
 		...customFieldFields,
 		...customObjectsOperations,
 		...customObjectsFields,
+		...customValuesOperations,
+		...customValuesFields,
 		...emailOperations,
 		...emailFields,
 		...formOperations,

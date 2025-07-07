@@ -106,6 +106,28 @@ export const taskOperations: INodeProperties[] = [
 				},
 				action: 'Update a task',
 			},
+			{
+				name: 'Search',
+				value: 'search',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/tasks/search',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'tasks',
+								},
+							},
+							taskPostReceiceAction,
+						],
+					},
+				},
+				action: 'Search tasks with filters',
+			},
 		],
 		default: 'create',
 	},
@@ -481,10 +503,160 @@ const updateProperties: INodeProperties[] = [
 	},
 ];
 
+const searchProperties: INodeProperties[] = [
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['task'],
+				operation: ['search'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Location ID',
+				name: 'locationId',
+				type: 'string',
+				default: '',
+				description: 'Filter tasks by location ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'locationId',
+					},
+				},
+			},
+			{
+				displayName: 'Contact ID',
+				name: 'contactId',
+				type: 'string',
+				default: '',
+				description: 'Filter tasks by contact ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'contactId',
+					},
+				},
+			},
+			{
+				displayName: 'Assigned To',
+				name: 'assignedTo',
+				type: 'string',
+				default: '',
+				description: 'Filter tasks by assigned user ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'assignedTo',
+					},
+				},
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				default: '',
+				description: 'Filter tasks by completion status',
+				options: [
+					{
+						name: 'All',
+						value: '',
+					},
+					{
+						name: 'Completed',
+						value: 'completed',
+					},
+					{
+						name: 'Pending',
+						value: 'pending',
+					},
+				],
+				routing: {
+					send: {
+						type: 'query',
+						property: 'status',
+					},
+				},
+			},
+			{
+				displayName: 'Due Date From',
+				name: 'dueDateFrom',
+				type: 'dateTime',
+				default: '',
+				description: 'Filter tasks with due date from this date',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'dueDateFrom',
+					},
+				},
+			},
+			{
+				displayName: 'Due Date To',
+				name: 'dueDateTo',
+				type: 'dateTime',
+				default: '',
+				description: 'Filter tasks with due date up to this date',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'dueDateTo',
+					},
+				},
+			},
+			{
+				displayName: 'Search Query',
+				name: 'query',
+				type: 'string',
+				default: '',
+				description: 'Search tasks by title or content',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'query',
+					},
+				},
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: 50,
+				description: 'Maximum number of tasks to return',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'limit',
+					},
+				},
+			},
+			{
+				displayName: 'Offset',
+				name: 'offset',
+				type: 'number',
+				default: 0,
+				description: 'Number of tasks to skip',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'offset',
+					},
+				},
+			},
+		],
+	},
+];
+
 export const taskFields: INodeProperties[] = [
 	...createProperties,
 	...updateProperties,
 	...deleteProperties,
 	...getProperties,
 	...getAllProperties,
+	...searchProperties,
 ];

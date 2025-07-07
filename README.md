@@ -141,6 +141,14 @@ This node provides access to the following HighLevel resources and operations:
 - **Delete Record**: Remove records from custom objects
 - **Search Records**: Find records using filters and queries
 
+### 📊 Custom Values
+- **Create**: Add new custom values with various data types
+- **Get**: Retrieve specific custom value details
+- **Get All**: List all custom values with filtering options
+- **Update**: Modify existing custom value properties
+- **Delete**: Remove custom values from the system
+- **Advanced Filtering**: Filter by type, category, active status
+
 ### 🔗 Object Associations
 - **Create Association**: Define relationships between different object types
 - **Get Association by ID**: Retrieve association details by ID
@@ -184,6 +192,11 @@ This node provides access to the following HighLevel resources and operations:
 
 ### ✅ Task Management
 - **Create**: Add new tasks to the system
+- **Get**: Retrieve specific task details
+- **Get Many**: List tasks for a contact
+- **Update**: Modify existing tasks
+- **Delete**: Remove tasks
+- **Search**: Search tasks with advanced filters
 
 ### 🏷️ Tags Management
 - **Add Tags**: Add multiple tags to contacts
@@ -620,6 +633,143 @@ The node automatically handles location-specific token management and API versio
   "tags": ["cold-lead", "unresponsive", "low-priority"],
   "additionalFields": {
     "source": "bulk-cleanup"
+  }
+}
+```
+
+### Task Search
+```javascript
+// Search tasks with filters
+{
+  "resource": "task",
+  "operation": "search",
+  "additionalFields": {
+    "locationId": "loc_123",
+    "status": "pending",
+    "assignedTo": "user_456",
+    "dueDateFrom": "2024-01-01T00:00:00Z",
+    "dueDateTo": "2024-12-31T23:59:59Z",
+    "query": "follow up",
+    "limit": 50,
+    "offset": 0
+  }
+}
+
+// Search completed tasks for a specific contact
+{
+  "resource": "task",
+  "operation": "search",
+  "additionalFields": {
+    "contactId": "contact_789",
+    "status": "completed",
+    "limit": 20
+  }
+}
+
+// Search tasks by content or title
+{
+  "resource": "task",
+  "operation": "search",
+  "additionalFields": {
+    "query": "customer onboarding",
+    "limit": 25
+  }
+}
+```
+
+### Custom Values Management
+```javascript
+// Create a custom value
+{
+  "resource": "customValues",
+  "operation": "create",
+  "name": "Lead Source",
+  "value": "Website",
+  "additionalFields": {
+    "description": "Where the lead originated from",
+    "type": "text",
+    "category": "lead-tracking",
+    "isActive": true,
+    "sortOrder": 1
+  }
+}
+
+// Get all custom values with filtering
+{
+  "resource": "customValues",
+  "operation": "getAll",
+  "additionalFields": {
+    "category": "lead-tracking",
+    "type": "text",
+    "isActive": "true",
+    "search": "source",
+    "limit": 50,
+    "offset": 0
+  }
+}
+
+// Get a specific custom value
+{
+  "resource": "customValues",
+  "operation": "get",
+  "customValueId": "cv_123"
+}
+
+// Update a custom value
+{
+  "resource": "customValues",
+  "operation": "update",
+  "customValueId": "cv_123",
+  "updateFields": {
+    "name": "Lead Source Updated",
+    "value": "Social Media",
+    "description": "Updated lead source tracking",
+    "category": "marketing",
+    "sortOrder": 5
+  }
+}
+
+// Delete a custom value
+{
+  "resource": "customValues",
+  "operation": "delete",
+  "customValueId": "cv_123"
+}
+
+// Create custom values for different data types
+{
+  "resource": "customValues",
+  "operation": "create",
+  "name": "Customer Rating",
+  "value": "5",
+  "additionalFields": {
+    "type": "number",
+    "category": "customer-feedback",
+    "description": "Customer satisfaction rating (1-5)"
+  }
+}
+
+{
+  "resource": "customValues",
+  "operation": "create",
+  "name": "Is VIP Customer",
+  "value": "true",
+  "additionalFields": {
+    "type": "boolean",
+    "category": "customer-status",
+    "description": "Indicates if customer has VIP status"
+  }
+}
+
+{
+  "resource": "customValues",
+  "operation": "create",
+  "name": "Website URL",
+  "value": "https://example.com",
+  "additionalFields": {
+    "type": "url",
+    "category": "contact-info",
+    "description": "Customer's website URL"
   }
 }
 ```

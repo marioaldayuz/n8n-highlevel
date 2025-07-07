@@ -204,6 +204,17 @@ export async function addLocationIdPreSendAction(
 		}
 	}
 
+	if (resource === 'customValues') {
+		if (['getAll'].includes(operation)) {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { locationId });
+		}
+		if (['create', 'update'].includes(operation)) {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+	}
+
 	return requestOptions;
 }
 
@@ -338,6 +349,7 @@ export async function highLevelApiPagination(
 		blog: 'blogs',
 		contact: 'contacts',
 		conversation: 'conversations',
+		customValues: 'custom-values',
 		email: 'emails',
 		form: 'forms',
 		funnel: 'funnels',

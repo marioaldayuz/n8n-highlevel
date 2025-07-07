@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "customValue": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["text", "number", "boolean", "date", "url", "email"]
+                },
+                "category": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "sortOrder": {
+                    "type": "number"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "updatedBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        }
+    },
+    "version": 1
+} 
