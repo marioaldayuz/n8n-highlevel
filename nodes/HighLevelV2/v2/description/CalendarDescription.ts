@@ -5,6 +5,7 @@ export const calendarOperations: INodeProperties[] = [
 		displayName: 'Operation',
 		name: 'operation',
 		type: 'options',
+		noDataExpression: true,
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
@@ -12,53 +13,138 @@ export const calendarOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Book Appointment',
-				value: 'bookAppointment',
-				action: 'Book appointment in a calendar',
+				name: 'Create',
+				value: 'create',
 				routing: {
 					request: {
 						method: 'POST',
-						url: '=/calendars/events/appointments',
+						url: 'https://services.leadconnectorhq.com/calendars/',
+						headers: {
+							'Version': '2021-07-28',
+						},
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'calendar',
+								},
+							},
+						],
 					},
 				},
+				action: 'Create a calendar',
+			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				routing: {
+					request: {
+						method: 'DELETE',
+						url: 'https://services.leadconnectorhq.com/calendars/={{$parameter["calendarId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'set',
+								properties: {
+									value: '={{ { "success": true } }}',
+								},
+							},
+						],
+					},
+				},
+				action: 'Delete a calendar',
+			},
+			{
+				name: 'Get',
+				value: 'get',
+				routing: {
+					request: {
+						method: 'GET',
+						url: 'https://services.leadconnectorhq.com/calendars/={{$parameter["calendarId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'calendar',
+								},
+							},
+						],
+					},
+				},
+				action: 'Get a calendar',
 			},
 			{
 				name: 'Get Free Slots',
 				value: 'getFreeSlots',
-				action: 'Get free slots of a calendar',
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/calendars/{{$parameter.calendarId}}/free-slots',
+						url: 'https://services.leadconnectorhq.com/calendars/={{$parameter["calendarId"]}}/free-slots',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 				},
+				action: 'Get free slots for a calendar',
+			},
+			{
+				name: 'Get Many',
+				value: 'getAll',
+				routing: {
+					request: {
+						method: 'GET',
+						url: 'https://services.leadconnectorhq.com/calendars/',
+						headers: {
+							'Version': '2021-07-28',
+						},
+					},
+					send: {
+						paginate: true,
+					},
+				},
+				action: 'Get many calendars',
+			},
+			{
+				name: 'Update',
+				value: 'update',
+				routing: {
+					request: {
+						method: 'PUT',
+						url: 'https://services.leadconnectorhq.com/calendars/={{$parameter["calendarId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'calendar',
+								},
+							},
+						],
+					},
+				},
+				action: 'Update a calendar',
 			},
 		],
-		default: 'bookAppointment',
-		noDataExpression: true,
+		default: 'create',
 	},
 ];
 
-const bookAppointmentProperties: INodeProperties[] = [
-	{
-		displayName: 'Calendar ID',
-		name: 'calendarId',
-		type: 'string',
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['calendar'],
-				operation: ['bookAppointment'],
-			},
-		},
-		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'calendarId',
-			},
-		},
-	},
+const createProperties: INodeProperties[] = [
 	{
 		displayName: 'Location ID',
 		name: 'locationId',
@@ -67,10 +153,11 @@ const bookAppointmentProperties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
-				operation: ['bookAppointment'],
+				operation: ['create'],
 			},
 		},
 		default: '',
+		description: 'The HighLevel location ID',
 		routing: {
 			send: {
 				type: 'body',
@@ -79,41 +166,41 @@ const bookAppointmentProperties: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Contact ID',
-		name: 'contactId',
+		displayName: 'Name',
+		name: 'name',
 		type: 'string',
 		required: true,
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
-				operation: ['bookAppointment'],
+				operation: ['create'],
 			},
 		},
 		default: '',
+		description: 'Name of the calendar',
 		routing: {
 			send: {
 				type: 'body',
-				property: 'contactId',
+				property: 'name',
 			},
 		},
 	},
 	{
-		displayName: 'Start Time',
-		name: 'startTime',
+		displayName: 'Description',
+		name: 'description',
 		type: 'string',
-		required: true,
-		description: 'Example: 2021-06-23T03:30:00+05:30',
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
-				operation: ['bookAppointment'],
+				operation: ['create'],
 			},
 		},
 		default: '',
+		description: 'Description of the calendar',
 		routing: {
 			send: {
 				type: 'body',
-				property: 'startTime',
+				property: 'description',
 			},
 		},
 	},
@@ -126,120 +213,423 @@ const bookAppointmentProperties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
-				operation: ['bookAppointment'],
+				operation: ['create'],
 			},
 		},
 		options: [
 			{
-				displayName: 'End Time',
-				name: 'endTime',
-				type: 'string',
-				description: 'Example: 2021-06-23T04:30:00+05:30',
-				default: '',
+				displayName: 'Appointment Duration',
+				name: 'appointmentDuration',
+				type: 'number',
+				default: 30,
+				description: 'Default appointment duration in minutes',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'endTime',
+						property: 'appointmentDuration',
 					},
 				},
 			},
 			{
-				displayName: 'Title',
-				name: 'title',
-				type: 'string',
-				default: '',
+				displayName: 'Availability',
+				name: 'availability',
+				type: 'json',
+				default: '{}',
+				description: 'Availability settings for the calendar',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'title',
+						property: 'availability',
 					},
 				},
 			},
 			{
-				displayName: 'Appointment Status',
-				name: 'appointmentStatus',
+				displayName: 'Buffer Time',
+				name: 'bufferTime',
+				type: 'number',
+				default: 0,
+				description: 'Buffer time in minutes between appointments',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'bufferTime',
+					},
+				},
+			},
+			{
+				displayName: 'Calendar Type',
+				name: 'calendarType',
 				type: 'options',
-				default: 'new',
-				description:
-					'The status of the appointment. Allowed values: new, confirmed, cancelled, showed, noshow, invalid.',
 				options: [
 					{
-						name: 'Cancelled',
-						value: 'cancelled',
+						name: 'Round Robin - Event',
+						value: 'round_robin_event',
 					},
 					{
-						name: 'Confirmed',
-						value: 'confirmed',
+						name: 'Round Robin - Availability',
+						value: 'round_robin_availability',
 					},
 					{
-						name: 'Invalid',
-						value: 'invalid',
+						name: 'Service Menu',
+						value: 'service_menu',
 					},
 					{
-						name: 'New',
-						value: 'new',
-					},
-					{
-						name: 'No Show',
-						value: 'noshow',
-					},
-					{
-						name: 'Showed',
-						value: 'showed',
+						name: 'Class Booking',
+						value: 'class_booking',
 					},
 				],
+				default: 'round_robin_event',
+				description: 'Type of calendar',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'appointmentStatus',
+						property: 'calendarType',
 					},
 				},
 			},
 			{
-				displayName: 'Assigned User ID',
-				name: 'assignedUserId',
-				type: 'string',
-				default: '',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'assignedUserId',
-					},
-				},
-			},
-			{
-				displayName: 'Address',
-				name: 'address',
-				type: 'string',
-				default: '',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'address',
-					},
-				},
-			},
-			{
-				displayName: 'Ignore Date Range',
-				name: 'ignoreDateRange',
+				displayName: 'Enable Recurring',
+				name: 'enableRecurring',
 				type: 'boolean',
 				default: false,
+				description: 'Whether to enable recurring appointments',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'ignoreDateRange',
+						property: 'enableRecurring',
 					},
 				},
 			},
 			{
-				displayName: 'Notify',
-				name: 'toNotify',
-				type: 'boolean',
-				default: true,
+				displayName: 'Event Color',
+				name: 'eventColor',
+				type: 'color',
+				default: '#039BE5',
+				description: 'Color for calendar events',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'toNotify',
+						property: 'eventColor',
+					},
+				},
+			},
+			{
+				displayName: 'Event Title',
+				name: 'eventTitle',
+				type: 'string',
+				default: '',
+				description: 'Default title for calendar events',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'eventTitle',
+					},
+				},
+			},
+			{
+				displayName: 'Slug',
+				name: 'slug',
+				type: 'string',
+				default: '',
+				description: 'URL slug for the calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'slug',
+					},
+				},
+			},
+		],
+	},
+];
+
+const updateProperties: INodeProperties[] = [
+	{
+		displayName: 'Calendar ID',
+		name: 'calendarId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['update'],
+			},
+		},
+		default: '',
+		description: 'ID of the calendar to update',
+	},
+	{
+		displayName: 'Update Fields',
+		name: 'updateFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['update'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Appointment Duration',
+				name: 'appointmentDuration',
+				type: 'number',
+				default: 30,
+				description: 'Default appointment duration in minutes',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'appointmentDuration',
+					},
+				},
+			},
+			{
+				displayName: 'Availability',
+				name: 'availability',
+				type: 'json',
+				default: '{}',
+				description: 'Availability settings for the calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'availability',
+					},
+				},
+			},
+			{
+				displayName: 'Buffer Time',
+				name: 'bufferTime',
+				type: 'number',
+				default: 0,
+				description: 'Buffer time in minutes between appointments',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'bufferTime',
+					},
+				},
+			},
+			{
+				displayName: 'Calendar Type',
+				name: 'calendarType',
+				type: 'options',
+				options: [
+					{
+						name: 'Round Robin - Event',
+						value: 'round_robin_event',
+					},
+					{
+						name: 'Round Robin - Availability',
+						value: 'round_robin_availability',
+					},
+					{
+						name: 'Service Menu',
+						value: 'service_menu',
+					},
+					{
+						name: 'Class Booking',
+						value: 'class_booking',
+					},
+				],
+				default: 'round_robin_event',
+				description: 'Type of calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'calendarType',
+					},
+				},
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Description of the calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'description',
+					},
+				},
+			},
+			{
+				displayName: 'Enable Recurring',
+				name: 'enableRecurring',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to enable recurring appointments',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'enableRecurring',
+					},
+				},
+			},
+			{
+				displayName: 'Event Color',
+				name: 'eventColor',
+				type: 'color',
+				default: '#039BE5',
+				description: 'Color for calendar events',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'eventColor',
+					},
+				},
+			},
+			{
+				displayName: 'Event Title',
+				name: 'eventTitle',
+				type: 'string',
+				default: '',
+				description: 'Default title for calendar events',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'eventTitle',
+					},
+				},
+			},
+			{
+				displayName: 'Location ID',
+				name: 'locationId',
+				type: 'string',
+				default: '',
+				description: 'The HighLevel location ID',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'locationId',
+					},
+				},
+			},
+			{
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				description: 'Name of the calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'name',
+					},
+				},
+			},
+			{
+				displayName: 'Slug',
+				name: 'slug',
+				type: 'string',
+				default: '',
+				description: 'URL slug for the calendar',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'slug',
+					},
+				},
+			},
+		],
+	},
+];
+
+const deleteProperties: INodeProperties[] = [
+	{
+		displayName: 'Calendar ID',
+		name: 'calendarId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['delete'],
+			},
+		},
+		default: '',
+		description: 'ID of the calendar to delete',
+	},
+];
+
+const getProperties: INodeProperties[] = [
+	{
+		displayName: 'Calendar ID',
+		name: 'calendarId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['get'],
+			},
+		},
+		default: '',
+		description: 'ID of the calendar to retrieve',
+	},
+];
+
+const getAllProperties: INodeProperties[] = [
+	{
+		displayName: 'Return All',
+		name: 'returnAll',
+		type: 'boolean',
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['getAll'],
+			},
+		},
+		default: false,
+		description: 'Whether to return all results or only up to a given limit',
+	},
+	{
+		displayName: 'Limit',
+		name: 'limit',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['getAll'],
+				returnAll: [false],
+			},
+		},
+		typeOptions: {
+			minValue: 1,
+		},
+		default: 50,
+		description: 'Max number of results to return',
+		routing: {
+			send: {
+				type: 'query',
+				property: 'limit',
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['calendar'],
+				operation: ['getAll'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Location ID',
+				name: 'locationId',
+				type: 'string',
+				default: '',
+				description: 'Filter calendars by location ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'locationId',
 					},
 				},
 			},
@@ -260,21 +650,21 @@ const getFreeSlotsProperties: INodeProperties[] = [
 			},
 		},
 		default: '',
+		description: 'ID of the calendar to get free slots for',
 	},
 	{
 		displayName: 'Start Date',
 		name: 'startDate',
 		type: 'number',
-		//type: 'dateTime' TODO
-		default: '',
 		required: true,
-		description: 'The start date for fetching free calendar slots. Example: 1548898600000.',
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
 				operation: ['getFreeSlots'],
 			},
 		},
+		default: '',
+		description: 'Start date for fetching free calendar slots (Unix timestamp in milliseconds). Example: 1548898600000.',
 		routing: {
 			send: {
 				type: 'query',
@@ -286,16 +676,15 @@ const getFreeSlotsProperties: INodeProperties[] = [
 		displayName: 'End Date',
 		name: 'endDate',
 		type: 'number',
-		//type: 'dateTime' TODO
-		default: '',
 		required: true,
-		description: 'The end date for fetching free calendar slots. Example: 1601490599999.',
 		displayOptions: {
 			show: {
 				resource: ['calendar'],
 				operation: ['getFreeSlots'],
 			},
 		},
+		default: '',
+		description: 'End date for fetching free calendar slots (Unix timestamp in milliseconds). Example: 1601490599999.',
 		routing: {
 			send: {
 				type: 'query',
@@ -321,7 +710,7 @@ const getFreeSlotsProperties: INodeProperties[] = [
 				name: 'timezone',
 				type: 'string',
 				default: '',
-				description: 'The timezone to use for the returned slots. Example: America/Chihuahua.',
+				description: 'Timezone to use for the returned slots. Example: America/Chihuahua.',
 				routing: {
 					send: {
 						type: 'query',
@@ -342,46 +731,15 @@ const getFreeSlotsProperties: INodeProperties[] = [
 					},
 				},
 			},
-			{
-				displayName: 'User IDs',
-				name: 'userIds',
-				type: 'collection',
-				default: {},
-				options: [
-					{
-						displayName: 'User IDs',
-						name: 'userIds',
-						type: 'string',
-						default: '',
-						description: 'Comma-separated list of user IDs to filter the slots',
-						routing: {
-							send: {
-								type: 'query',
-								property: 'userIds',
-							},
-						},
-					},
-				],
-			},
-			{
-				displayName: 'Apply Look Busy',
-				name: 'enableLookBusy',
-				type: 'boolean',
-				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
-				description: 'Apply Look Busy to the slots',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'enableLookBusy',
-					},
-				},
-			},
 		],
 	},
 ];
 
 export const calendarFields: INodeProperties[] = [
-	...bookAppointmentProperties,
+	...createProperties,
+	...updateProperties,
+	...deleteProperties,
+	...getProperties,
+	...getAllProperties,
 	...getFreeSlotsProperties,
 ];

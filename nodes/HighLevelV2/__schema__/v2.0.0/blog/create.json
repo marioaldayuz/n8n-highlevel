@@ -1,1 +1,72 @@
- 
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"title": {
+			"type": "string",
+			"description": "Title of the blog post"
+		},
+		"locationId": {
+			"type": "string",
+			"description": "The HighLevel location ID"
+		},
+		"blogId": {
+			"type": "string",
+			"description": "The blog ID where the post will be created"
+		},
+		"rawHTML": {
+			"type": "string",
+			"description": "HTML content of the blog post"
+		},
+		"status": {
+			"type": "string",
+			"enum": ["DRAFT", "PUBLISHED", "SCHEDULED"],
+			"description": "Status of the blog post"
+		},
+		"description": {
+			"type": "string",
+			"description": "A short description of the blog post"
+		},
+		"imageUrl": {
+			"type": "string",
+			"description": "URL of the blog image"
+		},
+		"imageAltText": {
+			"type": "string",
+			"description": "Alt text for the blog image"
+		},
+		"categories": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "Category IDs for the blog post"
+		},
+		"tags": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "Tags for the blog post"
+		},
+		"author": {
+			"type": "string",
+			"description": "Author ID for the blog post"
+		},
+		"urlSlug": {
+			"type": "string",
+			"description": "URL slug for the blog post"
+		},
+		"canonicalLink": {
+			"type": "string",
+			"description": "Canonical URL for the blog post"
+		},
+		"publishedAt": {
+			"type": "string",
+			"format": "date-time",
+			"description": "Date and time when the blog post was/will be published"
+		}
+	},
+	"required": ["title", "locationId", "blogId", "rawHTML", "status"],
+	"additionalProperties": false
+}

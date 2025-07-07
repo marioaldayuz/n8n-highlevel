@@ -1,9 +1,40 @@
 {
-    "type": "object",
-    "properties": {
-        "traceId": {
-            "type": "string"
-        }
-    },
-    "version": 1
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"slots": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"startTime": {
+						"type": "number",
+						"description": "Start time of the free slot (Unix timestamp)"
+					},
+					"endTime": {
+						"type": "number",
+						"description": "End time of the free slot (Unix timestamp)"
+					},
+					"date": {
+						"type": "string",
+						"format": "date",
+						"description": "Date of the slot"
+					},
+					"available": {
+						"type": "boolean",
+						"description": "Whether the slot is available"
+					}
+				}
+			}
+		},
+		"timezone": {
+			"type": "string",
+			"description": "Timezone used for the slots"
+		},
+		"calendarId": {
+			"type": "string",
+			"description": "Calendar ID for which slots were retrieved"
+		}
+	},
+	"additionalProperties": false
 }

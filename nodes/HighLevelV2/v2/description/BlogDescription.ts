@@ -1,7 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 import {
-	addLocationIdPreSendAction,
 	splitTagsPreSendAction,
 } from '../GenericFunctions';
 
@@ -23,10 +22,13 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/blogs/posts',
+						url: 'https://services.leadconnectorhq.com/blogs/posts',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 					send: {
-						preSend: [addLocationIdPreSendAction, splitTagsPreSendAction],
+						preSend: [splitTagsPreSendAction],
 					},
 					output: {
 						postReceive: [
@@ -47,7 +49,10 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/blogs/posts/{{$parameter.blogId}}',
+						url: 'https://services.leadconnectorhq.com/blogs/posts/={{$parameter["postId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 					output: {
 						postReceive: [
@@ -68,7 +73,10 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/blogs/posts/{{$parameter.blogId}}',
+						url: 'https://services.leadconnectorhq.com/blogs/posts/={{$parameter["postId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 					output: {
 						postReceive: [
@@ -89,10 +97,12 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '/blogs/posts',
+						url: 'https://services.leadconnectorhq.com/blogs/posts',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 					send: {
-						preSend: [addLocationIdPreSendAction],
 						paginate: true,
 					},
 				},
@@ -104,7 +114,10 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'PUT',
-						url: '=/blogs/posts/{{$parameter.blogId}}',
+						url: 'https://services.leadconnectorhq.com/blogs/posts/={{$parameter["postId"]}}',
+						headers: {
+							'Version': '2021-07-28',
+						},
 					},
 					send: {
 						preSend: [splitTagsPreSendAction],
@@ -149,8 +162,48 @@ const createProperties: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Content',
-		name: 'content',
+		displayName: 'Location ID',
+		name: 'locationId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['blog'],
+				operation: ['create'],
+			},
+		},
+		default: '',
+		description: 'The HighLevel location ID',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'locationId',
+			},
+		},
+	},
+	{
+		displayName: 'Blog ID',
+		name: 'blogId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['blog'],
+				operation: ['create'],
+			},
+		},
+		default: '',
+		description: 'The blog ID where the post will be created',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'blogId',
+			},
+		},
+	},
+	{
+		displayName: 'Raw HTML',
+		name: 'rawHTML',
 		type: 'string',
 		typeOptions: {
 			rows: 10,
@@ -167,7 +220,41 @@ const createProperties: INodeProperties[] = [
 		routing: {
 			send: {
 				type: 'body',
-				property: 'content',
+				property: 'rawHTML',
+			},
+		},
+	},
+	{
+		displayName: 'Status',
+		name: 'status',
+		type: 'options',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['blog'],
+				operation: ['create'],
+			},
+		},
+		options: [
+			{
+				name: 'Draft',
+				value: 'DRAFT',
+			},
+			{
+				name: 'Published',
+				value: 'PUBLISHED',
+			},
+			{
+				name: 'Scheduled',
+				value: 'SCHEDULED',
+			},
+		],
+		default: 'DRAFT',
+		description: 'Status of the blog post',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'status',
 			},
 		},
 	},
@@ -185,28 +272,28 @@ const createProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Excerpt',
-				name: 'excerpt',
+				displayName: 'Author',
+				name: 'author',
 				type: 'string',
 				default: '',
-				description: 'Brief excerpt or summary of the blog post',
+				description: 'Author ID for the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'excerpt',
+						property: 'author',
 					},
 				},
 			},
 			{
-				displayName: 'Slug',
-				name: 'slug',
+				displayName: 'Canonical Link',
+				name: 'canonicalLink',
 				type: 'string',
 				default: '',
-				description: 'URL-friendly slug for the blog post',
+				description: 'Canonical URL for the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'slug',
+						property: 'canonicalLink',
 					},
 				},
 			},
@@ -214,13 +301,65 @@ const createProperties: INodeProperties[] = [
 				displayName: 'Categories',
 				name: 'categories',
 				type: 'string',
-				hint: 'Comma separated list of categories, array of strings can be set in expression',
+				hint: 'Comma separated list of category IDs, array of strings can be set in expression',
 				default: '',
-				description: 'Categories for the blog post',
+				description: 'Category IDs for the blog post',
 				routing: {
 					send: {
 						type: 'body',
 						property: 'categories',
+					},
+				},
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'A short description of the blog post',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'description',
+					},
+				},
+			},
+			{
+				displayName: 'Image Alt Text',
+				name: 'imageAltText',
+				type: 'string',
+				default: '',
+				description: 'Alt text for the blog image',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'imageAltText',
+					},
+				},
+			},
+			{
+				displayName: 'Image URL',
+				name: 'imageUrl',
+				type: 'string',
+				default: '',
+				description: 'URL of the blog image',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'imageUrl',
+					},
+				},
+			},
+			{
+				displayName: 'Published At',
+				name: 'publishedAt',
+				type: 'dateTime',
+				default: '',
+				description: 'Date and time when the blog post was/will be published',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'publishedAt',
 					},
 				},
 			},
@@ -239,138 +378,15 @@ const createProperties: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Status',
-				name: 'status',
-				type: 'options',
-				options: [
-					{
-						name: 'Draft',
-						value: 'draft',
-					},
-					{
-						name: 'Published',
-						value: 'published',
-					},
-					{
-						name: 'Scheduled',
-						value: 'scheduled',
-					},
-					{
-						name: 'Archived',
-						value: 'archived',
-					},
-				],
-				default: 'draft',
-				description: 'Status of the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'status',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Image URL',
-				name: 'featuredImageUrl',
+				displayName: 'URL Slug',
+				name: 'urlSlug',
 				type: 'string',
 				default: '',
-				description: 'URL of the featured image',
+				description: 'URL slug for the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'featuredImage.url',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Image Alt Text',
-				name: 'featuredImageAlt',
-				type: 'string',
-				default: '',
-				description: 'Alt text for the featured image',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'featuredImage.alt',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Title',
-				name: 'seoTitle',
-				type: 'string',
-				default: '',
-				description: 'SEO-optimized title for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoTitle',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Description',
-				name: 'seoDescription',
-				type: 'string',
-				default: '',
-				description: 'SEO meta description for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoDescription',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Keywords',
-				name: 'seoKeywords',
-				type: 'string',
-				hint: 'Comma separated list of SEO keywords',
-				default: '',
-				description: 'SEO keywords for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoKeywords',
-					},
-				},
-			},
-			{
-				displayName: 'Enable Comments',
-				name: 'isCommentEnabled',
-				type: 'boolean',
-				default: true,
-				description: 'Whether comments are enabled for this blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'isCommentEnabled',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Post',
-				name: 'isFeatured',
-				type: 'boolean',
-				default: false,
-				description: 'Whether this blog post is featured',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'isFeatured',
-					},
-				},
-			},
-			{
-				displayName: 'Scheduled For',
-				name: 'scheduledFor',
-				type: 'dateTime',
-				default: '',
-				description: 'Date and time to publish the blog post (for scheduled status)',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'scheduledFor',
+						property: 'urlSlug',
 					},
 				},
 			},
@@ -380,8 +396,8 @@ const createProperties: INodeProperties[] = [
 
 const updateProperties: INodeProperties[] = [
 	{
-		displayName: 'Blog ID',
-		name: 'blogId',
+		displayName: 'Post ID',
+		name: 'postId',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -407,21 +423,125 @@ const updateProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Title',
-				name: 'title',
+				displayName: 'Author',
+				name: 'author',
 				type: 'string',
 				default: '',
-				description: 'Title of the blog post',
+				description: 'Author ID for the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'title',
+						property: 'author',
 					},
 				},
 			},
 			{
-				displayName: 'Content',
-				name: 'content',
+				displayName: 'Blog ID',
+				name: 'blogId',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'blogId',
+					},
+				},
+			},
+			{
+				displayName: 'Canonical Link',
+				name: 'canonicalLink',
+				type: 'string',
+				default: '',
+				description: 'Canonical URL for the blog post',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'canonicalLink',
+					},
+				},
+			},
+			{
+				displayName: 'Categories',
+				name: 'categories',
+				type: 'string',
+				hint: 'Comma separated list of category IDs, array of strings can be set in expression',
+				default: '',
+				description: 'Category IDs for the blog post',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'categories',
+					},
+				},
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'A short description of the blog post',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'description',
+					},
+				},
+			},
+			{
+				displayName: 'Image Alt Text',
+				name: 'imageAltText',
+				type: 'string',
+				default: '',
+				description: 'Alt text for the blog image',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'imageAltText',
+					},
+				},
+			},
+			{
+				displayName: 'Image URL',
+				name: 'imageUrl',
+				type: 'string',
+				default: '',
+				description: 'URL of the blog image',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'imageUrl',
+					},
+				},
+			},
+			{
+				displayName: 'Location ID',
+				name: 'locationId',
+				type: 'string',
+				default: '',
+				description: 'The HighLevel location ID',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'locationId',
+					},
+				},
+			},
+			{
+				displayName: 'Published At',
+				name: 'publishedAt',
+				type: 'dateTime',
+				default: '',
+				description: 'Date and time when the blog post was/will be published',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'publishedAt',
+					},
+				},
+			},
+			{
+				displayName: 'Raw HTML',
+				name: 'rawHTML',
 				type: 'string',
 				typeOptions: {
 					rows: 10,
@@ -431,47 +551,34 @@ const updateProperties: INodeProperties[] = [
 				routing: {
 					send: {
 						type: 'body',
-						property: 'content',
+						property: 'rawHTML',
 					},
 				},
 			},
 			{
-				displayName: 'Excerpt',
-				name: 'excerpt',
-				type: 'string',
-				default: '',
-				description: 'Brief excerpt or summary of the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'excerpt',
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{
+						name: 'Draft',
+						value: 'DRAFT',
 					},
-				},
-			},
-			{
-				displayName: 'Slug',
-				name: 'slug',
-				type: 'string',
-				default: '',
-				description: 'URL-friendly slug for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'slug',
+					{
+						name: 'Published',
+						value: 'PUBLISHED',
 					},
-				},
-			},
-			{
-				displayName: 'Categories',
-				name: 'categories',
-				type: 'string',
-				hint: 'Comma separated list of categories, array of strings can be set in expression',
-				default: '',
-				description: 'Categories for the blog post',
+					{
+						name: 'Scheduled',
+						value: 'SCHEDULED',
+					},
+				],
+				default: 'DRAFT',
+				description: 'Status of the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'categories',
+						property: 'status',
 					},
 				},
 			},
@@ -490,138 +597,28 @@ const updateProperties: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Status',
-				name: 'status',
-				type: 'options',
-				options: [
-					{
-						name: 'Draft',
-						value: 'draft',
-					},
-					{
-						name: 'Published',
-						value: 'published',
-					},
-					{
-						name: 'Scheduled',
-						value: 'scheduled',
-					},
-					{
-						name: 'Archived',
-						value: 'archived',
-					},
-				],
-				default: 'draft',
-				description: 'Status of the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'status',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Image URL',
-				name: 'featuredImageUrl',
+				displayName: 'Title',
+				name: 'title',
 				type: 'string',
 				default: '',
-				description: 'URL of the featured image',
+				description: 'Title of the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'featuredImage.url',
+						property: 'title',
 					},
 				},
 			},
 			{
-				displayName: 'Featured Image Alt Text',
-				name: 'featuredImageAlt',
+				displayName: 'URL Slug',
+				name: 'urlSlug',
 				type: 'string',
 				default: '',
-				description: 'Alt text for the featured image',
+				description: 'URL slug for the blog post',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'featuredImage.alt',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Title',
-				name: 'seoTitle',
-				type: 'string',
-				default: '',
-				description: 'SEO-optimized title for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoTitle',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Description',
-				name: 'seoDescription',
-				type: 'string',
-				default: '',
-				description: 'SEO meta description for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoDescription',
-					},
-				},
-			},
-			{
-				displayName: 'SEO Keywords',
-				name: 'seoKeywords',
-				type: 'string',
-				hint: 'Comma separated list of SEO keywords',
-				default: '',
-				description: 'SEO keywords for the blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'seoKeywords',
-					},
-				},
-			},
-			{
-				displayName: 'Enable Comments',
-				name: 'isCommentEnabled',
-				type: 'boolean',
-				default: true,
-				description: 'Whether comments are enabled for this blog post',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'isCommentEnabled',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Post',
-				name: 'isFeatured',
-				type: 'boolean',
-				default: false,
-				description: 'Whether this blog post is featured',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'isFeatured',
-					},
-				},
-			},
-			{
-				displayName: 'Scheduled For',
-				name: 'scheduledFor',
-				type: 'dateTime',
-				default: '',
-				description: 'Date and time to publish the blog post (for scheduled status)',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'scheduledFor',
+						property: 'urlSlug',
 					},
 				},
 			},
@@ -631,8 +628,8 @@ const updateProperties: INodeProperties[] = [
 
 const deleteProperties: INodeProperties[] = [
 	{
-		displayName: 'Blog ID',
-		name: 'blogId',
+		displayName: 'Post ID',
+		name: 'postId',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -648,8 +645,8 @@ const deleteProperties: INodeProperties[] = [
 
 const getProperties: INodeProperties[] = [
 	{
-		displayName: 'Blog ID',
-		name: 'blogId',
+		displayName: 'Post ID',
+		name: 'postId',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -690,7 +687,6 @@ const getAllProperties: INodeProperties[] = [
 		},
 		typeOptions: {
 			minValue: 1,
-
 		},
 		default: 50,
 		description: 'Max number of results to return',
@@ -715,6 +711,32 @@ const getAllProperties: INodeProperties[] = [
 		},
 		options: [
 			{
+				displayName: 'Location ID',
+				name: 'locationId',
+				type: 'string',
+				default: '',
+				description: 'Filter blog posts by location ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'locationId',
+					},
+				},
+			},
+			{
+				displayName: 'Blog ID',
+				name: 'blogId',
+				type: 'string',
+				default: '',
+				description: 'Filter blog posts by blog ID',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'blogId',
+					},
+				},
+			},
+			{
 				displayName: 'Status',
 				name: 'status',
 				type: 'options',
@@ -725,19 +747,15 @@ const getAllProperties: INodeProperties[] = [
 					},
 					{
 						name: 'Draft',
-						value: 'draft',
+						value: 'DRAFT',
 					},
 					{
 						name: 'Published',
-						value: 'published',
+						value: 'PUBLISHED',
 					},
 					{
 						name: 'Scheduled',
-						value: 'scheduled',
-					},
-					{
-						name: 'Archived',
-						value: 'archived',
+						value: 'SCHEDULED',
 					},
 				],
 				default: 'all',
@@ -746,97 +764,6 @@ const getAllProperties: INodeProperties[] = [
 					send: {
 						type: 'query',
 						property: 'status',
-					},
-				},
-			},
-			{
-				displayName: 'Category',
-				name: 'category',
-				type: 'string',
-				default: '',
-				description: 'Filter blog posts by category',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'category',
-					},
-				},
-			},
-			{
-				displayName: 'Tag',
-				name: 'tag',
-				type: 'string',
-				default: '',
-				description: 'Filter blog posts by tag',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'tag',
-					},
-				},
-			},
-			{
-				displayName: 'Author ID',
-				name: 'authorId',
-				type: 'string',
-				default: '',
-				description: 'Filter blog posts by author ID',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'authorId',
-					},
-				},
-			},
-			{
-				displayName: 'Featured Only',
-				name: 'featured',
-				type: 'boolean',
-				default: false,
-				description: 'Return only featured blog posts',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'featured',
-					},
-				},
-			},
-			{
-				displayName: 'Sort Order',
-				name: 'sortOrder',
-				type: 'options',
-				options: [
-					{
-						name: 'Created Date (Newest First)',
-						value: 'createdAt:desc',
-					},
-					{
-						name: 'Created Date (Oldest First)',
-						value: 'createdAt:asc',
-					},
-					{
-						name: 'Updated Date (Newest First)',
-						value: 'updatedAt:desc',
-					},
-					{
-						name: 'Updated Date (Oldest First)',
-						value: 'updatedAt:asc',
-					},
-					{
-						name: 'Title (A-Z)',
-						value: 'title:asc',
-					},
-					{
-						name: 'Title (Z-A)',
-						value: 'title:desc',
-					},
-				],
-				default: 'createdAt:desc',
-				description: 'Sort order for the blog posts',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'sortOrder',
 					},
 				},
 			},
@@ -850,4 +777,5 @@ export const blogFields: INodeProperties[] = [
 	...deleteProperties,
 	...getProperties,
 	...getAllProperties,
-]; 
+];
+

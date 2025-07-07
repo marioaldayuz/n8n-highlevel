@@ -1,0 +1,53 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"locationId": {
+			"type": "string",
+			"description": "The HighLevel location ID"
+		},
+		"name": {
+			"type": "string",
+			"description": "Name of the calendar"
+		},
+		"description": {
+			"type": "string",
+			"description": "Description of the calendar"
+		},
+		"appointmentDuration": {
+			"type": "number",
+			"description": "Default appointment duration in minutes"
+		},
+		"availability": {
+			"type": "object",
+			"description": "Availability settings for the calendar"
+		},
+		"bufferTime": {
+			"type": "number",
+			"description": "Buffer time in minutes between appointments"
+		},
+		"calendarType": {
+			"type": "string",
+			"enum": ["round_robin_event", "round_robin_availability", "service_menu", "class_booking"],
+			"description": "Type of calendar"
+		},
+		"enableRecurring": {
+			"type": "boolean",
+			"description": "Whether to enable recurring appointments"
+		},
+		"eventColor": {
+			"type": "string",
+			"description": "Color for calendar events"
+		},
+		"eventTitle": {
+			"type": "string",
+			"description": "Default title for calendar events"
+		},
+		"slug": {
+			"type": "string",
+			"description": "URL slug for the calendar"
+		}
+	},
+	"required": ["locationId", "name"],
+	"additionalProperties": false
+}
