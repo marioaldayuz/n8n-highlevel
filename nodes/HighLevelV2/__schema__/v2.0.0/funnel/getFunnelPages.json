@@ -1,0 +1,111 @@
+{
+    "type": "object",
+    "properties": {
+        "pages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "pageType": {
+                        "type": "string",
+                        "enum": ["landing", "thankyou", "sales", "checkout", "upsell", "downsell"]
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "draft"]
+                    },
+                    "funnelId": {
+                        "type": "string"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "seoTitle": {
+                        "type": "string"
+                    },
+                    "seoDescription": {
+                        "type": "string"
+                    },
+                    "seoKeywords": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "favicon": {
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "views": {
+                        "type": "number"
+                    },
+                    "conversions": {
+                        "type": "number"
+                    },
+                    "conversionRate": {
+                        "type": "number"
+                    },
+                    "isOptinPage": {
+                        "type": "boolean"
+                    },
+                    "isMobileFriendly": {
+                        "type": "boolean"
+                    },
+                    "sortOrder": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "count": {
+                    "type": "number"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                },
+                "funnelId": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

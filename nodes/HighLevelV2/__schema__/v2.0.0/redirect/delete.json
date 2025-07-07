@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        },
+        "deletedRedirect": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "sourceUrl": {
+                    "type": "string"
+                },
+                "targetUrl": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

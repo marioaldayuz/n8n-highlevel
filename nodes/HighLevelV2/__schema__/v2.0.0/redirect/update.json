@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "redirect": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "sourceUrl": {
+                    "type": "string"
+                },
+                "targetUrl": {
+                    "type": "string"
+                },
+                "redirectType": {
+                    "type": "string",
+                    "enum": ["301", "302"]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "clickCount": {
+                    "type": "number"
+                },
+                "lastAccessed": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        }
+    },
+    "version": 1
+} 

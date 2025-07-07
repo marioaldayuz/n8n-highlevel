@@ -21,7 +21,10 @@ import { objectAssociationsFields, objectAssociationsOperations } from './descri
 import { productFields, productOperations } from './description/ProductDescription';
 import { emailFields, emailOperations } from './description/EmailDescription';
 import { formFields, formOperations } from './description/FormDescription';
+import { funnelFields, funnelOperations } from './description/FunnelDescription';
+import { mediaFields, mediaOperations } from './description/MediaDescription';
 import { opportunityFields, opportunityOperations } from './description/OpportunityDescription';
+import { redirectFields, redirectOperations } from './description/RedirectDescription';
 import { saasFields, saasOperations } from './description/SaaSDescription';
 import { socialPlannerFields, socialPlannerOperations } from './description/SocialPlannerDescription';
 import { subAccountFields, subAccountOperations } from './description/SubAccountDescription';
@@ -83,6 +86,14 @@ const resources: INodeProperties[] = [
 				value: 'form',
 			},
 			{
+				name: 'Funnel',
+				value: 'funnel',
+			},
+			{
+				name: 'Media',
+				value: 'media',
+			},
+			{
 				name: 'Object Associations',
 				value: 'objectAssociations',
 			},
@@ -93,6 +104,10 @@ const resources: INodeProperties[] = [
 			{
 				name: 'Product',
 				value: 'product',
+			},
+			{
+				name: 'Redirect',
+				value: 'redirect',
 			},
 			{
 				name: 'SaaS',
@@ -180,12 +195,18 @@ const versionDescription: INodeTypeDescription = {
 		...emailFields,
 		...formOperations,
 		...formFields,
+		...funnelOperations,
+		...funnelFields,
+		...mediaOperations,
+		...mediaFields,
 		...objectAssociationsOperations,
 		...objectAssociationsFields,
 		...opportunityOperations,
 		...opportunityFields,
 		...productOperations,
 		...productFields,
+		...redirectOperations,
+		...redirectFields,
 		...saasOperations,
 		...saasFields,
 		...taskOperations,

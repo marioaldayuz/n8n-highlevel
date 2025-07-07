@@ -153,6 +153,39 @@ export async function addLocationIdPreSendAction(
 		}
 	}
 
+	if (resource === 'media') {
+		if (operation === 'getFiles') {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { locationId });
+		}
+		if (operation === 'uploadFile') {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+	}
+
+	if (resource === 'redirect') {
+		if (operation === 'getAll') {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { locationId });
+		}
+		if (operation === 'create') {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+		if (operation === 'update') {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+	}
+
+	if (resource === 'funnel') {
+		if (['getFunnels', 'getFunnelPages', 'getPageCount'].includes(operation)) {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { locationId });
+		}
+	}
+
 	return requestOptions;
 }
 
@@ -289,7 +322,10 @@ export async function highLevelApiPagination(
 		conversation: 'conversations',
 		email: 'emails',
 		form: 'forms',
+		funnel: 'funnels',
+		media: 'files',
 		opportunity: 'opportunities',
+		redirect: 'redirects',
 		saas: 'saas',
 		survey: 'surveys',
 		user: 'users',

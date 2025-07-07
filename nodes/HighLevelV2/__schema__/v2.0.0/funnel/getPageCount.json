@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "count": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "active": {
+                    "type": "number"
+                },
+                "inactive": {
+                    "type": "number"
+                },
+                "draft": {
+                    "type": "number"
+                },
+                "byType": {
+                    "type": "object",
+                    "properties": {
+                        "landing": {
+                            "type": "number"
+                        },
+                        "thankyou": {
+                            "type": "number"
+                        },
+                        "sales": {
+                            "type": "number"
+                        },
+                        "checkout": {
+                            "type": "number"
+                        },
+                        "upsell": {
+                            "type": "number"
+                        },
+                        "downsell": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "funnelId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        }
+    },
+    "version": 1
+} 

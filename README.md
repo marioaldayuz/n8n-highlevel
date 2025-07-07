@@ -93,6 +93,11 @@ This node provides access to the following HighLevel resources and operations:
 - **Get Form Submissions**: Retrieve form responses
 - **Upload File**: Handle form file uploads
 
+### 📁 Media Management
+- **Get List of Files**: Retrieve all files and folders in the media library
+- **Upload File**: Upload files to the media library with metadata
+- **Delete File or Folder**: Remove files or folders from the media library
+
 ### 🎯 Opportunity Management
 - **Create**: Add new opportunities
 - **Update**: Modify opportunity details
@@ -106,6 +111,17 @@ This node provides access to the following HighLevel resources and operations:
 - **Update**: Modify existing product information
 - **Delete**: Remove products from inventory
 - **Bulk Update**: Update multiple products at once
+
+### 🔀 Redirect Management
+- **Create**: Create new URL redirects (301/302)
+- **Get All**: List all redirects with filtering options
+- **Update**: Modify existing redirect rules
+- **Delete**: Remove redirects from the system
+
+### 🕳️ Funnel Management
+- **Get All Funnels**: List all funnels with filtering and search
+- **Get Funnel Pages**: Retrieve all pages within a specific funnel
+- **Get Page Count**: Get detailed count statistics for funnel pages
 
 ### 🗂️ Custom Objects
 - **Create Custom Object**: Define new custom object schemas
@@ -282,6 +298,132 @@ The node automatically handles location-specific token management and API versio
   "tags": "clothing,premium,cotton",
   "weight": 0.3,
   "taxRate": 8.5
+}
+```
+
+### Media Management
+```javascript
+// Get list of files from media library
+{
+  "resource": "media",
+  "operation": "getFiles",
+  "additionalFields": {
+    "folderId": "folder-123",
+    "search": "image",
+    "sortBy": "createdAt",
+    "sortOrder": "desc",
+    "limit": 50
+  }
+}
+
+// Upload a file to media library
+{
+  "resource": "media",
+  "operation": "uploadFile",
+  "fileData": "base64encodedfiledata...",
+  "fileName": "marketing-image.jpg",
+  "additionalFields": {
+    "folderId": "folder-456",
+    "description": "Marketing campaign image",
+    "tags": "marketing,campaign,image",
+    "isPublic": true
+  }
+}
+
+// Delete a file from media library
+{
+  "resource": "media",
+  "operation": "deleteFile",
+  "fileId": "file-789",
+  "additionalFields": {
+    "forceDelete": false
+  }
+}
+```
+
+### Redirect Management
+```javascript
+// Create a URL redirect
+{
+  "resource": "redirect",
+  "operation": "create",
+  "sourceUrl": "/old-product-page",
+  "targetUrl": "/new-product-page",
+  "additionalFields": {
+    "redirectType": "301",
+    "description": "Product page redesign redirect",
+    "isActive": true
+  }
+}
+
+// Get all redirects with filtering
+{
+  "resource": "redirect",
+  "operation": "getAll",
+  "additionalFields": {
+    "status": "active",
+    "search": "product",
+    "limit": 50,
+    "offset": 0
+  }
+}
+
+// Update an existing redirect
+{
+  "resource": "redirect",
+  "operation": "update",
+  "redirectId": "redirect-123",
+  "updateFields": {
+    "targetUrl": "/updated-target-page",
+    "redirectType": "302",
+    "isActive": false
+  }
+}
+
+// Delete a redirect
+{
+  "resource": "redirect",
+  "operation": "delete",
+  "redirectId": "redirect-123"
+}
+```
+
+### Funnel Management
+```javascript
+// Get all funnels with filtering
+{
+  "resource": "funnel",
+  "operation": "getFunnels",
+  "additionalFields": {
+    "status": "active",
+    "category": "lead-generation",
+    "search": "marketing",
+    "limit": 20,
+    "offset": 0
+  }
+}
+
+// Get pages for a specific funnel
+{
+  "resource": "funnel",
+  "operation": "getFunnelPages",
+  "funnelId": "funnel-123",
+  "additionalFields": {
+    "pageType": "landing",
+    "status": "active",
+    "limit": 50
+  }
+}
+
+// Get page count statistics for a funnel
+{
+  "resource": "funnel",
+  "operation": "getPageCount",
+  "funnelId": "funnel-123",
+  "additionalFields": {
+    "pageType": "all",
+    "status": "active"
+  }
 }
 ```
 

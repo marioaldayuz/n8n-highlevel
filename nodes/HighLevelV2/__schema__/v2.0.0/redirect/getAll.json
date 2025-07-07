@@ -1,0 +1,68 @@
+{
+    "type": "object",
+    "properties": {
+        "redirects": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "sourceUrl": {
+                        "type": "string"
+                    },
+                    "targetUrl": {
+                        "type": "string"
+                    },
+                    "redirectType": {
+                        "type": "string",
+                        "enum": ["301", "302"]
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "isActive": {
+                        "type": "boolean"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "clickCount": {
+                        "type": "number"
+                    },
+                    "lastAccessed": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "count": {
+                    "type": "number"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

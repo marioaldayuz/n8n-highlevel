@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "funnels": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["active", "inactive", "draft"]
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "pageCount": {
+                        "type": "number"
+                    },
+                    "conversionRate": {
+                        "type": "number"
+                    },
+                    "totalViews": {
+                        "type": "number"
+                    },
+                    "totalConversions": {
+                        "type": "number"
+                    },
+                    "domain": {
+                        "type": "string"
+                    },
+                    "subDomain": {
+                        "type": "string"
+                    },
+                    "favicon": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "count": {
+                    "type": "number"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

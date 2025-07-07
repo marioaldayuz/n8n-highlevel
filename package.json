@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-highlevelv2",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "n8n community node for HighLevel v2 API integration - comprehensive CRM, marketing automation, and business management platform",
   "keywords": [
     "n8n-community-node-package",

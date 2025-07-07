@@ -1,0 +1,68 @@
+{
+    "type": "object",
+    "properties": {
+        "file": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "thumbnailUrl": {
+                    "type": "string"
+                },
+                "folderId": {
+                    "type": "string"
+                },
+                "isFolder": {
+                    "type": "boolean"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "isPublic": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        }
+    },
+    "version": 1
+} 
