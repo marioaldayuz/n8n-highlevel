@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "contact": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "contactName": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "dateAdded": {
+                    "type": "string"
+                },
+                "dateUpdated": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        },
+        "removedTags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "version": 1
+} 

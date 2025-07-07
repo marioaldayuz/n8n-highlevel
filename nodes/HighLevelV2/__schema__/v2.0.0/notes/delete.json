@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "success": {
+            "type": "boolean"
+        },
+        "message": {
+            "type": "string"
+        },
+        "deletedNote": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "contactId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

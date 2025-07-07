@@ -98,6 +98,13 @@ This node provides access to the following HighLevel resources and operations:
 - **Upload File**: Upload files to the media library with metadata
 - **Delete File or Folder**: Remove files or folders from the media library
 
+### 📝 Notes Management
+- **Create**: Add new notes to contacts
+- **Get**: Retrieve specific note details
+- **Get All**: List all notes for a contact with pagination
+- **Update**: Modify existing note content
+- **Delete**: Remove notes from contacts
+
 ### 🎯 Opportunity Management
 - **Create**: Add new opportunities
 - **Update**: Modify opportunity details
@@ -177,6 +184,12 @@ This node provides access to the following HighLevel resources and operations:
 
 ### ✅ Task Management
 - **Create**: Add new tasks to the system
+
+### 🏷️ Tags Management
+- **Add Tags**: Add multiple tags to contacts
+- **Remove Tags**: Remove specific tags from contacts
+- **Bulk Operations**: Handle multiple tags at once
+- **Format Support**: Accept comma-separated or array format
 
 ### 👤 User Management
 - **Create User**: Add new users
@@ -505,6 +518,108 @@ The node automatically handles location-specific token management and API versio
   "associationId": "assoc_123",
   "filterOptions": {
     "recordId": "contact_456"
+  }
+}
+```
+
+### Notes Management
+```javascript
+// Create a note for a contact
+{
+  "resource": "notes",
+  "operation": "create",
+  "contactId": "contact_123",
+  "body": "Follow up with customer regarding their inquiry about pricing.",
+  "additionalFields": {
+    "userId": "user_456"
+  }
+}
+
+// Get all notes for a contact
+{
+  "resource": "notes",
+  "operation": "getAll",
+  "contactId": "contact_123",
+  "additionalFields": {
+    "limit": 20,
+    "offset": 0
+  }
+}
+
+// Get a specific note
+{
+  "resource": "notes",
+  "operation": "get",
+  "contactId": "contact_123",
+  "noteId": "note_789"
+}
+
+// Update a note
+{
+  "resource": "notes",
+  "operation": "update",
+  "contactId": "contact_123",
+  "noteId": "note_789",
+  "updateFields": {
+    "body": "Updated: Customer confirmed interest in premium package.",
+    "userId": "user_456"
+  }
+}
+
+// Delete a note
+{
+  "resource": "notes",
+  "operation": "delete",
+  "contactId": "contact_123",
+  "noteId": "note_789"
+}
+```
+
+### Tags Management
+```javascript
+// Add tags to a contact
+{
+  "resource": "tags",
+  "operation": "addTags",
+  "contactId": "contact_123",
+  "tags": "vip,priority-follow-up,interested-in-premium",
+  "additionalFields": {
+    "userId": "user_456",
+    "source": "workflow"
+  }
+}
+
+// Add tags using array format
+{
+  "resource": "tags",
+  "operation": "addTags",
+  "contactId": "contact_123",
+  "tags": ["hot-lead", "scheduled-demo", "high-value"],
+  "additionalFields": {
+    "source": "automated-scoring"
+  }
+}
+
+// Remove tags from a contact
+{
+  "resource": "tags",
+  "operation": "removeTags",
+  "contactId": "contact_123",
+  "tags": "old-tag,outdated-info",
+  "additionalFields": {
+    "userId": "user_456",
+    "source": "cleanup"
+  }
+}
+
+// Remove multiple tags using array format
+{
+  "resource": "tags",
+  "operation": "removeTags",
+  "contactId": "contact_123",
+  "tags": ["cold-lead", "unresponsive", "low-priority"],
+  "additionalFields": {
+    "source": "bulk-cleanup"
   }
 }
 ```

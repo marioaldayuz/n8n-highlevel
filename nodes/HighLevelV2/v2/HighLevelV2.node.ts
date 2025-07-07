@@ -23,8 +23,10 @@ import { emailFields, emailOperations } from './description/EmailDescription';
 import { formFields, formOperations } from './description/FormDescription';
 import { funnelFields, funnelOperations } from './description/FunnelDescription';
 import { mediaFields, mediaOperations } from './description/MediaDescription';
+import { notesFields, notesOperations } from './description/NotesDescription';
 import { opportunityFields, opportunityOperations } from './description/OpportunityDescription';
 import { redirectFields, redirectOperations } from './description/RedirectDescription';
+import { tagsFields, tagsOperations } from './description/TagsDescription';
 import { saasFields, saasOperations } from './description/SaaSDescription';
 import { socialPlannerFields, socialPlannerOperations } from './description/SocialPlannerDescription';
 import { subAccountFields, subAccountOperations } from './description/SubAccountDescription';
@@ -94,6 +96,10 @@ const resources: INodeProperties[] = [
 				value: 'media',
 			},
 			{
+				name: 'Notes',
+				value: 'notes',
+			},
+			{
 				name: 'Object Associations',
 				value: 'objectAssociations',
 			},
@@ -132,6 +138,10 @@ const resources: INodeProperties[] = [
 			{
 				name: 'Survey',
 				value: 'survey',
+			},
+			{
+				name: 'Tags',
+				value: 'tags',
 			},
 			{
 				name: 'User',
@@ -199,6 +209,8 @@ const versionDescription: INodeTypeDescription = {
 		...funnelFields,
 		...mediaOperations,
 		...mediaFields,
+		...notesOperations,
+		...notesFields,
 		...objectAssociationsOperations,
 		...objectAssociationsFields,
 		...opportunityOperations,
@@ -219,6 +231,8 @@ const versionDescription: INodeTypeDescription = {
 		...subAccountFields,
 		...surveyOperations,
 		...surveyFields,
+		...tagsOperations,
+		...tagsFields,
 		...userOperations,
 		...userFields,
 	],

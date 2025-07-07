@@ -186,6 +186,24 @@ export async function addLocationIdPreSendAction(
 		}
 	}
 
+	if (resource === 'notes') {
+		if (['getAll'].includes(operation)) {
+			requestOptions.qs = requestOptions.qs ?? {};
+			Object.assign(requestOptions.qs, { locationId });
+		}
+		if (['create', 'update'].includes(operation)) {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+	}
+
+	if (resource === 'tags') {
+		if (['addTags', 'removeTags'].includes(operation)) {
+			requestOptions.body = requestOptions.body ?? {};
+			Object.assign(requestOptions.body, { locationId });
+		}
+	}
+
 	return requestOptions;
 }
 
@@ -324,10 +342,12 @@ export async function highLevelApiPagination(
 		form: 'forms',
 		funnel: 'funnels',
 		media: 'files',
+		notes: 'notes',
 		opportunity: 'opportunities',
 		redirect: 'redirects',
 		saas: 'saas',
 		survey: 'surveys',
+		tags: 'tags',
 		user: 'users',
 	};
 	const rootProperty = resourceMapping[resource];

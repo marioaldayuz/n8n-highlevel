@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "note": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "contactId": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "dateAdded": {
+                    "type": "string"
+                },
+                "dateUpdated": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "updatedBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        }
+    },
+    "version": 1
+} 
