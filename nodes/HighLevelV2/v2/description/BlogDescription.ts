@@ -23,7 +23,7 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/blogs/',
+						url: '/blogs/posts',
 					},
 					send: {
 						preSend: [addLocationIdPreSendAction, splitTagsPreSendAction],
@@ -47,7 +47,7 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/blogs/{{$parameter.blogId}}',
+						url: '=/blogs/posts/{{$parameter.blogId}}',
 					},
 					output: {
 						postReceive: [
@@ -68,7 +68,7 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/blogs/{{$parameter.blogId}}',
+						url: '=/blogs/posts/{{$parameter.blogId}}',
 					},
 					output: {
 						postReceive: [
@@ -89,7 +89,7 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '/blogs/',
+						url: '/blogs/posts',
 					},
 					send: {
 						preSend: [addLocationIdPreSendAction],
@@ -104,7 +104,7 @@ export const blogOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'PUT',
-						url: '=/blogs/{{$parameter.blogId}}',
+						url: '=/blogs/posts/{{$parameter.blogId}}',
 					},
 					send: {
 						preSend: [splitTagsPreSendAction],

@@ -22,7 +22,7 @@ export const mediaOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '/medias/',
+						url: '/media/',
 					},
 					send: {
 						preSend: [addLocationIdPreSendAction],
@@ -46,7 +46,7 @@ export const mediaOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/medias/upload-file',
+						url: '/media/upload-file',
 					},
 					send: {
 						preSend: [addLocationIdPreSendAction],
@@ -70,7 +70,7 @@ export const mediaOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/medias/{{$parameter.fileId}}',
+						url: '=/media/{{$parameter.fileId}}',
 					},
 					output: {
 						postReceive: [
