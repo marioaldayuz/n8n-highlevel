@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "groups": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "calendarIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "isActive": {
+                        "type": "boolean"
+                    },
+                    "teamId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        },
+        "total": {
+            "type": "number"
+        },
+        "count": {
+            "type": "number"
+        }
+    },
+    "version": 1
+} 

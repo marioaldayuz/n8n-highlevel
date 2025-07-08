@@ -65,7 +65,7 @@ export const notesOperations: INodeProperties[] = [
 				action: 'Get a specific note',
 			},
 			{
-				name: 'Get All',
+				name: 'Get Many',
 				value: 'getAll',
 				routing: {
 					request: {
@@ -86,7 +86,7 @@ export const notesOperations: INodeProperties[] = [
 						],
 					},
 				},
-				action: 'Get all notes for a contact',
+				action: 'Get many notes for a contact',
 			},
 			{
 				name: 'Update',
@@ -287,8 +287,11 @@ export const notesFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Maximum number of notes to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',

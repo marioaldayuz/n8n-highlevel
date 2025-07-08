@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "properties": {
+        "businesses": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "website": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "number"
+                },
+                "count": {
+                    "type": "number"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        }
+    },
+    "version": 1
+} 

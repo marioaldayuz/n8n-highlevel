@@ -626,8 +626,11 @@ const searchProperties: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
+				typeOptions: {
+					minValue: 1,
+				},
 				default: 50,
-				description: 'Maximum number of tasks to return',
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',

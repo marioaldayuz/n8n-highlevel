@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "appointment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "calendarId": {
+                    "type": "string"
+                },
+                "contactId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "appointmentStatus": {
+                    "type": "string"
+                },
+                "assignedUserId": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "endTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

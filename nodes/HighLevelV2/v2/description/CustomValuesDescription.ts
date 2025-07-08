@@ -65,7 +65,7 @@ export const customValuesOperations: INodeProperties[] = [
 				action: 'Get a specific custom value',
 			},
 			{
-				name: 'Get All',
+				name: 'Get Many',
 				value: 'getAll',
 				routing: {
 					request: {
@@ -86,7 +86,7 @@ export const customValuesOperations: INodeProperties[] = [
 						],
 					},
 				},
-				action: 'Get all custom values',
+				action: 'Get many custom values',
 			},
 			{
 				name: 'Update',
@@ -551,8 +551,11 @@ export const customValuesFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
+				typeOptions: {
+					minValue: 1,
+				},
 				default: 50,
-				description: 'Maximum number of custom values to return',
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',

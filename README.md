@@ -1,6 +1,6 @@
 # n8n-nodes-highlevelv2 (BETA)
 
-This is an n8n community node that provides **comprehensive integration** with the HighLevel API v2, featuring **25 resources** with **100+ operations**. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
+This is an n8n community node that provides **comprehensive integration** with the HighLevel API v2, featuring **30 resources** with **100+ operations**. It allows you to seamlessly connect your n8n workflows with HighLevel's powerful CRM, marketing automation, and business management platform.
 
 Get your 30 Day FREE Trial of [HighLevel](https://www.gohighlevel.com/marioaldayuz) by clicking [HERE](https://www.gohighlevel.com/marioaldayuz)!
 
@@ -24,8 +24,8 @@ Get your 30 Day FREE Trial of [HighLevel](https://www.gohighlevel.com/marioalday
 
 This comprehensive n8n community node provides complete coverage of the HighLevel API v2 with:
 
-### **25 Core Resources**
-Auth • Blog • Calendar • Contact • Conversation • Coupon • Custom Field • Custom Objects • Custom Values • Email • Form • Funnel • Media • Notes • Object Associations • Opportunity • Product • Redirect • SaaS • Social Planner • Sub-Account • Survey • Task • Tags • User
+### **30 Core Resources**
+Auth • Blog • Business • Calendar • Calendar Event • Calendar Group • Calendar Resource • Contact • Conversation • Coupon • Custom Field • Custom Objects • Custom Values • Email • Form • Funnel • Media • Notes • Appointment Notes • Object Associations • Opportunity • Product • Redirect • SaaS • Social Planner • Sub-Account • Survey • Task • Tags • User
 
 ### **100+ Operations** Including:
 - **Full CRUD Operations** across all resources
@@ -68,8 +68,44 @@ This node provides access to the following HighLevel resources and operations:
 - **Get All**: List all blog posts
 - **Delete**: Remove blog posts
 
-### 📅 Calendar
+### 🏢 Business Management
+- **Create**: Create new businesses with complete contact information
+- **Get**: Retrieve specific business details and contact information
+- **Get Many**: List multiple businesses with filtering and search capabilities
+- **Update**: Modify existing business information including contact details
+- **Delete**: Remove businesses from the system
+
+### 📅 Calendar Management
+- **Create**: Create new calendars
+- **Get**: Retrieve specific calendar details
+- **Get Many**: List multiple calendars with filtering options
+- **Update**: Modify existing calendar information
+- **Delete**: Remove calendars from the system
 - **Get Free Slots**: Retrieve available calendar slots for scheduling
+
+### 📅 Calendar Event Management  
+- **Create Appointment**: Schedule new appointments with full contact and calendar integration
+- **Update Appointment**: Modify existing appointment details, times, and status
+- **Get Appointment**: Retrieve specific appointment details by ID
+- **Create Block Slot**: Block calendar time slots to prevent bookings
+- **Update Block Slot**: Modify existing blocked time slots
+- **Get Blocked Slots**: List all blocked time slots with filtering options
+- **Delete Event**: Remove appointments or calendar events from the system
+
+### 📅 Calendar Group Management
+- **Create**: Create new calendar groups to organize multiple calendars
+- **Get Many**: List all calendar groups with filtering and search capabilities
+- **Update**: Modify existing calendar group settings and assignments
+- **Delete**: Remove calendar groups from the system
+- **Disable**: Temporarily disable calendar groups
+- **Validate Slug**: Check if a calendar group slug is available for use
+
+### 🔧 Calendar Resource Management
+- **Create**: Create new calendar resources like rooms, equipment, or other bookable items
+- **Get**: Retrieve specific calendar resource details by ID
+- **Get Many**: List all calendar resources with pagination and filtering
+- **Update**: Modify existing calendar resource information and settings
+- **Delete**: Remove calendar resources from the system
 
 ### 👥 Contact Management
 - **Create or Update**: Create new contacts or update existing ones (upsert operation)
@@ -101,7 +137,7 @@ This node provides access to the following HighLevel resources and operations:
 - **Update**: Modify existing coupon information
 - **Delete**: Remove coupons from the system
 
-### 🏷️ Custom Fields
+### 🏷️ Custom Fields Management
 - **Create**: Add new custom fields
 - **Update**: Modify existing custom fields
 - **Get**: Retrieve custom field details
@@ -111,6 +147,24 @@ This node provides access to the following HighLevel resources and operations:
 - **Update Folder**: Modify folder properties
 - **Delete Folder**: Remove custom field folders
 
+### 🗂️ Custom Objects Management
+- **Create Custom Object**: Define new custom object schemas
+- **Get Object Schema**: Retrieve custom object schema details
+- **Get All Objects**: List all custom objects for a location
+- **Update Object Schema**: Modify existing custom object schemas
+- **Create Record**: Add new records to custom objects
+- **Get Record**: Retrieve specific custom object records
+- **Update Record**: Modify existing custom object records
+- **Delete Record**: Remove records from custom objects
+- **Search Records**: Find records using filters and queries
+
+### 📊 Custom Values Management
+- **Create**: Add new custom values with various data types
+- **Get**: Retrieve specific custom value details
+- **Get All**: List all custom values with filtering options
+- **Update**: Modify existing custom value properties
+- **Delete**: Remove custom values from the system
+
 ### 📧 Email Management
 - **Create Template**: Design email templates
 - **Update Template**: Modify existing templates
@@ -118,10 +172,15 @@ This node provides access to the following HighLevel resources and operations:
 - **Get Templates**: List available templates
 - **Get Campaigns**: Retrieve email campaign data
 
-### 📋 Forms
+### 📋 Forms Management
 - **Get Forms**: List available forms
 - **Get Form Submissions**: Retrieve form responses
 - **Upload File**: Handle form file uploads
+
+### 🕳️ Funnel Management
+- **Get All Funnels**: List all funnels with filtering and search
+- **Get Funnel Pages**: Retrieve all pages within a specific funnel
+- **Get Page Count**: Get detailed count statistics for funnel pages
 
 ### 📁 Media Management
 - **Get List of Files**: Retrieve all files and folders in the media library
@@ -134,6 +193,24 @@ This node provides access to the following HighLevel resources and operations:
 - **Get All**: List all notes for a contact with pagination
 - **Update**: Modify existing note content
 - **Delete**: Remove notes from contacts
+
+### 📝 Appointment Notes Management
+- **Create**: Add new appointment-specific notes to track appointment details
+- **Get Many**: List all appointment notes with filtering by contact, user, or appointment
+- **Update**: Modify existing appointment note content
+- **Delete**: Remove appointment notes from the system
+
+### 🔗 Object Associations Management
+- **Create Association**: Define relationships between different object types
+- **Get Association by ID**: Retrieve association details by ID
+- **Get Association by Object Keys**: Find associations between specific objects
+- **Get Association Key by Key Name**: Retrieve association keys by name
+- **Update Association**: Modify existing association definitions
+- **Delete Association**: Remove association definitions
+- **Get All Associations**: List all associations for a location
+- **Create Relation**: Establish relations between specific object instances
+- **Get All Relations by Record ID**: Retrieve relations for specific records
+- **Delete Relation**: Remove specific object relations
 
 ### 🎯 Opportunity Management
 - **Create**: Add new opportunities
@@ -155,42 +232,6 @@ This node provides access to the following HighLevel resources and operations:
 - **Update**: Modify existing redirect rules
 - **Delete**: Remove redirects from the system
 
-### 🕳️ Funnel Management
-- **Get All Funnels**: List all funnels with filtering and search
-- **Get Funnel Pages**: Retrieve all pages within a specific funnel
-- **Get Page Count**: Get detailed count statistics for funnel pages
-
-### 🗂️ Custom Objects
-- **Create Custom Object**: Define new custom object schemas
-- **Get Object Schema**: Retrieve custom object schema details
-- **Get All Objects**: List all custom objects for a location
-- **Update Object Schema**: Modify existing custom object schemas
-- **Create Record**: Add new records to custom objects
-- **Get Record**: Retrieve specific custom object records
-- **Update Record**: Modify existing custom object records
-- **Delete Record**: Remove records from custom objects
-- **Search Records**: Find records using filters and queries
-
-### 📊 Custom Values
-- **Create**: Add new custom values with various data types
-- **Get**: Retrieve specific custom value details
-- **Get All**: List all custom values with filtering options
-- **Update**: Modify existing custom value properties
-- **Delete**: Remove custom values from the system
-- **Advanced Filtering**: Filter by type, category, active status
-
-### 🔗 Object Associations
-- **Create Association**: Define relationships between different object types
-- **Get Association by ID**: Retrieve association details by ID
-- **Get Association by Object Keys**: Find associations between specific objects
-- **Get Association Key by Key Name**: Retrieve association keys by name
-- **Update Association**: Modify existing association definitions
-- **Delete Association**: Remove association definitions
-- **Get All Associations**: List all associations for a location
-- **Create Relation**: Establish relations between specific object instances
-- **Get All Relations by Record ID**: Retrieve relations for specific records
-- **Delete Relation**: Remove specific object relations
-
 ### 🏢 SaaS Management
 - **Enable SaaS**: Activate SaaS features for locations
 - **Disable SaaS**: Deactivate SaaS features
@@ -204,7 +245,7 @@ This node provides access to the following HighLevel resources and operations:
 - **Update Rebilling**: Adjust billing configurations
 - **Pause Location**: Temporarily suspend location access
 
-### 📱 Social Planner
+### 📱 Social Planner Management
 - **Create Post**: Create social media posts
 - **Schedule Post**: Schedule posts for later publication
 - **Get Posts**: Retrieve social media posts
@@ -220,7 +261,7 @@ This node provides access to the following HighLevel resources and operations:
 - **Create User**: Add users to sub-accounts
 - **Get Users**: List sub-account users
 
-### 📊 Surveys
+### 📊 Survey Management
 - **Get Surveys**: List available surveys
 - **Get Survey Submissions**: Retrieve survey responses
 
@@ -235,8 +276,6 @@ This node provides access to the following HighLevel resources and operations:
 ### 🏷️ Tags Management
 - **Add Tags**: Add multiple tags to contacts
 - **Remove Tags**: Remove specific tags from contacts
-- **Bulk Operations**: Handle multiple tags at once
-- **Format Support**: Accept comma-separated or array format
 
 ### 👤 User Management
 - **Create User**: Add new users
@@ -269,7 +308,7 @@ The node automatically handles location-specific token management and API versio
 ## Features
 
 ### 🔧 Core Functionality
-- **25 Resource Types**: Complete coverage of HighLevel API v2
+- **30 Resource Types**: Complete coverage of HighLevel API v2
 - **100+ Operations**: Full CRUD operations across all resources
 - **Advanced Search**: Powerful filtering and search capabilities
 - **Bulk Operations**: Efficient handling of multiple records
@@ -331,15 +370,39 @@ The node automatically handles location-specific token management and API versio
 }
 ```
 
-### Send Message in Conversation
+### Create Calendar Resource
 ```javascript
-// Send a message to an existing conversation
+// Create a calendar resource (room, equipment, etc.)
 {
-  "resource": "conversation",
-  "operation": "sendMessage",
-  "conversationId": "conv_123",
-  "message": "Hello! How can I help you today?",
-  "type": "SMS"
+  "resource": "calendarResource",
+  "operation": "create",
+  "name": "Conference Room A",
+  "additionalFields": {
+    "description": "Large conference room with projector and video conferencing",
+    "type": "room",
+    "quantity": 1,
+    "isActive": true
+  }
+}
+```
+
+### Create Appointment
+```javascript
+// Create a new appointment
+{
+  "resource": "calendarEvent",
+  "operation": "createAppointment",
+  "calendarId": "cal_123456789",
+  "contactId": "contact_123456789", 
+  "startTime": "2023-12-01T10:00:00.000Z",
+  "endTime": "2023-12-01T11:00:00.000Z",
+  "additionalFields": {
+    "title": "Sales Consultation",
+    "appointmentStatus": "confirmed",
+    "assignedUserId": "user_123456789",
+    "address": "123 Main St, City, State 12345",
+    "notes": "Initial sales consultation meeting"
+  }
 }
 ```
 
@@ -358,67 +421,6 @@ The node automatically handles location-specific token management and API versio
     "postType": "post",
     "postImmediately": true
   }
-}
-
-// Schedule a social media post
-{
-  "resource": "socialPlanner",
-  "operation": "schedulePost",
-  "locationId": "loc_123",
-  "content": "Coming soon: New product launch!",
-  "scheduledDate": "2024-01-15T10:00:00Z",
-  "socialAccounts": ["facebook", "linkedin"],
-  "additionalFields": {
-    "timezone": "America/New_York",
-    "postType": "post"
-  }
-}
-
-// Get a specific social media post
-{
-  "resource": "socialPlanner",
-  "operation": "getPost",
-  "locationId": "loc_123",
-  "postId": "post_456"
-}
-
-// Update a social media post
-{
-  "resource": "socialPlanner",
-  "operation": "updatePost",
-  "locationId": "loc_123",
-  "postId": "post_456",
-  "content": "Updated post content with new information!"
-}
-
-// Get social media analytics
-{
-  "resource": "socialPlanner",
-  "operation": "getAnalytics",
-  "locationId": "loc_123",
-  "additionalFields": {
-    "dateFrom": "2024-01-01",
-    "dateTo": "2024-01-31",
-    "platform": "facebook"
-  }
-}
-```
-
-### Create Coupon
-```javascript
-// Create a discount coupon
-{
-  "resource": "coupon",
-  "operation": "create",
-  "name": "Summer Sale",
-  "code": "SUMMER2024",
-  "discountType": "percentage",
-  "discountValue": 20,
-  "description": "20% off summer collection",
-  "startDate": "2024-06-01T00:00:00Z",
-  "endDate": "2024-08-31T23:59:59Z",
-  "usageLimit": 100,
-  "minimumAmount": 50
 }
 ```
 
@@ -442,214 +444,6 @@ The node automatically handles location-specific token management and API versio
 }
 ```
 
-### Media Management
-```javascript
-// Get list of files from media library
-{
-  "resource": "media",
-  "operation": "getFiles",
-  "additionalFields": {
-    "folderId": "folder-123",
-    "search": "image",
-    "sortBy": "createdAt",
-    "sortOrder": "desc",
-    "limit": 50
-  }
-}
-
-// Upload a file to media library
-{
-  "resource": "media",
-  "operation": "uploadFile",
-  "fileData": "base64encodedfiledata...",
-  "fileName": "marketing-image.jpg",
-  "additionalFields": {
-    "folderId": "folder-456",
-    "description": "Marketing campaign image",
-    "tags": "marketing,campaign,image",
-    "isPublic": true
-  }
-}
-
-// Delete a file from media library
-{
-  "resource": "media",
-  "operation": "deleteFile",
-  "fileId": "file-789",
-  "additionalFields": {
-    "forceDelete": false
-  }
-}
-```
-
-### Redirect Management
-```javascript
-// Create a URL redirect
-{
-  "resource": "redirect",
-  "operation": "create",
-  "sourceUrl": "/old-product-page",
-  "targetUrl": "/new-product-page",
-  "additionalFields": {
-    "redirectType": "301",
-    "description": "Product page redesign redirect",
-    "isActive": true
-  }
-}
-
-// Get all redirects with filtering
-{
-  "resource": "redirect",
-  "operation": "getAll",
-  "additionalFields": {
-    "status": "active",
-    "search": "product",
-    "limit": 50,
-    "offset": 0
-  }
-}
-
-// Update an existing redirect
-{
-  "resource": "redirect",
-  "operation": "update",
-  "redirectId": "redirect-123",
-  "updateFields": {
-    "targetUrl": "/updated-target-page",
-    "redirectType": "302",
-    "isActive": false
-  }
-}
-
-// Delete a redirect
-{
-  "resource": "redirect",
-  "operation": "delete",
-  "redirectId": "redirect-123"
-}
-```
-
-### Funnel Management
-```javascript
-// Get all funnels with filtering
-{
-  "resource": "funnel",
-  "operation": "getFunnels",
-  "additionalFields": {
-    "status": "active",
-    "category": "lead-generation",
-    "search": "marketing",
-    "limit": 20,
-    "offset": 0
-  }
-}
-
-// Get pages for a specific funnel
-{
-  "resource": "funnel",
-  "operation": "getFunnelPages",
-  "funnelId": "funnel-123",
-  "additionalFields": {
-    "pageType": "landing",
-    "status": "active",
-    "limit": 50
-  }
-}
-
-// Get page count statistics for a funnel
-{
-  "resource": "funnel",
-  "operation": "getPageCount",
-  "funnelId": "funnel-123",
-  "additionalFields": {
-    "pageType": "all",
-    "status": "active"
-  }
-}
-```
-
-### Create Custom Object and Record
-```javascript
-// Create a custom object schema
-{
-  "resource": "customObjects",
-  "operation": "createObject",
-  "name": "Property Listings",
-  "description": "Real estate property listings",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "address": { "type": "string" },
-      "price": { "type": "number" },
-      "bedrooms": { "type": "integer" },
-      "bathrooms": { "type": "number" },
-      "squareFootage": { "type": "number" },
-      "propertyType": { "type": "string" },
-      "description": { "type": "string" },
-      "listingDate": { "type": "string", "format": "date" }
-    },
-    "required": ["address", "price", "propertyType"]
-  },
-  "displayField": "address",
-  "enableApiAccess": true
-}
-
-// Create a record in the custom object
-{
-  "resource": "customObjects",
-  "operation": "createRecord",
-  "objectId": "obj_123",
-  "recordData": {
-    "address": "123 Main St, City, State 12345",
-    "price": 350000,
-    "bedrooms": 3,
-    "bathrooms": 2.5,
-    "squareFootage": 1800,
-    "propertyType": "Single Family",
-    "description": "Beautiful family home with modern amenities",
-    "listingDate": "2024-01-15"
-  }
-}
-```
-
-### Create Object Association and Relation
-```javascript
-// Create an association between contacts and opportunities
-{
-  "resource": "objectAssociations",
-  "operation": "createAssociation",
-  "name": "Contact-Opportunity",
-  "description": "Associates contacts with opportunities",
-  "fromObjectType": "contact",
-  "toObjectType": "opportunity",
-  "cardinality": "ONE_TO_MANY"
-}
-
-// Create a relation between a specific contact and opportunity
-{
-  "resource": "objectAssociations",
-  "operation": "createRelation",
-  "associationId": "assoc_123",
-  "fromObjectId": "contact_456",
-  "toObjectId": "opportunity_789",
-  "metadata": {
-    "relationshipType": "primary_contact",
-    "confidence": 0.95,
-    "source": "crm_integration"
-  }
-}
-
-// Get all relations for a specific contact
-{
-  "resource": "objectAssociations",
-  "operation": "getAllRelationsByRecordId",
-  "associationId": "assoc_123",
-  "filterOptions": {
-    "recordId": "contact_456"
-  }
-}
-```
-
 ### Notes Management
 ```javascript
 // Create a note for a contact
@@ -661,45 +455,6 @@ The node automatically handles location-specific token management and API versio
   "additionalFields": {
     "userId": "user_456"
   }
-}
-
-// Get all notes for a contact
-{
-  "resource": "notes",
-  "operation": "getAll",
-  "contactId": "contact_123",
-  "additionalFields": {
-    "limit": 20,
-    "offset": 0
-  }
-}
-
-// Get a specific note
-{
-  "resource": "notes",
-  "operation": "get",
-  "contactId": "contact_123",
-  "noteId": "note_789"
-}
-
-// Update a note
-{
-  "resource": "notes",
-  "operation": "update",
-  "contactId": "contact_123",
-  "noteId": "note_789",
-  "updateFields": {
-    "body": "Updated: Customer confirmed interest in premium package.",
-    "userId": "user_456"
-  }
-}
-
-// Delete a note
-{
-  "resource": "notes",
-  "operation": "delete",
-  "contactId": "contact_123",
-  "noteId": "note_789"
 }
 ```
 
@@ -716,190 +471,11 @@ The node automatically handles location-specific token management and API versio
     "source": "workflow"
   }
 }
-
-// Add tags using array format
-{
-  "resource": "tags",
-  "operation": "addTags",
-  "contactId": "contact_123",
-  "tags": ["hot-lead", "scheduled-demo", "high-value"],
-  "additionalFields": {
-    "source": "automated-scoring"
-  }
-}
-
-// Remove tags from a contact
-{
-  "resource": "tags",
-  "operation": "removeTags",
-  "contactId": "contact_123",
-  "tags": "old-tag,outdated-info",
-  "additionalFields": {
-    "userId": "user_456",
-    "source": "cleanup"
-  }
-}
-
-// Remove multiple tags using array format
-{
-  "resource": "tags",
-  "operation": "removeTags",
-  "contactId": "contact_123",
-  "tags": ["cold-lead", "unresponsive", "low-priority"],
-  "additionalFields": {
-    "source": "bulk-cleanup"
-  }
-}
-```
-
-### Task Search
-```javascript
-// Search tasks with filters
-{
-  "resource": "task",
-  "operation": "search",
-  "additionalFields": {
-    "locationId": "loc_123",
-    "status": "pending",
-    "assignedTo": "user_456",
-    "dueDateFrom": "2024-01-01T00:00:00Z",
-    "dueDateTo": "2024-12-31T23:59:59Z",
-    "query": "follow up",
-    "limit": 50,
-    "offset": 0
-  }
-}
-
-// Search completed tasks for a specific contact
-{
-  "resource": "task",
-  "operation": "search",
-  "additionalFields": {
-    "contactId": "contact_789",
-    "status": "completed",
-    "limit": 20
-  }
-}
-
-// Search tasks by content or title
-{
-  "resource": "task",
-  "operation": "search",
-  "additionalFields": {
-    "query": "customer onboarding",
-    "limit": 25
-  }
-}
-```
-
-### Custom Values Management
-```javascript
-// Create a custom value
-{
-  "resource": "customValues",
-  "operation": "create",
-  "name": "Lead Source",
-  "value": "Website",
-  "additionalFields": {
-    "description": "Where the lead originated from",
-    "type": "text",
-    "category": "lead-tracking",
-    "isActive": true,
-    "sortOrder": 1
-  }
-}
-
-// Get all custom values with filtering
-{
-  "resource": "customValues",
-  "operation": "getAll",
-  "additionalFields": {
-    "category": "lead-tracking",
-    "type": "text",
-    "isActive": "true",
-    "search": "source",
-    "limit": 50,
-    "offset": 0
-  }
-}
-
-// Get a specific custom value
-{
-  "resource": "customValues",
-  "operation": "get",
-  "customValueId": "cv_123"
-}
-
-// Update a custom value
-{
-  "resource": "customValues",
-  "operation": "update",
-  "customValueId": "cv_123",
-  "updateFields": {
-    "name": "Lead Source Updated",
-    "value": "Social Media",
-    "description": "Updated lead source tracking",
-    "category": "marketing",
-    "sortOrder": 5
-  }
-}
-
-// Delete a custom value
-{
-  "resource": "customValues",
-  "operation": "delete",
-  "customValueId": "cv_123"
-}
-
-// Create custom values for different data types
-{
-  "resource": "customValues",
-  "operation": "create",
-  "name": "Customer Rating",
-  "value": "5",
-  "additionalFields": {
-    "type": "number",
-    "category": "customer-feedback",
-    "description": "Customer satisfaction rating (1-5)"
-  }
-}
-
-{
-  "resource": "customValues",
-  "operation": "create",
-  "name": "Is VIP Customer",
-  "value": "true",
-  "additionalFields": {
-    "type": "boolean",
-    "category": "customer-status",
-    "description": "Indicates if customer has VIP status"
-  }
-}
-
-{
-  "resource": "customValues",
-  "operation": "create",
-  "name": "Website URL",
-  "value": "https://example.com",
-  "additionalFields": {
-    "type": "url",
-    "category": "contact-info",
-    "description": "Customer's website URL"
-  }
-}
 ```
 
 ## Testing
 
-The node includes comprehensive test coverage for:
-
-- All API operations and resources
-- Data validation and transformation
-- Error handling scenarios
-- Authentication flows
-- Pagination functionality
-- Custom field management
-- File upload operations
+The node includes comprehensive test coverage for all API operations, data validation, error handling, authentication flows, and pagination functionality.
 
 Run tests with:
 ```bash

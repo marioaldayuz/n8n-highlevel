@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "business": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "success": {
+            "type": "boolean"
+        }
+    },
+    "version": 1
+} 

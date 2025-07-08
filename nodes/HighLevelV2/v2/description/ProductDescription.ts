@@ -765,12 +765,11 @@ const bulkUpdateProperties: INodeProperties[] = [
 				displayName: 'Product',
 				values: [
 					{
-						displayName: 'Product ID',
-						name: 'id',
+						displayName: 'Description',
+						name: 'description',
 						type: 'string',
-						required: true,
 						default: '',
-						description: 'ID of the product to update',
+						description: 'Description of the product',
 					},
 					{
 						displayName: 'Name',
@@ -787,11 +786,12 @@ const bulkUpdateProperties: INodeProperties[] = [
 						description: 'Price of the product',
 					},
 					{
-						displayName: 'Description',
-						name: 'description',
+						displayName: 'Product ID',
+						name: 'id',
 						type: 'string',
+							required:	true,
 						default: '',
-						description: 'Description of the product',
+						description: 'ID of the product to update',
 					},
 					{
 						displayName: 'Status',
@@ -821,7 +821,7 @@ const bulkUpdateProperties: INodeProperties[] = [
 						default: 0,
 						description: 'Available stock quantity',
 					},
-				],
+			],
 			},
 		],
 		routing: {

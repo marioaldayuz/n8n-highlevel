@@ -1,0 +1,13 @@
+{
+  "resource": {
+    "id": "resource_6669e4c3a0b142cc43a00e97",
+    "name": "Conference Room A",
+    "description": "Large conference room with projector and video conferencing capabilities",
+    "type": "room",
+    "quantity": 1,
+    "isActive": true,
+    "locationId": "location_123456789",
+    "createdAt": "2024-06-12T12:14:43.159Z",
+    "updatedAt": "2024-06-12T12:14:43.159Z"
+  }
+} 

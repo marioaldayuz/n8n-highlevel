@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "blockedSlots": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "calendarId": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "locationId": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "dateCreated": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "dateUpdated": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "count": {
+                    "type": "integer"
+                },
+                "currentPage": {
+                    "type": "integer"
+                },
+                "nextPageUrl": {
+                    "type": "string"
+                },
+                "prevPageUrl": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

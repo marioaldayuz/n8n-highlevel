@@ -122,8 +122,11 @@ export const mediaFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Maximum number of files to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',

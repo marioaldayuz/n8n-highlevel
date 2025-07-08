@@ -112,8 +112,11 @@ export const funnelFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Maximum number of funnels to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',
@@ -226,8 +229,11 @@ export const funnelFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Maximum number of pages to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',

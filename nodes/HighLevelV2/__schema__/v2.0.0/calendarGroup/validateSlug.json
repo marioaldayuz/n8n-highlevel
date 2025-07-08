@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "isValid": {
+            "type": "boolean"
+        },
+        "slug": {
+            "type": "string"
+        },
+        "message": {
+            "type": "string"
+        },
+        "suggestions": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "version": 1
+} 

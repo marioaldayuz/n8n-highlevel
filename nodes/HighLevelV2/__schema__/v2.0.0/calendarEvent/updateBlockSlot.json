@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "blockedSlot": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "calendarId": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "endTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    },
+    "version": 1
+} 

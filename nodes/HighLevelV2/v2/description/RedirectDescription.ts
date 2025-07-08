@@ -41,7 +41,7 @@ export const redirectOperations: INodeProperties[] = [
 				action: 'Create a new redirect',
 			},
 			{
-				name: 'Get All',
+				name: 'Get Many',
 				value: 'getAll',
 				routing: {
 					request: {
@@ -62,7 +62,7 @@ export const redirectOperations: INodeProperties[] = [
 						],
 					},
 				},
-				action: 'Get all redirects',
+				action: 'Get many redirects',
 			},
 			{
 				name: 'Update',
@@ -345,8 +345,11 @@ export const redirectFields: INodeProperties[] = [
 				displayName: 'Limit',
 				name: 'limit',
 				type: 'number',
-				default: 20,
-				description: 'Maximum number of redirects to return',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
 				routing: {
 					send: {
 						type: 'query',
