@@ -146,7 +146,7 @@ const resources: INodeProperties[] = [
 				value: 'redirect',
 			},
 			{
-				name: 'Saa',
+				name: 'SaaS',
 				value: 'saas',
 			},
 			{
