@@ -18,7 +18,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts',
 					},
 				},
 			},
@@ -29,7 +29,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts/schedule',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts',
 					},
 				},
 			},
@@ -39,8 +39,8 @@ export const socialPlannerOperations: INodeProperties[] = [
 				action: 'Get social media posts',
 				routing: {
 					request: {
-						method: 'GET',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts',
+						method: 'POST',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts/list',
 					},
 				},
 			},
@@ -51,7 +51,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts/{{$parameter.postId}}',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts/{{$parameter.postId}}',
 					},
 				},
 			},
@@ -62,7 +62,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'PUT',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts/{{$parameter.postId}}',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts/{{$parameter.postId}}',
 					},
 				},
 			},
@@ -73,7 +73,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/posts/{{$parameter.postId}}',
+						url: '=/social-media-posting/{{$parameter.locationId}}/posts/{{$parameter.postId}}',
 					},
 				},
 			},
@@ -84,7 +84,7 @@ export const socialPlannerOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/locations/{{$parameter.locationId}}/social-planner/accounts',
+						url: '=/social-media-posting/{{$parameter.locationId}}/accounts',
 					},
 				},
 			},
@@ -330,7 +330,7 @@ const schedulePostProperties: INodeProperties[] = [
 	},
 	{
 		displayName: 'Scheduled Date',
-		name: 'scheduledDate',
+		name: 'scheduleDate',
 		type: 'dateTime',
 		required: true,
 		displayOptions: {
@@ -344,7 +344,7 @@ const schedulePostProperties: INodeProperties[] = [
 		routing: {
 			send: {
 				type: 'body',
-				property: 'scheduledDate',
+				property: 'scheduleDate',
 			},
 		},
 	},
