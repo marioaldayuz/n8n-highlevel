@@ -141,8 +141,8 @@ export const subAccountOperations: INodeProperties[] = [
 export const subAccountFields: INodeProperties[] = [
 	// Create Sub-Account Fields
 	{
-		displayName: 'Business Name',
-		name: 'businessName',
+		displayName: 'Company ID',
+		name: 'companyId',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -152,11 +152,51 @@ export const subAccountFields: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The business name for the sub-account',
+		description: 'The agency company ID',
 		routing: {
 			send: {
 				type: 'body',
-				property: 'businessName',
+				property: 'companyId',
+			},
+		},
+	},
+	{
+		displayName: 'Name',
+		name: 'name',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'The name of the sub-account',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'name',
+			},
+		},
+	},
+	{
+		displayName: 'Phone',
+		name: 'phone',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'Business phone number',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'phone',
 			},
 		},
 	},
@@ -232,7 +272,7 @@ export const subAccountFields: INodeProperties[] = [
 			},
 		},
 		default: 'US',
-		description: 'Country code (e.g., US, CA, UK)',
+		description: 'Country code (e.g., US, CA, UK, AF)',
 		routing: {
 			send: {
 				type: 'body',
@@ -290,7 +330,82 @@ export const subAccountFields: INodeProperties[] = [
 			},
 		},
 	},
-	
+	// Prospect Info Fields - Required
+	{
+		displayName: 'Prospect Information',
+		name: 'prospectInfoNotice',
+		type: 'notice',
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'The following fields are for the primary contact person of this sub-account',
+	},
+	{
+		displayName: 'Prospect First Name',
+		name: 'prospectFirstName',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'First name of the primary contact',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'prospectInfo.firstName',
+			},
+		},
+	},
+	{
+		displayName: 'Prospect Last Name',
+		name: 'prospectLastName',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'Last name of the primary contact',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'prospectInfo.lastName',
+			},
+		},
+	},
+	{
+		displayName: 'Prospect Email',
+		name: 'prospectEmail',
+		type: 'string',
+		placeholder: 'name@email.com',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['subAccount'],
+				operation: ['createSubAccount'],
+			},
+		},
+		default: '',
+		description: 'Email address of the primary contact',
+		routing: {
+			send: {
+				type: 'body',
+				property: 'prospectInfo.email',
+			},
+		},
+	},
+
 	// Location ID field for various operations
 	{
 		displayName: 'Location ID',
@@ -306,7 +421,7 @@ export const subAccountFields: INodeProperties[] = [
 		default: '',
 		description: 'The ID of the sub-account',
 	},
-	
+
 	// User ID field for user operations
 	{
 		displayName: 'User ID',
@@ -322,7 +437,7 @@ export const subAccountFields: INodeProperties[] = [
 		default: '',
 		description: 'The ID of the user',
 	},
-	
+
 	// Create User Fields
 	{
 		displayName: 'First Name',
@@ -454,7 +569,7 @@ export const subAccountFields: INodeProperties[] = [
 			},
 		},
 	},
-	
+
 	// Additional/Optional Fields Collection
 	{
 		displayName: 'Additional Fields',
@@ -470,67 +585,117 @@ export const subAccountFields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Website',
-				name: 'website',
-				type: 'string',
-				default: '',
-				description: 'Business website URL',
+				displayName: 'Allow Duplicate Contact',
+				name: 'allowDuplicateContact',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to allow duplicate contacts in this sub-account',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'website',
+						property: 'settings.allowDuplicateContact',
 					},
 				},
 			},
 			{
-				displayName: 'Contact First Name',
-				name: 'contactFirstName',
-				type: 'string',
-				default: '',
-
+				displayName: 'Allow Duplicate Opportunity',
+				name: 'allowDuplicateOpportunity',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to allow duplicate opportunities in this sub-account',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'firstName',
+						property: 'settings.allowDuplicateOpportunity',
 					},
 				},
 			},
 			{
-				displayName: 'Contact Last Name',
-				name: 'contactLastName',
-				type: 'string',
-				default: '',
-
+				displayName: 'Allow Facebook Name Merge',
+				name: 'allowFacebookNameMerge',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to allow merging of Facebook contacts by name',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'lastName',
+						property: 'settings.allowFacebookNameMerge',
 					},
 				},
 			},
 			{
-				displayName: 'Contact Email',
-				name: 'contactEmail',
-				type: 'string',
-				default: '',
-				description: 'Contact email address',
+				displayName: 'Disable Contact Timezone',
+				name: 'disableContactTimezone',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to disable contact timezone feature',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'email',
+						property: 'settings.disableContactTimezone',
 					},
 				},
 			},
 			{
-				displayName: 'Contact Phone',
-				name: 'contactPhone',
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				typeOptions: {
+					minValue: 1,
+				},
+				default: 50,
+				description: 'Max number of results to return',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'limit',
+					},
+				},
+			},
+			{
+				displayName: 'Password',
+				name: 'password',
 				type: 'string',
+				typeOptions: { password: true },
 				default: '',
-				description: 'Contact phone number',
+				description: 'User password (leave blank to auto-generate)',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'phone',
+						property: 'password',
+					},
+				},
+			},
+			{
+				displayName: 'Search',
+				name: 'search',
+				type: 'string',
+				default: '',
+				description: 'Search term to filter results',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'search',
+					},
+				},
+			},
+			{
+				displayName: 'Settings',
+				name: 'settingsNotice',
+				type: 'notice',
+				default: '',
+				description: 'Configure sub-account settings below',
+			},
+			{
+				displayName: 'Skip',
+				name: 'skip',
+				type: 'number',
+				default: 0,
+				description: 'Number of records to skip',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'skip',
 					},
 				},
 			},
@@ -566,64 +731,21 @@ export const subAccountFields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Password',
-				name: 'password',
+				displayName: 'Website',
+				name: 'website',
 				type: 'string',
-				typeOptions: { password: true },
 				default: '',
-				description: 'User password (leave blank to auto-generate)',
+				description: 'Business website URL',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'password',
-					},
-				},
-			},
-			{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
-				},
-				default: 50,
-				description: 'Max number of results to return',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'limit',
-					},
-				},
-			},
-			{
-				displayName: 'Skip',
-				name: 'skip',
-				type: 'number',
-				default: 0,
-				description: 'Number of records to skip',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'skip',
-					},
-				},
-			},
-			{
-				displayName: 'Search',
-				name: 'search',
-				type: 'string',
-				default: '',
-				description: 'Search term to filter results',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'search',
+						property: 'website',
 					},
 				},
 			},
 		],
 	},
-	
+
 	// Update Fields Collection
 	{
 		displayName: 'Update Fields',
@@ -937,4 +1059,4 @@ export const subAccountFields: INodeProperties[] = [
 			},
 		],
 	},
-]; 
+];

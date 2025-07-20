@@ -5,9 +5,17 @@
       "type": "string",
       "description": "The unique identifier for the created sub-account"
     },
-    "businessName": {
+    "name": {
       "type": "string",
-      "description": "The business name of the sub-account"
+      "description": "The name of the sub-account"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Business phone number"
+    },
+    "companyId": {
+      "type": "string",
+      "description": "The agency company ID"
     },
     "address": {
       "type": "string",
@@ -37,21 +45,23 @@
       "type": "string",
       "description": "Business website URL"
     },
-    "firstName": {
-      "type": "string",
-      "description": "Contact first name"
-    },
-    "lastName": {
-      "type": "string",
-      "description": "Contact last name"
-    },
-    "email": {
-      "type": "string",
-      "description": "Contact email address"
-    },
-    "phone": {
-      "type": "string",
-      "description": "Contact phone number"
+    "prospectInfo": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "Prospect first name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Prospect last name"
+        },
+        "email": {
+          "type": "string",
+          "description": "Prospect email address"
+        }
+      },
+      "required": ["firstName", "lastName", "email"]
     },
     "settings": {
       "type": "object",
@@ -99,5 +109,5 @@
       "description": "The date and time when the sub-account was last updated"
     }
   },
-  "required": ["id", "businessName", "address", "city", "state", "country", "postalCode", "timezone"]
-} 
+  "required": ["id", "name", "phone", "companyId", "address", "city", "state", "country", "postalCode", "timezone", "prospectInfo"]
+}

@@ -22,13 +22,20 @@ describe('SubAccount Operations', () => {
 		it('should create a sub-account with required fields', async () => {
 			const mockResponse = {
 				id: 'new-location-id',
-				businessName: 'Test Business',
+				name: 'Test Business',
+				phone: '+1410039940',
+				companyId: 'UAXssdawIWAWD',
 				address: '123 Main St',
 				city: 'New York',
 				state: 'NY',
 				country: 'US',
 				postalCode: '10001',
 				timezone: 'US/Eastern',
+				prospectInfo: {
+					firstName: 'John',
+					lastName: 'Doe',
+					email: 'john.doe@mail.com',
+				},
 				createdAt: '2024-01-01T00:00:00Z',
 				updatedAt: '2024-01-01T00:00:00Z',
 			};
@@ -49,37 +56,53 @@ describe('SubAccount Operations', () => {
 						Version: '2021-07-28',
 					},
 					body: {
-						businessName: 'Test Business',
+						name: 'Test Business',
+						phone: '+1410039940',
+						companyId: 'UAXssdawIWAWD',
 						address: '123 Main St',
 						city: 'New York',
 						state: 'NY',
 						country: 'US',
 						postalCode: '10001',
 						timezone: 'US/Eastern',
+						prospectInfo: {
+							firstName: 'John',
+							lastName: 'Doe',
+							email: 'john.doe@mail.com',
+						},
 					},
 				},
 			);
 
 			expect(result).toEqual(mockResponse);
 			expect(result.id).toBe('new-location-id');
-			expect(result.businessName).toBe('Test Business');
+			expect(result.name).toBe('Test Business');
 		});
 
 		it('should create a sub-account with additional fields', async () => {
 			const mockResponse = {
 				id: 'new-location-id',
-				businessName: 'Test Business',
-				address: '123 Main St',
+				name: 'Mark Shoes',
+				phone: '+1410039940',
+				companyId: 'UAXssdawIWAWD',
+				address: '4th fleet street',
 				city: 'New York',
-				state: 'NY',
-				country: 'US',
-				postalCode: '10001',
-				timezone: 'US/Eastern',
-				website: 'https://testbusiness.com',
-				firstName: 'John',
-				lastName: 'Doe',
-				email: 'john@testbusiness.com',
-				phone: '+1234567890',
+				state: 'Illinois',
+				country: 'AF',
+				postalCode: '567654',
+				timezone: 'US/Central',
+				website: 'https://yourwebsite.com',
+				prospectInfo: {
+					firstName: 'John',
+					lastName: 'Doe',
+					email: 'john.doe@mail.com',
+				},
+				settings: {
+					allowDuplicateContact: false,
+					allowDuplicateOpportunity: false,
+					allowFacebookNameMerge: false,
+					disableContactTimezone: false,
+				},
 				snapshot: {
 					id: 'snapshot-123',
 					type: 'vertical',
@@ -104,18 +127,27 @@ describe('SubAccount Operations', () => {
 						Version: '2021-07-28',
 					},
 					body: {
-						businessName: 'Test Business',
-						address: '123 Main St',
+						name: 'Mark Shoes',
+						phone: '+1410039940',
+						companyId: 'UAXssdawIWAWD',
+						address: '4th fleet street',
 						city: 'New York',
-						state: 'NY',
-						country: 'US',
-						postalCode: '10001',
-						timezone: 'US/Eastern',
-						website: 'https://testbusiness.com',
-						firstName: 'John',
-						lastName: 'Doe',
-						email: 'john@testbusiness.com',
-						phone: '+1234567890',
+						state: 'Illinois',
+						country: 'AF',
+						postalCode: '567654',
+						timezone: 'US/Central',
+						website: 'https://yourwebsite.com',
+						prospectInfo: {
+							firstName: 'John',
+							lastName: 'Doe',
+							email: 'john.doe@mail.com',
+						},
+						settings: {
+							allowDuplicateContact: false,
+							allowDuplicateOpportunity: false,
+							allowFacebookNameMerge: false,
+							disableContactTimezone: false,
+						},
 						snapshot: {
 							id: 'snapshot-123',
 							type: 'vertical',
@@ -136,7 +168,7 @@ describe('SubAccount Operations', () => {
 		it('should retrieve a specific sub-account', async () => {
 			const mockResponse = {
 				id: 'location-123',
-				businessName: 'Test Business',
+				name: 'Test Business',
 				address: '123 Main St',
 				city: 'New York',
 				state: 'NY',
@@ -176,13 +208,13 @@ describe('SubAccount Operations', () => {
 				locations: [
 					{
 						id: 'location-1',
-						businessName: 'Business 1',
+						name: 'Business 1',
 						city: 'New York',
 						state: 'NY',
 					},
 					{
 						id: 'location-2',
-						businessName: 'Business 2',
+						name: 'Business 2',
 						city: 'Los Angeles',
 						state: 'CA',
 					},
@@ -224,7 +256,7 @@ describe('SubAccount Operations', () => {
 		it('should update sub-account fields', async () => {
 			const mockResponse = {
 				id: 'location-123',
-				businessName: 'Updated Business Name',
+				name: 'Updated Business Name',
 				address: '456 Updated St',
 				city: 'Updated City',
 				state: 'CA',
@@ -250,7 +282,7 @@ describe('SubAccount Operations', () => {
 						Version: '2021-07-28',
 					},
 					body: {
-						businessName: 'Updated Business Name',
+						name: 'Updated Business Name',
 						address: '456 Updated St',
 						city: 'Updated City',
 						state: 'CA',
@@ -261,7 +293,7 @@ describe('SubAccount Operations', () => {
 			);
 
 			expect(result).toEqual(mockResponse);
-			expect(result.businessName).toBe('Updated Business Name');
+			expect(result.name).toBe('Updated Business Name');
 		});
 	});
 
@@ -561,8 +593,8 @@ describe('SubAccount Operations', () => {
 				response: {
 					status: 400,
 					data: {
-						message: 'Invalid business name',
-						errors: ['Business name is required'],
+						message: 'Invalid name',
+						errors: ['Name is required'],
 					},
 				},
 			};
@@ -616,4 +648,4 @@ describe('SubAccount Operations', () => {
 			}
 		});
 	});
-}); 
+});
