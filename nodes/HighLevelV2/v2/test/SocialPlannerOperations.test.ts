@@ -225,4 +225,12 @@ pinterest: 0,
 mockHighLevelApiRequest.mockResolvedValue(mockAccountsData);
 const requestOptions: IHttpRequestOptions = {
 method: 'GET',
-url: '/social-media-posting/loc-456
+url: '/social-media-posting/loc-456',
+};
+const result = await mockHighLevelApiRequest.call(mockContext, requestOptions);
+expect(result).toEqual(mockAccountsData);
+expect(result.socialAccounts).toHaveLength(2);
+expect(result.totalConnected).toBe(2);
+});
+});
+});
